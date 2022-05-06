@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     marginBottom: SIZES.padding * 0.7,
   },
   card: {
-    backgroundColor: COLORS.secondaryLight,
+    backgroundColor: COLORS.secondary_light,
     marginBottom: SIZES.padding,
     borderRadius: SIZES.padding,
     padding: SIZES.padding,

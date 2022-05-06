@@ -10,7 +10,7 @@ import {
 import React, { useState, useRef } from "react";
 import { COLORS, FONTS, SIZES, icons, images } from "../../constants";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-import { Transaction } from "../../screens";
+import { Transaction } from "../../components";
 
 const Home = ({ navigation }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -290,6 +290,7 @@ const Home = ({ navigation }) => {
       </View>
     );
   }
+
   function renderTransaction() {
     return (
       <View

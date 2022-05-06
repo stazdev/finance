@@ -17,7 +17,7 @@ const Receipt = ({ navigation, route }) => {
     return (
       <View style={styles.head}>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.goBack()}
           activeOpacity={0.7}
         >
           <Image

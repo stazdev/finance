@@ -104,7 +104,7 @@ const Profile = () => {
         style={[
           styles.header,
           {
-            backgroundColor: COLORS.secondaryLight,
+            backgroundColor: COLORS.secondary_light,
             paddingVertical: SIZES.padding2,
             paddingHorizontal: SIZES.base,
             borderRadius: SIZES.padding,

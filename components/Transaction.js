@@ -7,7 +7,9 @@ import {
   StyleSheet,
 } from "react-native";
 import React, { useState } from "react";
-import { COLORS, SIZES, FONTS } from "../../constants";
+import { COLORS, SIZES, FONTS } from "../constants";
+
+import { Button } from "../components";
 
 const listTab = [
   {
@@ -121,29 +123,20 @@ const Transaction = ({ navigation }) => {
 
   function renderBtn() {
     return (
-      <TouchableOpacity
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          marginVertical: SIZES.base * 5,
+      <Button
+        label="View More"
+        labelStyle={{
+          paddingVertical: SIZES.padding * 1.5,
+          paddingHorizontal: SIZES.padding * 4.3,
         }}
-        activeOpacity={0.7}
-      >
-        <Text
-          style={{
-            color: COLORS.white,
-            fontSize: 16,
-            borderColor: COLORS.white,
-            borderWidth: 1,
-            paddingVertical: SIZES.padding * 1.3,
-            paddingHorizontal: SIZES.padding * 4.3,
-            borderRadius: SIZES.radius,
-            backgroundColor: "#000000",
-          }}
-        >
-          View More
-        </Text>
-      </TouchableOpacity>
+        containerStyle={{
+          backgroundColor: "black",
+          borderColor: COLORS.white,
+          borderRadius: SIZES.radius,
+          borderWidth: 1,
+          marginVertical: 56,
+        }}
+      />
     );
   }
   return (
@@ -167,8 +160,6 @@ const Transaction = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-
-export default Transaction;
 
 const styles = StyleSheet.create({
   container: {
@@ -223,3 +214,5 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
 });
+
+export default Transaction;

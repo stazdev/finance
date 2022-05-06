@@ -14,6 +14,7 @@ import {
   ForgetPasswordVerification,
   Receipt,
   Info,
+  AccountDetails,
 } from "./screens";
 
 import MyTabs from "./navigation/tabs";
@@ -60,6 +61,7 @@ export default function App() {
         <Stack.Screen name="Tabs" component={MyTabs} />
         <Stack.Screen name="Receipt" component={Receipt} />
         <Stack.Screen name="Info" component={Info} />
+        <Stack.Screen name="AccountDetails" component={AccountDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );

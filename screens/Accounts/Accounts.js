@@ -11,42 +11,58 @@ import {
 } from "react-native";
 import React from "react";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
+import AccountDetails from "./AccountDetails";
 
 const accounts = [
   {
+    id: 1,
     name: "Main Balance",
-    description: "The sum total of all \n your account balance",
-    balance: 100000,
+    description: "The sum total of all\n your account balance",
+    description2: "The sum total of all your account balance",
+    balance: "#100,000",
     color: COLORS.white,
   },
   {
+    id: 2,
     name: "Business Wallet",
-    description: "The sum total of all \n your account balance",
-    balance: 100000,
+    description: "The sum total of all\n your account balance",
+    description2:
+      "This is a cash account for you to put back into your business. Recieve and transfer funds for free",
+    balance: "#100,000",
     color: COLORS.business,
   },
   {
+    id: 3,
     name: "Savings Wallet",
-    description: "The sum total of all \n your account balance",
-    balance: 100000,
+    description: "The sum total of all\n your account balance",
+    description2: "Bulids your savings daily, weekly or monthly",
+    balance: "#100,000",
     color: COLORS.savings,
   },
   {
+    id: 4,
     name: "Expense Wallet",
-    description: "The sum total of all \n your account balance",
-    balance: 100000,
+    description: "The sum total of all\n your account balance",
+    description2: "Add money to your expense wallet. Buy data, pay bills etc.",
+    balance: "#100,000",
     color: COLORS.expense,
   },
   {
-    name: "Investment \n Wallet",
-    description: "The sum total of all \n your account balance",
-    balance: 100000,
+    id: 5,
+    name: "Investment\n Wallet",
+    name2: "Investment Wallet",
+    description: "The sum total of all\n your account balance",
+    description2: "Grow your money by investing in 5QM endorsed businesses",
+    balance: "#100,000",
     color: COLORS.investment,
   },
   {
-    name: "Emergency \n Wallet",
-    description: "The sum total of all \n your account balance",
-    balance: 100000,
+    id: 6,
+    name: "Emergency\n Wallet",
+    name2: "Emergency Wallet",
+    description: "The sum total of all\n your account balance",
+    description2: "Store up money for unforseen circumstances",
+    balance: "#100,000",
     color: COLORS.emergency,
   },
 ];
@@ -81,7 +97,11 @@ const Accounts = ({ navigation }) => {
 
   const renderItem = ({ item, i }) => {
     return (
-      <TouchableOpacity activeOpacity={0.7} style={styles.card}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={styles.card}
+        onPress={() => navigation.navigate("AccountDetails", { item })}
+      >
         <View>
           <Text
             style={{
@@ -151,6 +171,7 @@ const Accounts = ({ navigation }) => {
         justifyContent: "center",
       }}
     >
+      {/* <StatusBar barStyle={{ color: COLORS.white }} /> */}
       {renderHeader()}
       <ScrollView showsVerticalScrollIndicator={false}>
         {renderImages()}
@@ -203,7 +224,7 @@ const styles = StyleSheet.create({
   cardDescription: {
     color: COLORS.white,
     ...FONTS.fh4,
-    fontSize: SIZES.h4Regular / 2,
-    lineHeight: 14,
+    fontSize: 11,
+    lineHeight: 13.5,
   },
 });

@@ -162,7 +162,7 @@ const Onboarding = ({ navigation }) => {
                     >
                       INCOME{"\n"}ACCOUNT
                     </Text>
-                    <Text style={styles.gradientText}>#10000</Text>
+                    <Text style={styles.gradientText}>#100,000</Text>
                   </LinearGradient>
 
                   <View
@@ -209,7 +209,7 @@ const Onboarding = ({ navigation }) => {
                       >
                         Business{"\n"}Account
                       </Text>
-                      <Text style={styles.gradientText}>#10000</Text>
+                      <Text style={styles.gradientText}># 20,000</Text>
                     </LinearGradient>
 
                     <LinearGradient
@@ -218,7 +218,7 @@ const Onboarding = ({ navigation }) => {
                         styles.linearGradient,
                         {
                           position: "absolute",
-                          right: 40,
+                          right: 50,
                           top: 20,
                           marginTop: 50,
                         },
@@ -228,12 +228,21 @@ const Onboarding = ({ navigation }) => {
                       <Text
                         style={[
                           styles.gradientText,
-                          { marginBottom: SIZES.padding },
+                          {
+                            marginBottom: SIZES.padding,
+                          },
                         ]}
                       >
                         Investment{"\n"}Account
                       </Text>
-                      <Text style={styles.gradientText}>#10000</Text>
+                      <Text
+                        style={[
+                          styles.gradientText,
+                          { alignSelf: "flex-start" },
+                        ]}
+                      >
+                        # 20,000
+                      </Text>
                     </LinearGradient>
 
                     <LinearGradient
@@ -256,7 +265,7 @@ const Onboarding = ({ navigation }) => {
                       >
                         Savings{"\n"}Account
                       </Text>
-                      <Text style={styles.gradientText}>#10000</Text>
+                      <Text style={styles.gradientText}># 20,000</Text>
                     </LinearGradient>
 
                     <LinearGradient
@@ -282,7 +291,7 @@ const Onboarding = ({ navigation }) => {
                       >
                         Expense{"\n"}Account
                       </Text>
-                      <Text style={styles.gradientText}>#10000</Text>
+                      <Text style={styles.gradientText}># 20,000</Text>
                     </LinearGradient>
 
                     <LinearGradient
@@ -291,7 +300,7 @@ const Onboarding = ({ navigation }) => {
                         styles.linearGradient,
                         {
                           position: "absolute",
-                          right: 40,
+                          right: 50,
                           bottom: 20,
                           marginBottom: 50,
                         },
@@ -306,7 +315,14 @@ const Onboarding = ({ navigation }) => {
                       >
                         Emergency{"\n"}Account
                       </Text>
-                      <Text style={styles.gradientText}>#10000</Text>
+                      <Text
+                        style={[
+                          styles.gradientText,
+                          { alignSelf: "flex-start" },
+                        ]}
+                      >
+                        # 20,000
+                      </Text>
                     </LinearGradient>
                   </View>
 
@@ -377,7 +393,11 @@ const styles = StyleSheet.create({
     ...FONTS.fbody2,
   },
   linearGradient: {
-    padding: SIZES.padding * 1.6,
+    padding: 8,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 104,
+    height: 95,
     borderRadius: SIZES.radius,
   },
 });
