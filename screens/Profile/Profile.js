@@ -267,7 +267,7 @@ const Profile = () => {
   return (
     <SafeAreaView
       style={{
-        paddingTop: StatusBar.currentHeight * 1.5,
+        paddingTop: StatusBar.currentHeight * 0.2,
         marginHorizontal: SIZES.padding * 1.5,
         flex: 1,
       }}

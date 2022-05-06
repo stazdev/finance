@@ -18,6 +18,10 @@ const Login = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar
+        backgroundColor={COLORS.secondary}
+        barStyle={"light-content"}
+      />
       <View>
         <Image source={images.logoSmall} />
       </View>
@@ -226,7 +230,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: COLORS.secondary,
     paddingHorizontal: SIZES.padding,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight * 2 : 0,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight * 0.2 : 0,
   },
 
   bigText: {

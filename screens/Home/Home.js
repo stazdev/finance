@@ -316,9 +316,13 @@ const Home = ({ navigation }) => {
   return (
     <SafeAreaView
       style={{
-        paddingTop: StatusBar.currentHeight * 1.5,
+        paddingTop: StatusBar.currentHeight * 0.2,
       }}
     >
+      <StatusBar
+        backgroundColor={COLORS.secondary}
+        barStyle={"light-content"}
+      />
       {renderHeader()}
       <ScrollView>
         {renderSlider()}

@@ -166,12 +166,15 @@ const Accounts = ({ navigation }) => {
   return (
     <SafeAreaView
       style={{
-        paddingTop: StatusBar.currentHeight * 1.5,
+        paddingTop: StatusBar.currentHeight * 0.2,
         marginHorizontal: SIZES.padding,
         justifyContent: "center",
       }}
     >
-      {/* <StatusBar barStyle={{ color: COLORS.white }} /> */}
+      <StatusBar
+        backgroundColor={COLORS.secondary}
+        barStyle={"light-content"}
+      />
       {renderHeader()}
       <ScrollView showsVerticalScrollIndicator={false}>
         {renderImages()}

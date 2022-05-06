@@ -90,7 +90,7 @@ const Onboarding = ({ navigation }) => {
         {/* button */}
         <View
           style={{
-            marginVertical: SIZES.padding2 * 5,
+            marginVertical: SIZES.padding2 * 7,
           }}
         >
           <Button
@@ -123,6 +123,10 @@ const Onboarding = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <StatusBar
+        backgroundColor={COLORS.secondary}
+        barStyle={"light-content"}
+      />
       <Animated.FlatList
         ref={listRef}
         horizontal
@@ -372,7 +376,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: SIZES.width,
-    paddingTop: SIZES.height * 0.2,
+    paddingTop: SIZES.height * 0.1,
   },
   center: {
     flex: 1,

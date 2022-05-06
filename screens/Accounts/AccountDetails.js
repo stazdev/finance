@@ -127,9 +127,40 @@ const AccountDetails = ({ navigation, route }) => {
     return item.id === 1 || item.id === 6 ? (
       <View
         style={{
-          marginVertical: 50,
+          marginBottom: SIZES.padding * 4,
+          marginTop: SIZES.padding * 2,
         }}
       >
+        {item.id === 1 && (
+          <View>
+            <Button
+              label={"Turn on autosplit"}
+              labelStyle={{
+                ...FONTS.fbody1,
+                color: COLORS.business,
+                paddingVertical: SIZES.padding * 1.3,
+                paddingHorizontal: SIZES.padding2 * 3,
+              }}
+              containerStyle={{
+                backgroundColor: "transparent",
+                borderColor: COLORS.business,
+                borderWidth: 1,
+                borderRadius: SIZES.radius / 2,
+              }}
+            />
+            <Text
+              style={{
+                ...FONTS.fbody2,
+                color: COLORS.white,
+                textAlign: "center",
+                marginTop: SIZES.base,
+                marginBottom: SIZES.padding * 3.4,
+              }}
+            >
+              Autosplit is off
+            </Text>
+          </View>
+        )}
         <Text
           style={{
             ...FONTS.h3Bold,
@@ -157,10 +188,14 @@ const AccountDetails = ({ navigation, route }) => {
   return (
     <SafeAreaView
       style={{
-        paddingTop: StatusBar.currentHeight * 1.5,
+        paddingTop: StatusBar.currentHeight * 0.2,
         paddingHorizontal: SIZES.padding,
       }}
     >
+      <StatusBar
+        backgroundColor={COLORS.secondary}
+        barStyle={"light-content"}
+      />
       {renderHeader()}
       <ScrollView showsVerticalScrollIndicator={false}>
         {renderDetail()}
