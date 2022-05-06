@@ -13,6 +13,7 @@ import React from "react";
 import { COLORS, FONTS, SIZES, icons, images } from "../../constants";
 import { Button } from "../../components";
 import { Transaction } from "../../components";
+import { SavingsGoal, InvestmentContent, ExpenseContent } from "../Accounts";
 
 const AccountDetails = ({ navigation, route }) => {
   const { item } = route.params;
@@ -57,7 +58,7 @@ const AccountDetails = ({ navigation, route }) => {
         <View>
           <Text
             style={{
-              color: COLORS.white,
+              color: item.color,
               ...FONTS.fh3,
             }}
           >
@@ -124,7 +125,7 @@ const AccountDetails = ({ navigation, route }) => {
 
   // unique details
   function renderOtherDetails() {
-    return item.id === 1 || item.id === 6 ? (
+    return item.id === 1 || item.id === 2 || item.id === 6 ? (
       <View
         style={{
           marginBottom: SIZES.padding * 4,
@@ -174,14 +175,32 @@ const AccountDetails = ({ navigation, route }) => {
         </Text>
         <Transaction navigation={navigation} />
       </View>
-    ) : (
+    ) : item.id === 3 ? (
       <View
         style={{
           marginBottom: 33,
         }}
       >
-        <Text>Coming soon</Text>
+        <SavingsGoal item={item} />
       </View>
+    ) : item.id === 4 ? (
+      <View
+        style={{
+          marginBottom: 33,
+        }}
+      >
+        <ExpenseContent item={item} />
+      </View>
+    ) : item.id === 5 ? (
+      <View
+        style={{
+          marginBottom: 33,
+        }}
+      >
+        <InvestmentContent item={item} />
+      </View>
+    ) : (
+      ""
     );
   }
 
