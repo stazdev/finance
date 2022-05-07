@@ -11,7 +11,7 @@ import {
 import React, { useState } from "react";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
   const [toggle, setToggle] = useState(true);
   const [toggle1, setToggle1] = useState(true);
   function renderHeader() {
@@ -26,6 +26,7 @@ const Profile = () => {
         <TouchableOpacity
           activeOpacity={0.7}
           style={{ flexDirection: "row", alignItems: "center" }}
+          onPress={() => navigation.replace("SignUp")}
         >
           <Text style={styles.logoutText}>Log out</Text>
           <Image source={icons.logout} />

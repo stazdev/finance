@@ -24,7 +24,7 @@ const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: COLORS.secondary,
+    background: COLORS.dark,
     border: "transparent",
   },
 };

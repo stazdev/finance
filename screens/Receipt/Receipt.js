@@ -127,6 +127,7 @@ const Receipt = ({ navigation, route }) => {
         paddingHorizontal: SIZES.padding,
       }}
     >
+      <StatusBar backgroundColor={COLORS.dark} barStyle={"light-content"} />
       {renderHeader()}
       {renderDate()}
       {renderDetail()}

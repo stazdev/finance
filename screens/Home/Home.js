@@ -319,10 +319,7 @@ const Home = ({ navigation }) => {
         paddingTop: StatusBar.currentHeight * 0.2,
       }}
     >
-      <StatusBar
-        backgroundColor={COLORS.secondary}
-        barStyle={"light-content"}
-      />
+      <StatusBar backgroundColor={COLORS.dark} barStyle={"light-content"} />
       {renderHeader()}
       <ScrollView>
         {renderSlider()}

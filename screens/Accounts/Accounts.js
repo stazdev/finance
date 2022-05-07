@@ -171,10 +171,7 @@ const Accounts = ({ navigation }) => {
         justifyContent: "center",
       }}
     >
-      <StatusBar
-        backgroundColor={COLORS.secondary}
-        barStyle={"light-content"}
-      />
+      <StatusBar backgroundColor={COLORS.dark} barStyle={"light-content"} />
       {renderHeader()}
       <ScrollView showsVerticalScrollIndicator={false}>
         {renderImages()}

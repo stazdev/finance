@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: COLORS.secondary,
     paddingHorizontal: SIZES.padding,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight * 0.2 : 0,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight * 2 : 0,
   },
 
   bigText: {

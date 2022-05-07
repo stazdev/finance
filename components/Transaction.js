@@ -89,7 +89,7 @@ const Transaction = ({ navigation }) => {
 
   const renderItem = ({ item, index }) => {
     return (
-      <View key={index} style={styles.itemContainer}>
+      <View key={item.index} style={styles.itemContainer}>
         <View
           style={{
             flexDirection: "row",
@@ -108,7 +108,7 @@ const Transaction = ({ navigation }) => {
           ></View>
           <TouchableOpacity
             activeOpacity={0.7}
-            onPress={() => navigation.navigate("Receipt", { item })}
+            onPress={() => navigation.replace("Receipt", { item })}
           >
             <Text style={styles.text}>{item.narration}</Text>
             <Text style={styles.time}>{item.time}</Text>

@@ -377,6 +377,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: SIZES.width,
     paddingTop: SIZES.height * 0.1,
+    backgroundColor: COLORS.secondary,
   },
   center: {
     flex: 1,
