@@ -13,6 +13,7 @@ export const COLORS = {
   secondary: "#223351",
   secondary_light: "#385385",
   secondary_dark: "#182338",
+  modal: "#22304d",
 
   greyLight: "#EFF2F5",
   greyMedium: "#9dacc3",

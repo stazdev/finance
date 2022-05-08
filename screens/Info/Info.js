@@ -17,7 +17,7 @@ const Info = ({ navigation }) => {
       <View style={styles.header}>
         <TouchableOpacity
           activeOpacity={0.7}
-          onPress={() => navigation.navigate("Account")}
+          onPress={() => navigation.goBack()}
         >
           <Image source={icons.chevronLeft} />
         </TouchableOpacity>
@@ -54,7 +54,7 @@ const Info = ({ navigation }) => {
   return (
     <SafeAreaView
       style={{
-        paddingTop: StatusBar.currentHeight * 1.5,
+        paddingTop: StatusBar.currentHeight * 0.2,
         marginHorizontal: SIZES.padding,
         flex: 1,
       }}

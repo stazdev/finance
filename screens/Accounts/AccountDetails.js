@@ -7,8 +7,10 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  TouchableWithoutFeedback,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-native-modal";
 
 import { COLORS, FONTS, SIZES, icons, images } from "../../constants";
 import { Button } from "../../components";
@@ -17,6 +19,8 @@ import { SavingsGoal, InvestmentContent, ExpenseContent } from "../Accounts";
 
 const AccountDetails = ({ navigation, route }) => {
   const { item } = route.params;
+  const [modalVisibility, setModalVisibility] = useState(false);
+  const [autosplit, setAutosplit] = useState(false);
 
   function renderHeader() {
     return (
@@ -135,7 +139,7 @@ const AccountDetails = ({ navigation, route }) => {
         {item.id === 1 && (
           <View>
             <Button
-              label={"Turn on autosplit"}
+              label={!autosplit ? "Turn on autosplit" : "Autosplit is on"}
               labelStyle={{
                 ...FONTS.fbody1,
                 color: COLORS.business,
@@ -148,6 +152,7 @@ const AccountDetails = ({ navigation, route }) => {
                 borderWidth: 1,
                 borderRadius: SIZES.radius / 2,
               }}
+              onPress={() => setModalVisibility(true)}
             />
             <Text
               style={{
@@ -158,7 +163,7 @@ const AccountDetails = ({ navigation, route }) => {
                 marginBottom: SIZES.padding * 3.4,
               }}
             >
-              Autosplit is off
+              {!autosplit ? "Autosplit is off" : "Tab to disable"}
             </Text>
           </View>
         )}
@@ -204,6 +209,111 @@ const AccountDetails = ({ navigation, route }) => {
     );
   }
 
+  // autosplit setting modal
+  function renderModal() {
+    return (
+      <Modal
+        animationIn="slideInUp"
+        hasBackdrop={true}
+        isVisible={modalVisibility}
+        animationInTiming={1000}
+        animationOutTiming={1000}
+        style={{
+          marginBottom: 0,
+        }}
+      >
+        <TouchableWithoutFeedback onPress={() => setModalVisibility(false)}>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "flex-end",
+              alignItems: "center",
+            }}
+          >
+            <View
+              style={{
+                height: SIZES.height * 0.4,
+                width: SIZES.width,
+                padding: SIZES.base * 3,
+                backgroundColor: COLORS.modal,
+                borderRadius: SIZES.radius,
+              }}
+            >
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => setModalVisibility(false)}
+              >
+                <Image source={icons.chevronLeft} />
+              </TouchableOpacity>
+              <View>
+                <Text
+                  style={{
+                    color: COLORS.business,
+                    ...FONTS.h3Bold,
+                    marginVertical: SIZES.padding,
+                  }}
+                >
+                  Autosplit
+                </Text>
+              </View>
+              <View>
+                <Text style={styles.modalText}>
+                  You can turn ON/OFF the autosplit to your 5QM wallets
+                </Text>
+              </View>
+
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  marginTop: SIZES.padding * 2,
+                }}
+              >
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  onPress={() => setAutosplit(!autosplit)}
+                >
+                  {!autosplit ? (
+                    <Image source={icons.toggleLight} />
+                  ) : (
+                    <Image source={icons.togglePrimary} />
+                  )}
+                </TouchableOpacity>
+                <Text
+                  style={[
+                    styles.modalText,
+                    {
+                      marginLeft: SIZES.padding2 + 3,
+                    },
+                  ]}
+                >
+                  Turn on autosplit
+                </Text>
+              </View>
+
+              <View>
+                <Button
+                  label={"Save Changes"}
+                  labelStyle={{
+                    paddingHorizontal: SIZES.padding2 * 5,
+                    paddingVertical: SIZES.padding2,
+                  }}
+                  containerStyle={{
+                    borderRadius: SIZES.padding,
+                    marginTop: SIZES.padding * 3.5,
+                  }}
+                  onPress={() => {
+                    setModalVisibility(false);
+                  }}
+                />
+              </View>
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>
+    );
+  }
+
   return (
     <SafeAreaView
       style={{
@@ -217,6 +327,7 @@ const AccountDetails = ({ navigation, route }) => {
         {renderDetail()}
         {renderOtherDetails()}
       </ScrollView>
+      {renderModal()}
     </SafeAreaView>
   );
 };
@@ -234,4 +345,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  modalText: { color: COLORS.white, ...FONTS.fbody2 },
 });
