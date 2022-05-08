@@ -98,6 +98,7 @@ const Onboarding = ({ navigation }) => {
               paddingVertical: SIZES.padding - 1,
               paddingHorizontal: SIZES.padding2 * 5 + 2,
               borderRadius: SIZES.radius,
+              backgroundColor: COLORS.primary,
             }}
             labelStyle={{
               ...FONTS.fbody1,

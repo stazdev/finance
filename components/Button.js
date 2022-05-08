@@ -9,7 +9,6 @@ const Button = ({ label, labelStyle, containerStyle, onPress }) => {
         alignItems: "center",
         alignSelf: "center",
         justifyContent: "center",
-        backgroundColor: COLORS.primary,
         ...containerStyle,
       }}
       activeOpacity={0.7}

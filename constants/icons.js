@@ -8,6 +8,7 @@ const eye = require("../assets/icons/eye.png");
 const eyeClose = require("../assets/icons/eyeclose.svg");
 const eyeClosed = require("../assets/icons/eyeclose.png");
 const feeds = require("../assets/icons/feeds.png");
+const remove = require("../assets/icons/delete.png");
 const forwardCircle = require("../assets/icons/forwardcircle.svg");
 const home = require("../assets/icons/home.png");
 const info = require("../assets/icons/info.svg");
@@ -38,6 +39,7 @@ export default {
   arrow,
   back,
   down,
+  remove,
   toggleLight,
   togglePrimary,
   down2,
