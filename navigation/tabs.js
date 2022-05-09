@@ -3,6 +3,7 @@ import { Text, View, Image, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { images, COLORS, SIZES, FONTS, icons } from "../constants";
 import { Home, Accounts, Feeds, Profile } from "../screens";
+import { AccountIcon, FeedsIcon, HomeIcon, ProfileIcon } from "../assets/icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -24,14 +25,7 @@ function MyTabs() {
         options={{
           tabBarIcon: ({ focused }) => (
             <>
-              <Image
-                source={icons.home}
-                resizeMode="contain"
-                style={[
-                  styles.tabIcon,
-                  { tintColor: focused ? COLORS.white : COLORS.greyMedium },
-                ]}
-              />
+              <HomeIcon />
               <View>
                 {focused ? (
                   <View style={styles.tabDot}></View>
@@ -57,14 +51,7 @@ function MyTabs() {
         options={{
           tabBarIcon: ({ focused }) => (
             <>
-              <Image
-                source={icons.account}
-                resizeMode="contain"
-                style={[
-                  styles.tabIcon,
-                  { tintColor: focused ? COLORS.white : COLORS.greyMedium },
-                ]}
-              />
+              <AccountIcon />
               <View>
                 {focused ? (
                   <View style={styles.tabDot}></View>
@@ -90,14 +77,7 @@ function MyTabs() {
         options={{
           tabBarIcon: ({ focused }) => (
             <>
-              <Image
-                source={icons.feeds}
-                resizeMode="contain"
-                style={[
-                  styles.tabIcon,
-                  { tintColor: focused ? COLORS.white : COLORS.greyMedium },
-                ]}
-              />
+              <FeedsIcon />
               <View>
                 {focused ? (
                   <View style={styles.tabDot}></View>
@@ -123,14 +103,7 @@ function MyTabs() {
         options={{
           tabBarIcon: ({ focused }) => (
             <>
-              <Image
-                source={icons.profile}
-                resizeMode="contain"
-                style={[
-                  styles.tabIcon,
-                  { tintColor: focused ? COLORS.white : COLORS.greyMedium },
-                ]}
-              />
+              <ProfileIcon />
               <View>
                 {focused ? (
                   <View style={styles.tabDot}></View>

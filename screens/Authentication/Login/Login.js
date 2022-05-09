@@ -12,6 +12,7 @@ import {
 import React, { useState } from "react";
 import { images, COLORS, SIZES, FONTS, icons } from "../../../constants";
 import { Button } from "../../../screens";
+import { DropDown, Eye, EyeClose } from "../../../assets/icons";
 
 const Login = ({ navigation }) => {
   const [inputType, setInputType] = useState(false);
@@ -52,14 +53,7 @@ const Login = ({ navigation }) => {
               activeOpacity={0.7}
             >
               <Text style={{ color: COLORS.white, marginRight: 5 }}>+234</Text>
-              <Image
-                source={icons.down2}
-                style={{
-                  width: 10,
-                  height: 10,
-                  tintColor: COLORS.white,
-                }}
-              />
+              <DropDown />
             </TouchableOpacity>
             <TextInput
               style={{
@@ -159,14 +153,7 @@ const Login = ({ navigation }) => {
             activeOpacity={0.7}
             onPress={() => setShowPassword(!showPassword)}
           >
-            <Image
-              source={showPassword ? icons.eye : icons.eyeClosed}
-              style={{
-                height: 20,
-                width: 20,
-                tintColor: COLORS.white,
-              }}
-            />
+            {showPassword ? <EyeClose /> : <EyeClose />}
           </TouchableOpacity>
         </View>
         <TouchableOpacity

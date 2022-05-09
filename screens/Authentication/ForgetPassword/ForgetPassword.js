@@ -11,7 +11,8 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { images, COLORS, SIZES, FONTS, icons } from "../../../constants";
-import { Button } from "../../../screens";
+import { Button } from "../../../components";
+import { ArrowThick, ForgotPassword } from "../../../assets/icons";
 
 const ForgetPassword = ({ navigation }) => {
   return (
@@ -23,10 +24,7 @@ const ForgetPassword = ({ navigation }) => {
         style={{ flex: 0.8, justifyContent: "center", alignItems: "center" }}
       >
         <Text style={styles.bigText}>Forgot password?</Text>
-        <Image
-          source={images.forgetpassword}
-          style={{ width: 250, height: 250 }}
-        />
+        <ForgotPassword />
         <Text style={styles.smallText}>
           We just sent a verification {"\n"} code to your email address {"\n"}{" "}
           someone@gmail.com
@@ -34,8 +32,15 @@ const ForgetPassword = ({ navigation }) => {
 
         <View style={{ marginTop: SIZES.padding * 4 }}>
           <Button
-            label={"continue"}
-            onpress={() => navigation.navigate("ForgetPasswordVerification")}
+            icon={<ArrowThick />}
+            onPress={() => navigation.navigate("ForgetPasswordVerification")}
+            containerStyle={{
+              backgroundColor: COLORS.primary,
+              paddingHorizontal: SIZES.padding2 * 5,
+              paddingVertical: SIZES.padding,
+              flexDirection: "row",
+              borderRadius: SIZES.radius,
+            }}
           />
         </View>
       </View>

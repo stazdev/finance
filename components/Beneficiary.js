@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 
 import { COLORS, SIZES, FONTS, icons } from "../constants";
-
+import { Delete } from "../assets/icons";
 const beneficiaries = [
   {
     id: 1,
@@ -56,7 +56,7 @@ const Beneficiary = () => {
           activeOpacity={0.7}
           onPress={() => handleRemove(beneficiary.id)}
         >
-          <Image source={icons.remove} />
+          <Delete />
         </TouchableOpacity>
       </View>
     ));

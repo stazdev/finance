@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import React from "react";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
+import { LongArrowRight } from "../../assets/icons";
 
 const datas = [
   {
@@ -61,7 +62,7 @@ const Feeds = () => {
             <Text style={{ color: COLORS.primary, marginRight: SIZES.padding }}>
               View More
             </Text>
-            <Image source={icons.arrow} />
+            <LongArrowRight />
           </TouchableOpacity>
         </View>
 
@@ -83,7 +84,7 @@ const Feeds = () => {
             <Text style={{ color: COLORS.primary, marginRight: SIZES.padding }}>
               View More
             </Text>
-            <Image source={icons.arrow} />
+            <LongArrowRight />
           </TouchableOpacity>
         </View>
 
@@ -105,7 +106,7 @@ const Feeds = () => {
             <Text style={{ color: COLORS.primary, marginRight: SIZES.padding }}>
               View More
             </Text>
-            <Image source={icons.arrow} />
+            <LongArrowRight />
           </TouchableOpacity>
         </View>
         <View

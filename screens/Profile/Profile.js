@@ -10,6 +10,15 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
+import {
+  ChevronRight,
+  LogOut,
+  LongArrowWhite,
+  Notification,
+  ToggleOff,
+  ToggleOn,
+} from "../../assets/icons";
+import { Button } from "../../components";
 
 const Profile = ({ navigation }) => {
   const [toggle, setToggle] = useState(true);
@@ -18,7 +27,7 @@ const Profile = ({ navigation }) => {
     return (
       <View style={[styles.header, { marginBottom: SIZES.padding }]}>
         <TouchableOpacity activeOpacity={0.7}>
-          <Image source={icons.dotnot} style={{ tintColor: COLORS.white }} />
+          <Notification />
         </TouchableOpacity>
         <View>
           <Text style={styles.headerText}>Profile</Text>
@@ -29,7 +38,7 @@ const Profile = ({ navigation }) => {
           onPress={() => navigation.replace("SignUp")}
         >
           <Text style={styles.logoutText}>Log out</Text>
-          <Image source={icons.logout} />
+          <LogOut />
         </TouchableOpacity>
       </View>
     );
@@ -43,19 +52,22 @@ const Profile = ({ navigation }) => {
         </View>
         <View style={{ marginLeft: SIZES.padding * 3.4 }}>
           <Text style={styles.headerText}>Ogechi Desmond</Text>
-          <TouchableOpacity style={{ alignItems: "flex-start" }}>
-            <Text
-              style={{
-                backgroundColor: COLORS.primary,
-                color: COLORS.white,
-                paddingHorizontal: SIZES.padding2,
-                borderRadius: SIZES.radius,
-                marginTop: SIZES.padding,
-              }}
-            >
-              Edit profile
-            </Text>
-          </TouchableOpacity>
+          <Button
+            label={"Edit profile"}
+            labelStyle={{
+              ...FONTS.fbody2,
+              paddingHorizontal: SIZES.padding2,
+              paddingVertical: SIZES.base / 4,
+            }}
+            containerStyle={{
+              alignSelf: "flex-start",
+              backgroundColor: COLORS.primary,
+              color: COLORS.white,
+              paddingHorizontal: SIZES.padding2,
+              borderRadius: SIZES.radius,
+              marginTop: SIZES.padding,
+            }}
+          />
         </View>
       </View>
     );
@@ -64,7 +76,7 @@ const Profile = ({ navigation }) => {
   function renderAuth() {
     return (
       <View style={{ marginVertical: SIZES.padding2 * 2 }}>
-        <View style={[styles.header, { marginBottom: SIZES.padding }]}>
+        <View style={[styles.header, { marginBottom: SIZES.padding * 2 }]}>
           <View>
             <Text style={styles.authText}>Enable Pin</Text>
           </View>
@@ -72,11 +84,7 @@ const Profile = ({ navigation }) => {
             activeOpacity={0.7}
             onPress={() => setToggle(!toggle)}
           >
-            {!toggle ? (
-              <Image source={icons.toggleLight} />
-            ) : (
-              <Image source={icons.togglePrimary} />
-            )}
+            {!toggle ? <ToggleOff /> : <ToggleOn />}
           </TouchableOpacity>
         </View>
 
@@ -88,11 +96,7 @@ const Profile = ({ navigation }) => {
             activeOpacity={0.7}
             onPress={() => setToggle1(!toggle1)}
           >
-            {!toggle1 ? (
-              <Image source={icons.toggleLight} />
-            ) : (
-              <Image source={icons.togglePrimary} />
-            )}
+            {!toggle1 ? <ToggleOff /> : <ToggleOn />}
           </TouchableOpacity>
         </View>
       </View>
@@ -118,10 +122,7 @@ const Profile = ({ navigation }) => {
             JOIN THE BILLONAIRE COMMUNITY
           </Text>
         </View>
-        <Image
-          source={icons.arrow}
-          style={{ tintColor: COLORS.white, marginLeft: SIZES.base / 3 }}
-        />
+        <LongArrowWhite />
       </View>
     );
   }
@@ -141,7 +142,7 @@ const Profile = ({ navigation }) => {
           >
             <TouchableOpacity style={styles.header}>
               <Text style={styles.optionText}>KYC Infomation</Text>
-              <Image source={icons.chevronRight} />
+              <ChevronRight />
             </TouchableOpacity>
           </View>
 
@@ -153,7 +154,7 @@ const Profile = ({ navigation }) => {
           >
             <TouchableOpacity style={styles.header}>
               <Text style={styles.optionText}>Card &amp; Bank settings</Text>
-              <Image source={icons.chevronRight} />
+              <ChevronRight />
             </TouchableOpacity>
           </View>
 
@@ -165,7 +166,7 @@ const Profile = ({ navigation }) => {
           >
             <TouchableOpacity style={styles.header}>
               <Text style={styles.optionText}>My 5QM ID</Text>
-              <Image source={icons.chevronRight} />
+              <ChevronRight />
             </TouchableOpacity>
           </View>
 
@@ -177,7 +178,7 @@ const Profile = ({ navigation }) => {
           >
             <TouchableOpacity style={styles.header}>
               <Text style={styles.optionText}>Affiliate &amp; Referrals</Text>
-              <Image source={icons.chevronRight} />
+              <ChevronRight />
             </TouchableOpacity>
           </View>
         </View>
@@ -194,7 +195,7 @@ const Profile = ({ navigation }) => {
           >
             <TouchableOpacity style={styles.header}>
               <Text style={styles.optionText}>Change 5QM password</Text>
-              <Image source={icons.chevronRight} />
+              <ChevronRight />
             </TouchableOpacity>
           </View>
           <View
@@ -205,7 +206,7 @@ const Profile = ({ navigation }) => {
           >
             <TouchableOpacity style={styles.header}>
               <Text style={styles.optionText}>Change Transfer pin</Text>
-              <Image source={icons.chevronRight} />
+              <ChevronRight />
             </TouchableOpacity>
           </View>
         </View>
@@ -222,7 +223,7 @@ const Profile = ({ navigation }) => {
           >
             <TouchableOpacity style={styles.header}>
               <Text style={styles.optionText}>KYC Infomation</Text>
-              <Image source={icons.chevronRight} />
+              <ChevronRight />
             </TouchableOpacity>
           </View>
           <View
@@ -233,7 +234,7 @@ const Profile = ({ navigation }) => {
           >
             <TouchableOpacity style={styles.header}>
               <Text style={styles.optionText}>Card &amp; Bank settings</Text>
-              <Image source={icons.chevronRight} />
+              <ChevronRight />
             </TouchableOpacity>
           </View>
           <View
@@ -244,7 +245,7 @@ const Profile = ({ navigation }) => {
           >
             <TouchableOpacity style={styles.header}>
               <Text style={styles.optionText}>Affiliate &amp; Referrals</Text>
-              <Image source={icons.chevronRight} />
+              <ChevronRight />
             </TouchableOpacity>
           </View>
         </View>

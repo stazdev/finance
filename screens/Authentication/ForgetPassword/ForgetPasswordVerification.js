@@ -11,7 +11,7 @@ import {
 import React, { useState } from "react";
 import { images, COLORS, SIZES, FONTS, icons } from "../../../constants";
 import Card from "../Verify/VerificationCard";
-import { Button } from "../../../screens";
+import { Verification } from "../../../assets/icons";
 
 const ForgetPasswordVerification = ({ navigation }) => {
   return (
@@ -43,13 +43,7 @@ const ForgetPasswordVerification = ({ navigation }) => {
             marginBottom: SIZES.font * 1.5,
           }}
         >
-          <Image
-            source={images.verification}
-            style={{
-              width: 250,
-              height: 250,
-            }}
-          />
+          <Verification />
         </View>
         <Card />
       </ScrollView>

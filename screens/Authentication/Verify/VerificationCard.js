@@ -1,6 +1,6 @@
 import { View, Text, TextInput } from "react-native";
-import { Button } from "../../../screens";
 import { COLORS, SIZES, FONTS } from "../../../constants";
+import { Button } from "../../../components";
 
 const VerificationCard = ({ navigation }) => {
   return (
@@ -57,7 +57,17 @@ const VerificationCard = ({ navigation }) => {
             marginTop: SIZES.padding2 * 2,
           }}
         >
-          <Button label="Verify" />
+          <Button
+            label="Verify"
+            containerStyle={{
+              backgroundColor: COLORS.primary,
+              borderRadius: SIZES.radius,
+            }}
+            labelStyle={{
+              paddingHorizontal: SIZES.base * 5,
+              paddingVertical: SIZES.base,
+            }}
+          />
         </View>
         <Text
           style={{

@@ -10,7 +10,18 @@ import {
 import React, { useState, useRef } from "react";
 import { COLORS, FONTS, SIZES, icons, images } from "../../constants";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-import { Transaction } from "../../components";
+import { Button, Transaction } from "../../components";
+import {
+  MoneyBill,
+  Notification,
+  BriefCase,
+  Savings,
+  Expense,
+  Investment,
+  Emergency,
+  Naira,
+  ArrowCircleFilled,
+} from "../../assets/icons";
 
 const Home = ({ navigation }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,42 +34,42 @@ const Home = ({ navigation }) => {
   const accounts = [
     {
       id: 1,
-      icon: icons.main,
+      icon: <MoneyBill />,
       description: "Main Balance",
       balance: 10000,
       back: COLORS.main,
     },
     {
       id: 2,
-      icon: icons.buss,
+      icon: <BriefCase />,
       description: "Business Wallet",
       balance: 20000,
       back: COLORS.linear2,
     },
     {
       id: 3,
-      icon: icons.save,
+      icon: <Savings />,
       description: "Savings Wallet",
       balance: 10000,
       back: COLORS.savings,
     },
     {
       id: 4,
-      icon: icons.expense,
+      icon: <Expense />,
       description: "Expense Wallet",
       balance: 10000,
       back: COLORS.expense,
     },
     {
       id: 5,
-      icon: icons.invest,
+      icon: <Investment />,
       description: "Investment Wallet",
       balance: 10000,
       back: COLORS.investment,
     },
     {
       id: 6,
-      icon: icons.emer,
+      icon: <Emergency />,
       description: "Emergency Wallet",
       balance: 10000,
       back: COLORS.emergency,
@@ -92,35 +103,23 @@ const Home = ({ navigation }) => {
             flexDirection: "row",
           }}
         >
-          <TouchableOpacity>
-            <Text
-              style={{
+          <TouchableOpacity activeOpacity={0.7}>
+            <Button
+              label={"Referral CTA"}
+              labelStyle={{ color: COLORS.greyDark, ...FONTS.fbody2 }}
+              containerStyle={{
                 backgroundColor: COLORS.white,
                 paddingVertical: SIZES.base / 2,
                 paddingHorizontal: SIZES.padding2 + 10,
                 borderRadius: SIZES.radius - 5,
               }}
-            >
-              Referral CTA
-            </Text>
+            />
           </TouchableOpacity>
           <TouchableOpacity
-            style={{
-              height: 40,
-              width: 40,
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: COLORS.lightGray,
-              borderRadius: 50,
-            }}
+            activeOpacity={0.7}
+            style={{ marginLeft: SIZES.padding2 }}
           >
-            <Image
-              source={icons.notifi}
-              resizeMode="contain"
-              style={{
-                tintColor: COLORS.white,
-              }}
-            />
+            <Notification />
           </TouchableOpacity>
         </View>
       </View>
@@ -144,7 +143,7 @@ const Home = ({ navigation }) => {
           onPress={() => console.log(item.description)}
         >
           <View style={{ flexDirection: "row" }}>
-            <Image source={item.icon} />
+            {item.icon}
             <Text
               style={{
                 ...FONTS.fbody1,
@@ -155,13 +154,26 @@ const Home = ({ navigation }) => {
               {item.description}
             </Text>
           </View>
-          <Text
+
+          <View
             style={{
-              ...FONTS.fh3,
-              color: COLORS.white,
-              marginTop: SIZES.padding * 2,
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: SIZES.padding2,
             }}
-          >{`# ${item.balance}`}</Text>
+          >
+            <Naira />
+            <Text
+              style={{
+                ...FONTS.fh3,
+                color: COLORS.white,
+                marginLeft: SIZES.padding,
+              }}
+            >
+              {item.balance}
+            </Text>
+          </View>
         </TouchableOpacity>
       );
     };
@@ -215,7 +227,13 @@ const Home = ({ navigation }) => {
           <Text style={{ ...FONTS.h3Bold, color: COLORS.white }}>
             What is 5QM?
           </Text>
-          <Text style={{ ...FONTS.fbody1, color: COLORS.greyMedium }}>
+          <Text
+            style={{
+              ...FONTS.fbody1,
+              color: COLORS.greyMedium,
+              marginTop: SIZES.base,
+            }}
+          >
             All you need to know
           </Text>
         </View>
@@ -268,7 +286,7 @@ const Home = ({ navigation }) => {
               Update your ID card and important docs.
             </Text>
           </View>
-          <Image source={icons.arrowcircle} />
+          <ArrowCircleFilled />
         </View>
         <View
           style={{
@@ -285,7 +303,7 @@ const Home = ({ navigation }) => {
               Fund you account to see how money split works
             </Text>
           </View>
-          <Image source={icons.arrowcircle} />
+          <ArrowCircleFilled />
         </View>
       </View>
     );

@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import React from "react";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
-import AccountDetails from "./AccountDetails";
+import { ChevronLeft, Info } from "../../assets/icons";
 
 const accounts = [
   {
@@ -75,7 +75,7 @@ const Accounts = ({ navigation }) => {
             activeOpacity={0.7}
             onPress={() => navigation.navigate("Home")}
           >
-            <Image source={icons.chevronLeft} />
+            <ChevronLeft />
           </TouchableOpacity>
           <View>
             <Text style={styles.headerText}>5QM ACCOUNTS</Text>
@@ -85,7 +85,7 @@ const Accounts = ({ navigation }) => {
           activeOpacity={0.7}
           onPress={() => navigation.navigate("Info")}
         >
-          <Image source={icons.info2} />
+          <Info />
         </TouchableOpacity>
       </View>
     );

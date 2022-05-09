@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import React from "react";
 import { COLORS, FONTS, SIZES, icons, images } from "../../constants";
+import { ChevronLeft } from "../../assets/icons";
 
 const Receipt = ({ navigation, route }) => {
   const { item } = route.params;
@@ -20,10 +21,7 @@ const Receipt = ({ navigation, route }) => {
           onPress={() => navigation.goBack()}
           activeOpacity={0.7}
         >
-          <Image
-            source={icons.chevronLeft}
-            style={{ width: SIZES.base * 2, height: SIZES.base * 2 }}
-          />
+          <ChevronLeft />
         </TouchableOpacity>
         <Text style={styles.title}>Receipt</Text>
         <TouchableOpacity style={styles.shareBtn}>
@@ -123,7 +121,7 @@ const Receipt = ({ navigation, route }) => {
   return (
     <SafeAreaView
       style={{
-        paddingTop: StatusBar.currentHeight * 1.5,
+        paddingTop: StatusBar.currentHeight * 0.2,
         paddingHorizontal: SIZES.padding,
       }}
     >
