@@ -16,6 +16,13 @@ import { COLORS, FONTS, SIZES, icons, images } from "../../constants";
 import { Button } from "../../components";
 import { Transaction } from "../../components";
 import { SavingsGoal, InvestmentContent, ExpenseContent } from "../Accounts";
+import {
+  ChevronLeft,
+  Info,
+  Naira,
+  ToggleOff,
+  ToggleOn,
+} from "../../assets/icons";
 
 const AccountDetails = ({ navigation, route }) => {
   const { item } = route.params;
@@ -29,16 +36,10 @@ const AccountDetails = ({ navigation, route }) => {
           onPress={() => navigation.goBack()}
           activeOpacity={0.7}
         >
-          <Image
-            source={icons.chevronLeft}
-            style={{ width: SIZES.base * 2, height: SIZES.base * 2 }}
-          />
+          <ChevronLeft />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Image
-            source={icons.info2}
-            style={{ width: SIZES.base * 2, height: SIZES.base * 2 }}
-          />
+          <Info />
         </TouchableOpacity>
       </View>
     );
@@ -59,7 +60,14 @@ const AccountDetails = ({ navigation, route }) => {
           </Text>
         </View>
 
-        <View>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Naira />
           <Text
             style={{
               color: item.color,
@@ -243,7 +251,7 @@ const AccountDetails = ({ navigation, route }) => {
                 activeOpacity={0.7}
                 onPress={() => setModalVisibility(false)}
               >
-                <Image source={icons.chevronLeft} />
+                <ChevronLeft />
               </TouchableOpacity>
               <View>
                 <Text
@@ -273,11 +281,7 @@ const AccountDetails = ({ navigation, route }) => {
                   activeOpacity={0.7}
                   onPress={() => setAutosplit(!autosplit)}
                 >
-                  {!autosplit ? (
-                    <Image source={icons.toggleLight} />
-                  ) : (
-                    <Image source={icons.togglePrimary} />
-                  )}
+                  {!autosplit ? <ToggleOff /> : <ToggleOn />}
                 </TouchableOpacity>
                 <Text
                   style={[

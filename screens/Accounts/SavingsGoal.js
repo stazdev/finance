@@ -3,6 +3,7 @@ import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { images, COLORS, SIZES, FONTS, icons } from "../../constants";
+import { LongArrowWhite } from "../../assets/icons";
 
 const goals = [
   {
@@ -39,11 +40,7 @@ const SavingsGoal = () => {
       <View style={styles.cardNote}>
         <Text style={styles.cardText}>
           Create a Custom{"\n"}Plan{"  "}
-          <Image
-            source={icons.arrow}
-            resizeMode={"contain"}
-            style={{ tintColor: COLORS.white, marginLeft: SIZES.padding }}
-          />
+          <LongArrowWhite />
         </Text>
       </View>
     </>
@@ -87,11 +84,7 @@ const SavingsGoal = () => {
             <View style={styles.cardNote}>
               <Text style={styles.cardText}>
                 Create a Custom{"\n"}Plan{"  "}
-                <Image
-                  source={icons.arrow}
-                  resizeMode={"contain"}
-                  style={{ tintColor: COLORS.white, marginLeft: SIZES.padding }}
-                />
+                <LongArrowWhite />
               </Text>
             </View>
           </View>

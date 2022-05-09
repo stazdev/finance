@@ -3,6 +3,7 @@ import React from "react";
 
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
 import { Beneficiary, Button } from "../../components";
+import { ChevronRight } from "../../assets/icons";
 
 const ExpenseContent = ({ item }) => {
   return (
@@ -18,7 +19,7 @@ const ExpenseContent = ({ item }) => {
               Send money to local account or sub account
             </Text>
           </View>
-          <Image source={icons.chevronRight} />
+          <ChevronRight />
         </TouchableOpacity>
 
         <TouchableOpacity activeOpacity={0.7} style={styles.box}>
@@ -28,7 +29,7 @@ const ExpenseContent = ({ item }) => {
               Recharge your phone easily
             </Text>
           </View>
-          <Image source={icons.chevronRight} />
+          <ChevronRight />
         </TouchableOpacity>
 
         <TouchableOpacity activeOpacity={0.7} style={styles.box}>
@@ -38,7 +39,7 @@ const ExpenseContent = ({ item }) => {
               Electricity bills, cables, etc.
             </Text>
           </View>
-          <Image source={icons.chevronRight} />
+          <ChevronRight />
         </TouchableOpacity>
         <TouchableOpacity></TouchableOpacity>
         <TouchableOpacity></TouchableOpacity>

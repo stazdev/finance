@@ -142,7 +142,13 @@ const Home = ({ navigation }) => {
           activeOpacity={0.7}
           onPress={() => console.log(item.description)}
         >
-          <View style={{ flexDirection: "row" }}>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             {item.icon}
             <Text
               style={{
