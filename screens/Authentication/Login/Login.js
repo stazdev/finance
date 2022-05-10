@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { images, COLORS, SIZES, FONTS, icons } from "../../../constants";
-import { Button } from "../../../screens";
+import { Button } from "../../../components";
 import { DropDown, Eye, EyeClose } from "../../../assets/icons";
 
 const Login = ({ navigation }) => {
@@ -178,7 +178,16 @@ const Login = ({ navigation }) => {
             marginTop: SIZES.font * 2,
           }}
         >
-          <Button label="Login" onpress={() => navigation.navigate("Tabs")} />
+          <Button
+            label="Login"
+            containerStyle={{
+              backgroundColor: COLORS.primary,
+              paddingVertical: SIZES.padding2,
+              paddingHorizontal: SIZES.padding2 * 5,
+              borderRadius: SIZES.padding,
+            }}
+            onPress={() => navigation.navigate("Tabs")}
+          />
         </View>
 
         <View style={{ alignItems: "center", marginTop: SIZES.base * 7 }}>

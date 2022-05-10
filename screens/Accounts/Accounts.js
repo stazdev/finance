@@ -11,7 +11,14 @@ import {
 } from "react-native";
 import React from "react";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
-import { ChevronLeft, Info } from "../../assets/icons";
+import {
+  Amico,
+  Building,
+  ChevronLeft,
+  Info,
+  Pana,
+  Rafiki,
+} from "../../assets/icons";
 
 const accounts = [
   {
@@ -92,7 +99,16 @@ const Accounts = ({ navigation }) => {
   }
 
   function renderImages() {
-    return <View style={styles.Images}></View>;
+    return (
+      <View style={styles.Images}>
+        <View style={{ flexDirection: "row", marginTop: SIZES.padding }}>
+          <Amico />
+          <Rafiki />
+          <Pana />
+          <Building />
+        </View>
+      </View>
+    );
   }
 
   const renderItem = ({ item, i }) => {

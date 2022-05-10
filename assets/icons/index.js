@@ -4,6 +4,7 @@ import EyeClose from "./EyeClose";
 import Eye from "./Eye";
 import ForgotPassword from "./ForgotPassword";
 import ArrowThick from "./ArrowThick";
+import ArrowThickBack from "./ArrowThickBack";
 import Verification from "./Verification";
 import Notification from "./Notification";
 import MoneyBill from "./MoneyBill";
@@ -19,6 +20,7 @@ import ChevronRight from "./ChevronRight";
 import Info from "./Info";
 import LongArrowRight from "./LongArrowRight";
 import LongArrowWhite from "./LongArrowWhite";
+import LongArrowDark from "./LongArrowDark";
 import LogOut from "./LogOut";
 import ToggleOff from "./ToggleOff";
 import ToggleOn from "./ToggleOn";
@@ -26,6 +28,10 @@ import HomeIcon from "./HomeIcon";
 import AccountIcon from "./AccountIcon";
 import FeedsIcon from "./FeedsIcon";
 import ProfileIcon from "./ProfileIcon";
+import Amico from "./Amico";
+import Building from "./Building";
+import Pana from "./Pana";
+import Rafiki from "./Rafiki";
 
 export {
   Delete,
@@ -34,6 +40,7 @@ export {
   Eye,
   ForgotPassword,
   ArrowThick,
+  ArrowThickBack,
   Verification,
   Notification,
   MoneyBill,
@@ -49,6 +56,7 @@ export {
   Info,
   LongArrowRight,
   LongArrowWhite,
+  LongArrowDark,
   LogOut,
   ToggleOff,
   ToggleOn,
@@ -56,4 +64,8 @@ export {
   AccountIcon,
   FeedsIcon,
   ProfileIcon,
+  Amico,
+  Building,
+  Pana,
+  Rafiki,
 };

@@ -25,6 +25,7 @@
     "react-native": "0.64.3",
     "react-native-gesture-handler": "~2.1.0",
     "react-native-modal": "^13.0.1",
+    "react-native-pager-view": "5.4.9",
     "react-native-reanimated": "~2.3.1",
     "react-native-responsive-fontsize": "^0.5.1",
     "react-native-safe-area-context": "3.3.2",
@@ -32,6 +33,7 @@
     "react-native-scroll-indicator": "^0.1.0",
     "react-native-splash-screen": "^3.3.0",
     "react-native-svg": "12.1.1",
+    "react-native-tab-view": "^3.1.1",
     "react-native-web": "0.17.1"
   },
   "devDependencies": {

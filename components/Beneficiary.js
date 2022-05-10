@@ -62,7 +62,9 @@ const Beneficiary = () => {
     ));
   }
 
-  return <View style={{ marginTop: SIZES.padding2 * 2 }}>{renderList()}</View>;
+  return (
+    <View style={{ marginVertical: SIZES.padding2 * 2 }}>{renderList()}</View>
+  );
 };
 
 export default Beneficiary;

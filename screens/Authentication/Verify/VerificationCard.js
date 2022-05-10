@@ -61,7 +61,7 @@ const VerificationCard = ({ navigation }) => {
             label="Verify"
             containerStyle={{
               backgroundColor: COLORS.primary,
-              borderRadius: SIZES.radius,
+              borderRadius: SIZES.padding,
             }}
             labelStyle={{
               paddingHorizontal: SIZES.base * 5,

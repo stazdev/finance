@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { images, COLORS, SIZES, FONTS, icons } from "../../../constants";
-import { Button } from "../../../screens";
+import { Button } from "../../../components";
 import { DropDown, Eye, EyeClose } from "../../../assets/icons";
 
 const SignUp = ({ navigation }) => {
@@ -174,8 +174,16 @@ const SignUp = ({ navigation }) => {
           }}
         >
           <Button
-            label="Verify"
-            onpress={() => navigation.navigate("Verify")}
+            label="Sign Up"
+            labelStyle={{
+              paddingVertical: SIZES.padding2,
+              paddingHorizontal: SIZES.padding2 * 5,
+            }}
+            containerStyle={{
+              backgroundColor: COLORS.primary,
+              borderRadius: SIZES.padding,
+            }}
+            onPress={() => navigation.navigate("Verify")}
           />
         </View>
 
@@ -188,15 +196,13 @@ const SignUp = ({ navigation }) => {
           >
             I already have an account
           </Text>
-          <Text
-            style={{
-              ...FONTS.fbody2,
+          <Button
+            label="Log in"
+            labelStyle={{
               color: COLORS.primary,
             }}
             onPress={() => navigation.navigate("Login")}
-          >
-            Log In
-          </Text>
+          />
         </View>
       </View>
     </SafeAreaView>

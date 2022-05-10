@@ -10,21 +10,26 @@ import React, { useState } from "react";
 import { COLORS, SIZES, FONTS } from "../constants";
 
 import { Button } from "../components";
+import { Naira } from "../assets/icons";
 
 const listTab = [
   {
+    id: 1,
     status: "All",
   },
   {
+    id: 2,
     status: "Credit",
   },
   {
+    id: 3,
     status: "Debit",
   },
 ];
 
 const data = [
   {
+    id: 1,
     narration: "Transfer to - Samuel Jackson ",
     time: "Date: wed, 15 sep 2022. 8:30 pm",
     status: "Debit",
@@ -35,6 +40,7 @@ const data = [
     description: "Suya Money",
   },
   {
+    id: 2,
     narration: "Omah Lay - GTbank ",
     time: "Date: wed, 15 sep 2022. 8:30 pm",
     status: "Credit",
@@ -45,6 +51,7 @@ const data = [
     description: "Suya Money",
   },
   {
+    id: 3,
     narration: "Transfer to - Samuel Jackson ",
     time: "Date: wed, 15 sep 2022. 8:30 pm",
     status: "Debit",
@@ -55,6 +62,7 @@ const data = [
     description: "Suya Money",
   },
   {
+    id: 4,
     narration: "Omah Lay - GTbank ",
     time: "Date: wed, 15 sep 2022. 8:30 pm",
     status: "Credit",
@@ -65,6 +73,7 @@ const data = [
     description: "Suya Money",
   },
   {
+    id: 5,
     narration: "Omah Lay - GTbank ",
     time: "Date: wed, 15 sep 2022. 8:30 pm",
     status: "Credit",
@@ -89,7 +98,7 @@ const Transaction = ({ navigation }) => {
 
   const renderItem = ({ item, index }) => {
     return (
-      <View key={item.index} style={styles.itemContainer}>
+      <View key={item.id} style={styles.itemContainer}>
         <View
           style={{
             flexDirection: "row",
@@ -114,7 +123,10 @@ const Transaction = ({ navigation }) => {
             <Text style={styles.time}>{item.time}</Text>
           </TouchableOpacity>
         </View>
-        <View>
+        <View style={{ flexDirection: "row", alignContent: "center" }}>
+          {/* <View style={{ width: 5, height: 5 }}>
+            <Naira fill={"white"} />
+          </View> */}
           <Text style={styles.amount}> {item.amount} </Text>
         </View>
       </View>
@@ -144,6 +156,7 @@ const Transaction = ({ navigation }) => {
       <View style={styles.listTab}>
         {listTab.map((list) => (
           <TouchableOpacity
+            key={list.id}
             style={[styles.btnTab, status === list.status && styles.tabActive]}
             onPress={() => setStatusFilter(list.status)}
           >
@@ -153,7 +166,7 @@ const Transaction = ({ navigation }) => {
       </View>
       <FlatList
         data={dataList}
-        keyExtractor={(list, i) => i.toString()}
+        keyExtractor={dataList.id}
         renderItem={renderItem}
       />
       {renderBtn()}
@@ -197,14 +210,17 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 16,
+    ...FONTS.fbody2,
     color: COLORS.white,
   },
   time: {
+    ...FONTS.fbody2,
     fontSize: 10,
+    lineHeight: 12.3,
     color: COLORS.white,
   },
   amount: {
+    ...FONTS.fbody2,
     fontSize: 12.8,
     color: COLORS.white,
   },

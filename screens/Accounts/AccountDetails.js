@@ -67,11 +67,12 @@ const AccountDetails = ({ navigation, route }) => {
             alignItems: "center",
           }}
         >
-          <Naira />
+          <Naira fill={item.color} />
           <Text
             style={{
               color: item.color,
               ...FONTS.fh3,
+              marginLeft: SIZES.base / 2,
             }}
           >
             {item.balance}
@@ -299,11 +300,12 @@ const AccountDetails = ({ navigation, route }) => {
                 <Button
                   label={"Save Changes"}
                   labelStyle={{
+                    backgroundColor: COLORS.primary,
+                    borderRadius: SIZES.padding,
                     paddingHorizontal: SIZES.padding2 * 5,
                     paddingVertical: SIZES.padding2,
                   }}
                   containerStyle={{
-                    borderRadius: SIZES.padding,
                     marginTop: SIZES.padding * 3.5,
                   }}
                   onPress={() => {

@@ -37,7 +37,7 @@ const Feeds = () => {
           borderBottomWidth: 0.25,
         }}
       >
-        <Text style={styles.headerText}>My 5QM Accounts</Text>
+        <Text style={styles.headerText}>FEEDS</Text>
       </View>
 
       <ScrollView

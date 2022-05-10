@@ -9,7 +9,8 @@ import {
 import React, { useState } from "react";
 import { images, COLORS, SIZES, FONTS, icons } from "../../../constants";
 import Card from "./VerificationCard";
-import { Button } from "../../../screens";
+import { Button } from "../../../components";
+import { ArrowThickBack } from "../../../assets/icons";
 
 const Verify = ({ navigation }) => {
   return (
@@ -34,7 +35,16 @@ const Verify = ({ navigation }) => {
         >
           <Button
             label="Go back"
-            onpress={() => navigation.navigate("SignUp")}
+            labelStyle={{ marginLeft: SIZES.base }}
+            icon={<ArrowThickBack />}
+            containerStyle={{
+              flexDirection: "row",
+              paddingHorizontal: SIZES.padding2 * 5,
+              paddingVertical: SIZES.padding,
+              backgroundColor: COLORS.primary,
+              borderRadius: SIZES.padding,
+            }}
+            onPress={() => navigation.navigate("SignUp")}
           />
         </View>
       </View>
