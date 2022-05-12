@@ -19,7 +19,7 @@ import {
 } from "../../assets/icons";
 import { Button, CustomModal } from "../../components";
 
-const sourcces = [
+const sources = [
   {
     id: 1,
     value: "Use Investment wallet",
@@ -294,7 +294,7 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
         containerStyle={{
           backgroundColor: COLORS.investment,
           paddingVertical: 18,
-          paddingHorizontal: 70,
+          width: SIZES.width * 0.9,
           borderRadius: SIZES.radius,
           marginVertical: SIZES.padding2 * 5,
         }}
@@ -447,7 +447,7 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
                 containerStyle={{
                   backgroundColor: COLORS.investment,
                   paddingVertical: 18,
-                  width: SIZES.width * 0.8,
+                  width: SIZES.width * 0.9,
                   borderRadius: SIZES.radius,
                   marginVertical: SIZES.base * 5,
                 }}
@@ -472,7 +472,7 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
         >
           <View
             style={{
-              height: SIZES.height * 0.5,
+              height: SIZES.height * 0.4,
               width: SIZES.width,
               padding: SIZES.base * 3,
               backgroundColor: COLORS.modal,
@@ -499,8 +499,57 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
                   Funding source
                 </Text>
               </View>
-              {/* radio buttons */}
-              <View></View>
+            </View>
+
+            {/* radio buttons */}
+            <View>
+              {sources.map((source) => (
+                <TouchableOpacity
+                  onPress={() => setSelected(source.id)}
+                  activeOpacity={0.7}
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    paddingVertical: 15,
+                    borderBottomColor: COLORS.white,
+                    borderBottomWidth: 0.5,
+                  }}
+                >
+                  <View
+                    style={{
+                      borderWidth: 0.5,
+                      borderColor: COLORS.white,
+                      borderRadius: SIZES.padding,
+                      height: 23,
+                      width: 23,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: SIZES.padding2 * 2,
+                    }}
+                  >
+                    {selected === source.id && (
+                      <View
+                        style={{
+                          width: 17,
+                          height: 17,
+                          backgroundColor: COLORS.investment,
+                          borderRadius: SIZES.padding,
+                        }}
+                      />
+                    )}
+                  </View>
+                  <Text
+                    style={{
+                      color: COLORS.white,
+                      ...FONTS.h4Bold,
+                      fontSize: 16,
+                      fontWeight: "600",
+                    }}
+                  >
+                    {source.value}
+                  </Text>
+                </TouchableOpacity>
+              ))}
             </View>
 
             {/* render button */}
@@ -513,7 +562,7 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
               containerStyle={{
                 backgroundColor: COLORS.dark,
                 paddingVertical: 18,
-                width: SIZES.width * 0.8,
+                width: SIZES.width * 0.9,
                 borderRadius: SIZES.radius,
                 marginVertical: SIZES.base * 5,
               }}
