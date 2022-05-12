@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import React from "react";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
+import { ChevronLeft } from "../../assets/icons";
 
 const Info = ({ navigation }) => {
   function renderHeader() {
@@ -19,7 +20,7 @@ const Info = ({ navigation }) => {
           activeOpacity={0.7}
           onPress={() => navigation.goBack()}
         >
-          <Image source={icons.chevronLeft} />
+          <ChevronLeft />
         </TouchableOpacity>
       </View>
     );

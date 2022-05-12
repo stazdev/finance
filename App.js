@@ -15,6 +15,8 @@ import {
   Receipt,
   Info,
   AccountDetails,
+  ExploreInvestment,
+  ExploreInvestmentDetail,
 } from "./screens";
 
 import MyTabs from "./navigation/tabs";
@@ -62,6 +64,11 @@ export default function App() {
         <Stack.Screen name="Receipt" component={Receipt} />
         <Stack.Screen name="Info" component={Info} />
         <Stack.Screen name="AccountDetails" component={AccountDetails} />
+        <Stack.Screen name="ExploreInvestment" component={ExploreInvestment} />
+        <Stack.Screen
+          name="ExploreInvestmentDetail"
+          component={ExploreInvestmentDetail}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

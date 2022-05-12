@@ -16,6 +16,7 @@ const creditCard = require("../assets/images/credit-card.svg");
 const forgetpassword = require("../assets/images/forget-password.png");
 const user = require("../assets/images/user.png");
 const logoSmallest = require("../assets/images/logoSmallest.png");
+const adron = require("../assets/images/adron.png");
 //
 export default {
   logo,
@@ -36,4 +37,5 @@ export default {
   creditCard,
   forgetpassword,
   user,
+  adron,
 };

@@ -1,10 +1,11 @@
 import Home from "./Home/Home";
 import Accounts from "./Accounts/Accounts";
+import ExploreInvestment from "./Accounts/ExploreInvestment";
+import ExploreInvestmentDetail from "./Accounts/ExploreInvestmentDetail";
 import AccountDetails from "./Accounts/AccountDetails";
 import Feeds from "./Feeds/Feeds";
 import Profile from "./Profile/Profile";
 import Onboarding from "./Onboarding/Onboarding";
-import Button from "./Button/CustomButton";
 import Login from "../screens/Authentication/Login/Login";
 import SignUp from "../screens/Authentication/SignUp/SignUp";
 import Verify from "../screens/Authentication/Verify/Verify";
@@ -17,7 +18,6 @@ import ForgetPasswordVerification from "../screens/Authentication/ForgetPassword
 export {
   Home,
   Onboarding,
-  Button,
   Login,
   SignUp,
   Verify,
@@ -30,4 +30,6 @@ export {
   Info,
   Feeds,
   Profile,
+  ExploreInvestment,
+  ExploreInvestmentDetail,
 };

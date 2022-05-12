@@ -17,6 +17,7 @@ import Naira from "./Naira";
 import ArrowCircleFilled from "./ArrowCircleFilled";
 import ChevronLeft from "./ChevronLeft";
 import ChevronRight from "./ChevronRight";
+import ChevronDown from "./ChevronDown";
 import Info from "./Info";
 import LongArrowRight from "./LongArrowRight";
 import LongArrowWhite from "./LongArrowWhite";
@@ -32,6 +33,7 @@ import Amico from "./Amico";
 import Building from "./Building";
 import Pana from "./Pana";
 import Rafiki from "./Rafiki";
+import SearchIcon from "./SearchIcon";
 
 export {
   Delete,
@@ -53,6 +55,7 @@ export {
   ArrowCircleFilled,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Info,
   LongArrowRight,
   LongArrowWhite,
@@ -68,4 +71,5 @@ export {
   Building,
   Pana,
   Rafiki,
+  SearchIcon,
 };

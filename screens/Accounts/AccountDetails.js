@@ -4,16 +4,14 @@ import {
   View,
   SafeAreaView,
   StatusBar,
-  Image,
   TouchableOpacity,
   ScrollView,
   TouchableWithoutFeedback,
 } from "react-native";
 import React, { useState } from "react";
-import Modal from "react-native-modal";
 
 import { COLORS, FONTS, SIZES, icons, images } from "../../constants";
-import { Button } from "../../components";
+import { Button, CustomModal } from "../../components";
 import { Transaction } from "../../components";
 import { SavingsGoal, InvestmentContent, ExpenseContent } from "../Accounts";
 import {
@@ -221,16 +219,7 @@ const AccountDetails = ({ navigation, route }) => {
   // autosplit setting modal
   function renderModal() {
     return (
-      <Modal
-        animationIn="slideInUp"
-        hasBackdrop={true}
-        isVisible={modalVisibility}
-        animationInTiming={1000}
-        animationOutTiming={1000}
-        style={{
-          marginBottom: 0,
-        }}
-      >
+      <CustomModal animationIn="slideInUp" isVisible={modalVisibility}>
         <TouchableWithoutFeedback onPress={() => setModalVisibility(false)}>
           <View
             style={{
@@ -316,7 +305,7 @@ const AccountDetails = ({ navigation, route }) => {
             </View>
           </View>
         </TouchableWithoutFeedback>
-      </Modal>
+      </CustomModal>
     );
   }
 
