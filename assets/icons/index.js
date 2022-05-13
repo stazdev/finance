@@ -34,6 +34,9 @@ import Building from "./Building";
 import Pana from "./Pana";
 import Rafiki from "./Rafiki";
 import SearchIcon from "./SearchIcon";
+import Wifi from "./Wifi";
+import Electricity from "./Electricity";
+import Cable from "./Cable";
 
 export {
   Delete,
@@ -72,4 +75,7 @@ export {
   Pana,
   Rafiki,
   SearchIcon,
+  Wifi,
+  Electricity,
+  Cable,
 };

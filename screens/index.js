@@ -14,6 +14,7 @@ import Receipt from "../screens/Receipt/Receipt";
 import Info from "../screens/Info/Info";
 import Password from "../screens/Authentication/ForgetPassword/ForgetPassword";
 import ForgetPasswordVerification from "../screens/Authentication/ForgetPassword/ForgetPasswordVerification";
+import { PayBill, BuyAirtime } from "./Accounts";
 
 export {
   Home,
@@ -32,4 +33,6 @@ export {
   Profile,
   ExploreInvestment,
   ExploreInvestmentDetail,
+  PayBill,
+  BuyAirtime,
 };

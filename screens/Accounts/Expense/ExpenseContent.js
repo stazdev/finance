@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
-import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
-import { Beneficiary, Button } from "../../components";
-import { ChevronRight } from "../../assets/icons";
+import { COLORS, SIZES, FONTS, images, icons } from "../../../constants";
+import { Beneficiary, Button } from "../../../components";
+import { ChevronRight } from "../../../assets/icons";
 
-const ExpenseContent = ({ item }) => {
+const ExpenseContent = () => {
+  const navigation = useNavigation();
   return (
     <View>
       <View>
@@ -22,7 +24,11 @@ const ExpenseContent = ({ item }) => {
           <ChevronRight />
         </TouchableOpacity>
 
-        <TouchableOpacity activeOpacity={0.7} style={styles.box}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.box}
+          onPress={() => navigation.navigate("BuyAirtime")}
+        >
           <View>
             <Text style={styles.boxTitle}>Buy Airtime</Text>
             <Text style={styles.boxDescription}>
@@ -32,7 +38,11 @@ const ExpenseContent = ({ item }) => {
           <ChevronRight />
         </TouchableOpacity>
 
-        <TouchableOpacity activeOpacity={0.7} style={styles.box}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.box}
+          onPress={() => navigation.navigate("PayBill")}
+        >
           <View>
             <Text style={styles.boxTitle}>Pay Bills</Text>
             <Text style={styles.boxDescription}>
@@ -41,8 +51,6 @@ const ExpenseContent = ({ item }) => {
           </View>
           <ChevronRight />
         </TouchableOpacity>
-        <TouchableOpacity></TouchableOpacity>
-        <TouchableOpacity></TouchableOpacity>
       </View>
 
       {/* beneficiaries */}

@@ -4,7 +4,6 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
-  TouchableWithoutFeedback,
   Image,
   ScrollView,
   TextInput,
@@ -387,6 +386,7 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
                 <Text style={{ ...FONTS.body1bold, color: COLORS.white }}>
                   Fund
                 </Text>
+
                 <View
                   style={{
                     flexDirection: "row",
