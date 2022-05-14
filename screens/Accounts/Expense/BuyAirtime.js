@@ -5,10 +5,11 @@ import {
   SafeAreaView,
   TouchableOpacity,
   TextInput,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
-import { COLORS, FONTS, SIZES } from "../../../constants";
-import { ChevronDown, ChevronLeft } from "../../../assets/icons";
+import { COLORS, FONTS, SIZES, accounts } from "../../../constants";
+import { ChevronDown, ChevronLeft, Naira } from "../../../assets/icons";
 import { Button, CustomModal } from "../../../components";
 
 const providers = [
@@ -34,9 +35,20 @@ const providers = [
   },
 ];
 
+const recharges = [
+  {
+    id: 1,
+    name: "Airtime",
+  },
+  {
+    id: 2,
+    name: "Data",
+  },
+];
+
 const BuyAirtime = ({ navigation }) => {
-  const [networkProvider, setNetworkProveder] = useState("Network Provider");
-  const [airtime, setAirtime] = useState("Airtime");
+  const [networkProvider, setNetworkProvider] = useState("Network Provider");
+  const [topup, setTopup] = useState("Airtime");
   const [accountType, setAccountType] = useState("Main");
 
   const [accountTypeModal, setAccountTypeModal] = useState(false);
@@ -81,8 +93,11 @@ const BuyAirtime = ({ navigation }) => {
         </View>
 
         <View style={styles.box}>
-          <Text style={styles.inputText}>{airtime}</Text>
-          <TouchableOpacity activeOpacity={0.7}>
+          <Text style={styles.inputText}>{topup}</Text>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => setAirtimeModal(true)}
+          >
             <ChevronDown />
           </TouchableOpacity>
         </View>
@@ -107,7 +122,10 @@ const BuyAirtime = ({ navigation }) => {
 
         <View style={styles.box}>
           <Text style={styles.inputText}>{accountType}</Text>
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => setAccountTypeModal(true)}
+          >
             <ChevronDown />
           </TouchableOpacity>
         </View>
@@ -187,12 +205,172 @@ const BuyAirtime = ({ navigation }) => {
       </CustomModal>
     );
   }
+
+  function renderAirtimeModal() {
+    return (
+      <CustomModal animationIn="slideInUp" isVisible={airtimeModal}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              height: SIZES.height * 0.3,
+              width: SIZES.width,
+              backgroundColor: COLORS.modal,
+              borderRadius: SIZES.radius,
+            }}
+          >
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => setAirtimeModal(false)}
+              style={{
+                borderBottomWidth: 0.5,
+                borderBottomColor: COLORS.white,
+                padding: SIZES.padding2 * 2,
+              }}
+            >
+              <ChevronDown />
+            </TouchableOpacity>
+
+            <View
+              style={{
+                padding: SIZES.padding2 * 2,
+              }}
+            >
+              {recharges.map((recharge) => (
+                <TouchableOpacity
+                  key={recharge.id}
+                  onPress={() => setTopup(recharge.name)}
+                >
+                  <View
+                    style={{
+                      borderColor: COLORS.white,
+                      borderWidth: 0.5,
+                      borderRadius: SIZES.base / 2,
+                      marginVertical: SIZES.base / 1.5,
+                    }}
+                  >
+                    <Text style={styles.providerText}>{recharge.name}</Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+        </View>
+      </CustomModal>
+    );
+  }
+
+  function renderAccountModal() {
+    return (
+      <CustomModal animationIn="slideInUp" isVisible={accountTypeModal}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              height: SIZES.height * 0.7,
+              width: SIZES.width,
+              backgroundColor: COLORS.modal,
+              borderRadius: SIZES.radius,
+            }}
+          >
+            <View
+              style={{
+                borderBottomWidth: 0.5,
+                borderBottomColor: COLORS.white,
+                padding: SIZES.padding2 * 2,
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => setAccountTypeModal(false)}
+              >
+                <ChevronDown />
+              </TouchableOpacity>
+              <Text
+                style={{
+                  color: COLORS.white,
+                  ...FONTS.fbody1,
+                  marginLeft: SIZES.padding2 * 3,
+                }}
+              >
+                Select account
+              </Text>
+            </View>
+
+            <ScrollView
+              style={{
+                padding: SIZES.padding2 * 2,
+              }}
+            >
+              {accounts.map((account) => (
+                <TouchableOpacity
+                  key={account.id}
+                  onPress={() => setAccountType(account.description)}
+                >
+                  {account.id !== 1 ? (
+                    <View
+                      style={{
+                        borderColor: COLORS.white,
+                        borderWidth: 0.5,
+                        borderRadius: SIZES.base / 2,
+                        marginVertical: SIZES.base / 1.5,
+                        flexDirection: "row",
+                        alignItems: "center",
+                        padding: SIZES.base,
+                      }}
+                    >
+                      <View style={{ marginRight: SIZES.padding }}>
+                        {account.icon}
+                      </View>
+                      <View>
+                        <Text style={[styles.providerText, { padding: 0 }]}>
+                          {account.description}
+                        </Text>
+                        <View
+                          style={{ flexDirection: "row", alignItems: "center" }}
+                        >
+                          <Naira fill={COLORS.white} />
+                          <Text
+                            style={{
+                              color: COLORS.white,
+                              marginLeft: SIZES.base,
+                              ...FONTS.fbody1,
+                            }}
+                          >
+                            {account.balance}
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  ) : null}
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        </View>
+      </CustomModal>
+    );
+  }
   return (
     <SafeAreaView style={{ paddingHorizontal: SIZES.padding }}>
       {renderHeader()}
       {renderContent()}
       {renderButton()}
       {renderNetworkModal()}
+      {renderAirtimeModal()}
+      {renderAccountModal()}
     </SafeAreaView>
   );
 };

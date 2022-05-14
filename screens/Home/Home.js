@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import React, { useState, useRef } from "react";
-import { COLORS, FONTS, SIZES, icons, images } from "../../constants";
+import { COLORS, FONTS, SIZES, icons, images, accounts } from "../../constants";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { Button, Transaction } from "../../components";
 import {
@@ -31,50 +31,6 @@ const Home = ({ navigation }) => {
     setCurrentIndex(viewableItems[0].index);
   }).current;
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
-  const accounts = [
-    {
-      id: 1,
-      icon: <MoneyBill />,
-      description: "Main Balance",
-      balance: 10000,
-      back: COLORS.main,
-    },
-    {
-      id: 2,
-      icon: <BriefCase />,
-      description: "Business Wallet",
-      balance: 20000,
-      back: COLORS.linear2,
-    },
-    {
-      id: 3,
-      icon: <Savings />,
-      description: "Savings Wallet",
-      balance: 10000,
-      back: COLORS.savings,
-    },
-    {
-      id: 4,
-      icon: <Expense />,
-      description: "Expense Wallet",
-      balance: 10000,
-      back: COLORS.expense,
-    },
-    {
-      id: 5,
-      icon: <Investment />,
-      description: "Investment Wallet",
-      balance: 10000,
-      back: COLORS.investment,
-    },
-    {
-      id: 6,
-      icon: <Emergency />,
-      description: "Emergency Wallet",
-      balance: 10000,
-      back: COLORS.emergency,
-    },
-  ];
 
   function renderHeader() {
     return (
@@ -169,7 +125,7 @@ const Home = ({ navigation }) => {
               marginTop: SIZES.padding2,
             }}
           >
-            <Naira />
+            <Naira fill={COLORS.white} />
             <Text
               style={{
                 ...FONTS.fh3,
