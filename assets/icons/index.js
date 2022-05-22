@@ -37,6 +37,8 @@ import SearchIcon from "./SearchIcon";
 import Wifi from "./Wifi";
 import Electricity from "./Electricity";
 import Cable from "./Cable";
+import Thumb from "./Thumb";
+import Copy from "./Copy";
 
 export {
   Delete,
@@ -78,4 +80,6 @@ export {
   Wifi,
   Electricity,
   Cable,
+  Thumb,
+  Copy,
 };

@@ -14,7 +14,13 @@ import Receipt from "../screens/Receipt/Receipt";
 import Info from "../screens/Info/Info";
 import Password from "../screens/Authentication/ForgetPassword/ForgetPassword";
 import ForgetPasswordVerification from "../screens/Authentication/ForgetPassword/ForgetPasswordVerification";
-import { PayBill, BuyAirtime } from "./Accounts";
+import {
+  PayBill,
+  BuyAirtime,
+  Transfer,
+  InternalTransfer,
+  LocalTransfer,
+} from "./Accounts";
 
 export {
   Home,
@@ -35,4 +41,7 @@ export {
   ExploreInvestmentDetail,
   PayBill,
   BuyAirtime,
+  Transfer,
+  InternalTransfer,
+  LocalTransfer,
 };

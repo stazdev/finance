@@ -8,6 +8,7 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
 } from "react-native";
+import * as Clipboard from "expo-clipboard";
 import React, { useState } from "react";
 
 import { COLORS, FONTS, SIZES, icons, images } from "../../constants";
@@ -20,12 +21,19 @@ import {
   Naira,
   ToggleOff,
   ToggleOn,
+  Copy,
 } from "../../assets/icons";
 
 const AccountDetails = ({ navigation, route }) => {
   const { item } = route.params;
   const [modalVisibility, setModalVisibility] = useState(false);
+  const [pop, setPop] = useState(false);
   const [autosplit, setAutosplit] = useState(false);
+
+  const copyToClipboard = async () => {
+    Clipboard.setString("2022131245");
+    setPop(true);
+  };
 
   function renderHeader() {
     return (
@@ -92,12 +100,36 @@ const AccountDetails = ({ navigation, route }) => {
           </Text>
         </View>
 
+        {item.id === 1 && (
+          <TouchableOpacity
+            onPress={copyToClipboard}
+            activeOpacity={0.7}
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: SIZES.padding,
+            }}
+          >
+            <Copy />
+            <Text
+              style={{
+                color: COLORS.white,
+                ...FONTS.fbody2,
+                fontSize: 12.5,
+                marginLeft: SIZES.base,
+              }}
+            >
+              2022131245
+            </Text>
+          </TouchableOpacity>
+        )}
+
         <View
           style={{
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: SIZES.padding * 4.2,
+            marginTop: SIZES.padding * 2.2,
           }}
         >
           <Button
@@ -116,6 +148,7 @@ const AccountDetails = ({ navigation, route }) => {
           <View style={{ width: SIZES.padding }}></View>
           <Button
             label={"WITHDRAW"}
+            onPress={() => navigation.navigate("Transfer", { item })}
             containerStyle={{
               backgroundColor: "transparent",
               paddingHorizontal: SIZES.padding * 1.8,
@@ -309,6 +342,38 @@ const AccountDetails = ({ navigation, route }) => {
     );
   }
 
+  function renderPop() {
+    return (
+      <CustomModal animationIn="slideInUp" isVisible={pop}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              height: SIZES.height * 0.05,
+              width: SIZES.width * 0.9,
+              padding: SIZES.base,
+              marginBottom: SIZES.base * 5,
+              backgroundColor: COLORS.modal,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Text style={{ color: COLORS.white }}>Account Number Copied!</Text>
+            <TouchableOpacity onPress={() => setPop(false)}>
+              <Text style={{ color: "#5856D6" }}>ACTION</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </CustomModal>
+    );
+  }
+
   return (
     <SafeAreaView
       style={{
@@ -323,6 +388,7 @@ const AccountDetails = ({ navigation, route }) => {
         {renderOtherDetails()}
       </ScrollView>
       {renderModal()}
+      {renderPop()}
     </SafeAreaView>
   );
 };

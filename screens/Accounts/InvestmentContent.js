@@ -9,7 +9,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 
-import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
+import { COLORS, SIZES, FONTS, images } from "../../constants";
 import { Button } from "../../components";
 import { LongArrowDark, LongArrowRight } from "../../assets/icons";
 const listTab = [

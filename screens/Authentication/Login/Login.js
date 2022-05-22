@@ -10,9 +10,9 @@ import {
   TextInput,
 } from "react-native";
 import React, { useState } from "react";
-import { images, COLORS, SIZES, FONTS, icons } from "../../../constants";
+import { images, COLORS, SIZES, FONTS } from "../../../constants";
 import { Button } from "../../../components";
-import { DropDown, Eye, EyeClose } from "../../../assets/icons";
+import { DropDown, Eye, EyeClose, Thumb } from "../../../assets/icons";
 
 const Login = ({ navigation }) => {
   const [inputType, setInputType] = useState(false);
@@ -153,7 +153,7 @@ const Login = ({ navigation }) => {
             activeOpacity={0.7}
             onPress={() => setShowPassword(!showPassword)}
           >
-            {showPassword ? <EyeClose /> : <EyeClose />}
+            {showPassword ? <Eye /> : <EyeClose />}
           </TouchableOpacity>
         </View>
         <TouchableOpacity
@@ -188,6 +188,25 @@ const Login = ({ navigation }) => {
             }}
             onPress={() => navigation.navigate("Tabs")}
           />
+
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: SIZES.padding * 4,
+            }}
+          >
+            <Thumb />
+            <Text
+              style={{
+                ...FONTS.fbody2,
+                color: COLORS.white,
+                marginTop: SIZES.padding,
+              }}
+            >
+              Use Biometrics
+            </Text>
+          </View>
         </View>
 
         <View style={{ alignItems: "center", marginTop: SIZES.base * 7 }}>

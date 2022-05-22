@@ -19,6 +19,9 @@ import {
   ExploreInvestmentDetail,
   PayBill,
   BuyAirtime,
+  Transfer,
+  InternalTransfer,
+  LocalTransfer,
 } from "./screens";
 
 import MyTabs from "./navigation/tabs";
@@ -69,6 +72,9 @@ export default function App() {
         <Stack.Screen name="ExploreInvestment" component={ExploreInvestment} />
         <Stack.Screen name="PayBill" component={PayBill} />
         <Stack.Screen name="BuyAirtime" component={BuyAirtime} />
+        <Stack.Screen name="Transfer" component={Transfer} />
+        <Stack.Screen name="InternalTransfer" component={InternalTransfer} />
+        <Stack.Screen name="LocalTransfer" component={LocalTransfer} />
         <Stack.Screen
           name="ExploreInvestmentDetail"
           component={ExploreInvestmentDetail}

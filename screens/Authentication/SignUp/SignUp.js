@@ -126,7 +126,7 @@ const SignUp = ({ navigation }) => {
             activeOpacity={0.7}
             onPress={() => setShowPassword(!showPassword)}
           >
-            {showPassword ? <EyeClose /> : <EyeClose />}
+            {showPassword ? <Eye /> : <EyeClose />}
           </TouchableOpacity>
         </View>
 
@@ -162,7 +162,7 @@ const SignUp = ({ navigation }) => {
             activeOpacity={0.7}
             onPress={() => setShowPassword2(!showPassword2)}
           >
-            {showPassword ? <EyeClose /> : <EyeClose />}
+            {showPassword2 ? <Eye /> : <EyeClose />}
           </TouchableOpacity>
         </View>
 

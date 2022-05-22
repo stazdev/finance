@@ -30,7 +30,7 @@ const Profile = ({ navigation }) => {
           <Notification />
         </TouchableOpacity>
         <View>
-          <Text style={styles.headerText}>Profile</Text>
+          <Text style={styles.headerText}>Accounts</Text>
         </View>
         <TouchableOpacity
           activeOpacity={0.7}
