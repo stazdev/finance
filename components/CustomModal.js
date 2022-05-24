@@ -7,6 +7,7 @@ const CustomModal = ({ animationIn, isVisible, children }) => {
     <Modal
       animationIn={animationIn}
       hasBackdrop={true}
+      backdropTransitionOutTiming={0}
       isVisible={isVisible}
       animationInTiming={1000}
       animationOutTiming={1000}

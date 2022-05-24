@@ -185,7 +185,10 @@ const BuyAirtime = ({ navigation }) => {
               {providers.map((provider) => (
                 <TouchableOpacity
                   key={provider.id}
-                  onPress={() => setNetworkProvider(provider.name)}
+                  onPress={() => {
+                    setNetworkProvider(provider.name);
+                    setNetworkProviderModal(false);
+                  }}
                 >
                   <View
                     style={{
@@ -244,7 +247,10 @@ const BuyAirtime = ({ navigation }) => {
               {recharges.map((recharge) => (
                 <TouchableOpacity
                   key={recharge.id}
-                  onPress={() => setTopup(recharge.name)}
+                  onPress={() => {
+                    setTopup(recharge.name);
+                    setAirtimeModal(false);
+                  }}
                 >
                   <View
                     style={{
@@ -317,7 +323,10 @@ const BuyAirtime = ({ navigation }) => {
               {accounts.map((account) => (
                 <TouchableOpacity
                   key={account.id}
-                  onPress={() => setAccountType(account.description)}
+                  onPress={() => {
+                    setAccountType(account.description);
+                    setAccountTypeModal(false);
+                  }}
                 >
                   {account.id !== 1 ? (
                     <View
