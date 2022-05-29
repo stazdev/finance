@@ -11,6 +11,7 @@ import {
 import React, { useState } from "react";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
 import {
+  ChevronLeft,
   ChevronRight,
   LogOut,
   LongArrowWhite,
@@ -18,11 +19,12 @@ import {
   ToggleOff,
   ToggleOn,
 } from "../../assets/icons";
-import { Button } from "../../components";
+import { Button, CustomModal } from "../../components";
 
 const Profile = ({ navigation }) => {
   const [toggle, setToggle] = useState(true);
   const [toggle1, setToggle1] = useState(true);
+  const [profileModal, setProfileModal] = useState(false);
   function renderHeader() {
     return (
       <View style={[styles.header, { marginBottom: SIZES.padding }]}>
@@ -67,6 +69,7 @@ const Profile = ({ navigation }) => {
               borderRadius: SIZES.radius,
               marginTop: SIZES.padding,
             }}
+            onPress={() => setProfileModal(true)}
           />
         </View>
       </View>
@@ -266,6 +269,106 @@ const Profile = ({ navigation }) => {
       </View>
     );
   }
+
+  function renderProfileModal() {
+    return (
+      <CustomModal animationIn="slideInUp" isVisible={profileModal}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              height: SIZES.height,
+              width: SIZES.width,
+              padding: SIZES.base * 3,
+              backgroundColor: COLORS.dark,
+              borderRadius: SIZES.radius,
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => setProfileModal(false)}
+              activeOpacity={0.7}
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <ChevronLeft />
+              <Text
+                style={{
+                  color: COLORS.white,
+                  ...FONTS.h3Bold,
+                  marginLeft: SIZES.padding * 8,
+                }}
+              >
+                Profile
+              </Text>
+            </TouchableOpacity>
+
+            <View
+              style={{
+                alignItems: "center",
+                marginTop: SIZES.padding2 * 2,
+              }}
+            >
+              <Image source={images.user} />
+              <Text
+                style={{
+                  color: COLORS.white,
+                  ...FONTS.h4Bold,
+                  fontSize: 20,
+                  marginTop: SIZES.padding2,
+                }}
+              >
+                Tap to change photo
+              </Text>
+            </View>
+
+            <View style={{ marginTop: SIZES.base * 5 }}>
+              <View style={styles.items}>
+                <Text style={styles.left}>First Name</Text>
+                <Text style={styles.right}>Ogechi</Text>
+              </View>
+              <View style={styles.items}>
+                <Text style={styles.left}>Last Name</Text>
+                <Text style={styles.right}>Desmond</Text>
+              </View>
+              <View style={styles.items}>
+                <Text style={styles.left}>Date of Birth</Text>
+                <Text style={styles.right}>13th July 1989</Text>
+              </View>
+            </View>
+
+            <View style={{ marginTop: 35 }}>
+              <Text style={{ ...FONTS.h4Bold, color: COLORS.greyMedium }}>
+                Contact Information
+              </Text>
+            </View>
+
+            <View style={{ marginTop: SIZES.base }}>
+              <View style={styles.items}>
+                <Text style={styles.left}>Phone Number</Text>
+                <Text style={styles.right}>+2349035467237</Text>
+              </View>
+              <View style={styles.items}>
+                <Text style={styles.left}>Email Address</Text>
+                <Text style={styles.right}>ccltd@business.com</Text>
+              </View>
+            </View>
+
+            <View style={{ alignItems: "center", marginTop: SIZES.base * 8 }}>
+              <Image source={images.logoSmall} />
+            </View>
+          </View>
+        </View>
+      </CustomModal>
+    );
+  }
+
   return (
     <SafeAreaView
       style={{
@@ -281,6 +384,9 @@ const Profile = ({ navigation }) => {
         {renderBanner()}
         {renderOptions()}
         {renderLogo()}
+      </ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {renderProfileModal()}
       </ScrollView>
     </SafeAreaView>
   );
@@ -333,5 +439,24 @@ const styles = StyleSheet.create({
     ...FONTS.fbody2,
     color: COLORS.greyLight,
     paddingVertical: SIZES.padding * 1,
+  },
+
+  items: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: SIZES.padding2,
+    borderBottomColor: COLORS.white,
+    borderBottomWidth: 0.25,
+  },
+  left: {
+    color: COLORS.white,
+    ...FONTS.fbody2,
+    fontSize: 12.8,
+  },
+  right: {
+    color: COLORS.white,
+    ...FONTS.h4Bold,
+    fontSize: 17.78,
   },
 });
