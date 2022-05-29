@@ -26,6 +26,7 @@ import {
 
 import MyTabs from "./navigation/tabs";
 import { COLORS } from "./constants";
+import { Message } from "./components";
 
 const theme = {
   ...DefaultTheme,
@@ -75,6 +76,7 @@ export default function App() {
         <Stack.Screen name="Transfer" component={Transfer} />
         <Stack.Screen name="InternalTransfer" component={InternalTransfer} />
         <Stack.Screen name="LocalTransfer" component={LocalTransfer} />
+        <Stack.Screen name="Message" component={Message} />
         <Stack.Screen
           name="ExploreInvestmentDetail"
           component={ExploreInvestmentDetail}

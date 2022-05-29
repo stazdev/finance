@@ -39,6 +39,7 @@ import Electricity from "./Electricity";
 import Cable from "./Cable";
 import Thumb from "./Thumb";
 import Copy from "./Copy";
+import NotImg from "./NotImg";
 
 export {
   Delete,
@@ -82,4 +83,5 @@ export {
   Cable,
   Thumb,
   Copy,
+  NotImg,
 };

@@ -74,6 +74,7 @@ const Home = ({ navigation }) => {
           <TouchableOpacity
             activeOpacity={0.7}
             style={{ marginLeft: SIZES.padding2 }}
+            onPress={() => navigation.navigate("Message")}
           >
             <Notification />
           </TouchableOpacity>
