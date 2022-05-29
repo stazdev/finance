@@ -143,7 +143,10 @@ const Profile = ({ navigation }) => {
               borderBottomColor: COLORS.white,
             }}
           >
-            <TouchableOpacity style={styles.header}>
+            <TouchableOpacity
+              style={styles.header}
+              onPress={() => navigation.navigate("KycInfo")}
+            >
               <Text style={styles.optionText}>KYC Infomation</Text>
               <ChevronRight />
             </TouchableOpacity>

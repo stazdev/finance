@@ -40,6 +40,7 @@ import Cable from "./Cable";
 import Thumb from "./Thumb";
 import Copy from "./Copy";
 import NotImg from "./NotImg";
+import Camera from "./Camera";
 
 export {
   Delete,
@@ -84,4 +85,5 @@ export {
   Thumb,
   Copy,
   NotImg,
+  Camera,
 };
