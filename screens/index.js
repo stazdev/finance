@@ -20,6 +20,9 @@ import {
   Transfer,
   InternalTransfer,
   LocalTransfer,
+  AddMoney,
+  BankTransfer,
+  AddCard,
 } from "./Accounts";
 
 export {
@@ -44,4 +47,7 @@ export {
   Transfer,
   InternalTransfer,
   LocalTransfer,
+  AddMoney,
+  BankTransfer,
+  AddCard,
 };

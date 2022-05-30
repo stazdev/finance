@@ -22,6 +22,9 @@ import {
   Transfer,
   InternalTransfer,
   LocalTransfer,
+  AddMoney,
+  BankTransfer,
+  AddCard,
 } from "./screens";
 
 import MyTabs from "./navigation/tabs";
@@ -78,6 +81,9 @@ export default function App() {
         <Stack.Screen name="LocalTransfer" component={LocalTransfer} />
         <Stack.Screen name="Message" component={Message} />
         <Stack.Screen name="KycInfo" component={KycInfo} />
+        <Stack.Screen name="AddMoney" component={AddMoney} />
+        <Stack.Screen name="BankTransfer" component={BankTransfer} />
+        <Stack.Screen name="AddCard" component={AddCard} />
         <Stack.Screen
           name="ExploreInvestmentDetail"
           component={ExploreInvestmentDetail}

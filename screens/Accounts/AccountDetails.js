@@ -134,6 +134,7 @@ const AccountDetails = ({ navigation, route }) => {
         >
           <Button
             label={"ADD MONEY"}
+            onPress={() => navigation.navigate("AddMoney", { route })}
             containerStyle={{
               backgroundColor: item.id === 1 ? COLORS.business : item.color,
               paddingHorizontal: SIZES.padding * 1.8,
