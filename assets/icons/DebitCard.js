@@ -27,8 +27,8 @@ const DebitCard = (props) => (
       maskUnits="userSpaceOnUse"
       x={14}
       y={14}
-      width={98}
-      height={98}
+      width={127}
+      height={127}
     >
       <Rect
         x={4.172}

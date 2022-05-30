@@ -41,6 +41,7 @@ import Thumb from "./Thumb";
 import Copy from "./Copy";
 import NotImg from "./NotImg";
 import Camera from "./Camera";
+import DebitCard from "./DebitCard";
 
 export {
   Delete,
@@ -86,4 +87,5 @@ export {
   Copy,
   NotImg,
   Camera,
+  DebitCard,
 };
