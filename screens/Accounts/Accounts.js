@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../context-store/context";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
 import {
   Amico,
@@ -74,6 +75,7 @@ const accounts = [
   },
 ];
 const Accounts = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
   function renderHeader() {
     return (
       <View style={styles.header}>
@@ -85,7 +87,14 @@ const Accounts = ({ navigation }) => {
             <ChevronLeft />
           </TouchableOpacity>
           <View>
-            <Text style={styles.headerText}>5QM ACCOUNTS</Text>
+            <Text
+              style={[
+                styles.headerText,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              5QM ACCOUNTS
+            </Text>
           </View>
         </View>
         <TouchableOpacity
@@ -115,13 +124,19 @@ const Accounts = ({ navigation }) => {
     return (
       <TouchableOpacity
         activeOpacity={0.7}
-        style={styles.card}
+        style={[
+          styles.card,
+          {
+            backgroundColor:
+              theme === "light" && item.id !== 1 ? item.color : COLORS.greyDark,
+          },
+        ]}
         onPress={() => navigation.navigate("AccountDetails", { item })}
       >
         <View>
           <Text
             style={{
-              color: item.color,
+              color: theme === "light" ? COLORS.white : item.color,
               ...FONTS.fh4,
               fontSize: 15,
               lineHeight: 18,
@@ -138,11 +153,11 @@ const Accounts = ({ navigation }) => {
         <View>
           <Text
             style={{
-              color: item.color,
+              color: theme === "light" ? COLORS.white : item.color,
               ...FONTS.fh4,
               fontSize: 15,
               lineHeight: 18,
-              marginTop: SIZES.padding * 4,
+              marginTop: SIZES.padding * 2,
             }}
           >
             {" "}
@@ -182,8 +197,8 @@ const Accounts = ({ navigation }) => {
   return (
     <SafeAreaView
       style={{
-        paddingTop: StatusBar.currentHeight * 0.2,
-        marginHorizontal: SIZES.padding,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
+        paddingHorizontal: SIZES.padding,
         justifyContent: "center",
       }}
     >
@@ -205,14 +220,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingBottom: SIZES.padding2,
+    paddingVertical: SIZES.padding,
   },
   headerAlign: {
     flexDirection: "row",
+    alignItems: "center",
   },
   headerText: {
-    ...FONTS.h3Bold,
-    color: COLORS.white,
+    ...FONTS.h4Bold,
     marginLeft: SIZES.padding,
   },
   Images: {
@@ -228,7 +243,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.padding,
     paddingVertical: SIZES.padding * 3,
     borderRadius: SIZES.radius - 5,
-    backgroundColor: COLORS.greyDark,
     width: SIZES.width / 2,
   },
   "card:nth-child-odd": {

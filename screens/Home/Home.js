@@ -7,10 +7,12 @@ import {
   Animated,
   ScrollView,
 } from "react-native";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { COLORS, FONTS, SIZES, icons, images, accounts } from "../../constants";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { Button, Transaction } from "../../components";
+import { ThemeContext } from "../../context-store/context";
+
 import {
   MoneyBill,
   Notification,
@@ -24,6 +26,8 @@ import {
 } from "../../assets/icons";
 
 const Home = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef(null);
@@ -38,7 +42,7 @@ const Home = ({ navigation }) => {
         style={{
           flexDirection: "row",
           marginHorizontal: SIZES.padding,
-          paddingBottom: SIZES.padding2,
+          paddingVertical: SIZES.padding,
         }}
       >
         <View
@@ -46,10 +50,22 @@ const Home = ({ navigation }) => {
             flex: 1,
           }}
         >
-          <Text style={{ ...FONTS.fbody1, color: COLORS.greyLight }}>
+          <Text
+            style={{
+              ...FONTS.fbody1,
+              color: theme === "light" ? COLORS.greyDark : COLORS.greyLight,
+            }}
+          >
             Good Morning
           </Text>
-          <Text style={{ ...FONTS.h3Bold, color: COLORS.white }}>Desmond</Text>
+          <Text
+            style={{
+              ...FONTS.h3Bold,
+              color: theme === "light" ? COLORS.dark : COLORS.white,
+            }}
+          >
+            Desmond
+          </Text>
         </View>
 
         <View
@@ -62,9 +78,13 @@ const Home = ({ navigation }) => {
           <TouchableOpacity activeOpacity={0.7}>
             <Button
               label={"Referral CTA"}
-              labelStyle={{ color: COLORS.greyDark, ...FONTS.fbody2 }}
+              labelStyle={{
+                color: theme === "light" ? COLORS.white : COLORS.greyDark,
+                ...FONTS.fbody2,
+              }}
               containerStyle={{
-                backgroundColor: COLORS.white,
+                backgroundColor:
+                  theme === "light" ? COLORS.primary : COLORS.white,
                 paddingVertical: SIZES.base / 2,
                 paddingHorizontal: SIZES.padding2 + 10,
                 borderRadius: SIZES.radius - 5,
@@ -242,10 +262,20 @@ const Home = ({ navigation }) => {
           }}
         >
           <View>
-            <Text style={{ ...FONTS.fbody1, color: COLORS.greyLight }}>
+            <Text
+              style={{
+                ...FONTS.fbody1,
+                color: theme === "light" ? COLORS.dark : COLORS.greyLight,
+              }}
+            >
               KYC Information
             </Text>
-            <Text style={{ ...FONTS.fbody2, color: COLORS.greyMedium }}>
+            <Text
+              style={{
+                ...FONTS.fbody2,
+                color: theme === "light" ? COLORS.greyDark : COLORS.greyMedium,
+              }}
+            >
               Update your ID card and important docs.
             </Text>
           </View>
@@ -259,10 +289,20 @@ const Home = ({ navigation }) => {
           }}
         >
           <View>
-            <Text style={{ ...FONTS.fbody1, color: COLORS.greyLight }}>
+            <Text
+              style={{
+                ...FONTS.fbody1,
+                color: theme === "light" ? COLORS.dark : COLORS.greyLight,
+              }}
+            >
               Fund your account
             </Text>
-            <Text style={{ ...FONTS.fbody2, color: COLORS.greyMedium }}>
+            <Text
+              style={{
+                ...FONTS.fbody2,
+                color: theme === "light" ? COLORS.greyDark : COLORS.greyMedium,
+              }}
+            >
               Fund you account to see how money split works
             </Text>
           </View>
@@ -297,7 +337,7 @@ const Home = ({ navigation }) => {
   return (
     <SafeAreaView
       style={{
-        paddingTop: StatusBar.currentHeight * 0.2,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
       }}
     >
       <StatusBar backgroundColor={COLORS.dark} barStyle={"light-content"} />

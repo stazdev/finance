@@ -1,5 +1,13 @@
-import { StyleSheet, Text, View, Image, FlatList } from "react-native";
-import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  FlatList,
+  SafeAreaView,
+} from "react-native";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../context-store/context";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { images, COLORS, SIZES, FONTS, icons } from "../../constants";
@@ -24,8 +32,10 @@ const goals = [
 ];
 
 const SavingsGoal = () => {
+  const { theme } = useContext(ThemeContext);
+
   const renderItem = ({ item }) => (
-    <>
+    <View style={{ marginLeft: SIZES.padding }}>
       <Image
         source={item.image}
         key={item.id}
@@ -33,7 +43,7 @@ const SavingsGoal = () => {
           width: 150,
           height: 171,
           borderRadius: SIZES.radius,
-          marginRight: SIZES.padding2 * 2,
+          marginRight: SIZES.padding2,
           marginTop: SIZES.padding * 4,
         }}
       />
@@ -43,7 +53,7 @@ const SavingsGoal = () => {
           <LongArrowWhite />
         </Text>
       </View>
-    </>
+    </View>
   );
 
   function renderLogo() {
@@ -63,7 +73,14 @@ const SavingsGoal = () => {
   return (
     <>
       <View>
-        <Text style={styles.heading}>Your Active Goals</Text>
+        <Text
+          style={[
+            styles.heading,
+            { color: theme === "light" ? COLORS.dark : COLORS.white },
+          ]}
+        >
+          Your Active Goals
+        </Text>
         <View style={styles.activeCards}>
           <View>
             <LinearGradient
@@ -108,9 +125,21 @@ const SavingsGoal = () => {
       </View>
 
       <View>
-        <Text style={styles.heading}>Explore Goals</Text>
         <Text
-          style={{ ...FONTS.fbody2, color: "#cfcfcf", marginTop: SIZES.base }}
+          style={[
+            styles.heading,
+            { color: theme === "light" ? COLORS.dark : COLORS.white },
+          ]}
+        >
+          Explore Goals
+        </Text>
+        <Text
+          style={{
+            ...FONTS.fbody2,
+            color: theme === "light" ? COLORS.dark : "#cfcfcf",
+            marginTop: SIZES.base,
+            paddingLeft: SIZES.padding,
+          }}
         >
           Tap on any of the goals to to create a new goal.
         </Text>
@@ -143,6 +172,7 @@ const styles = StyleSheet.create({
     ...FONTS.h4Bold,
     color: COLORS.white,
     marginTop: SIZES.padding2 * 5 + 2,
+    paddingLeft: SIZES.padding,
   },
   cardNote: {
     position: "absolute",

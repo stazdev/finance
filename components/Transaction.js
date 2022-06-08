@@ -6,7 +6,8 @@ import {
   SafeAreaView,
   StyleSheet,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ThemeContext } from "../context-store/context";
 import { COLORS, SIZES, FONTS } from "../constants";
 
 import { Button } from "../components";
@@ -85,6 +86,7 @@ const data = [
   },
 ];
 const Transaction = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
   const [status, setStatus] = useState("All");
   const [dataList, setDataList] = useState(data);
   const setStatusFilter = (status) => {
@@ -120,14 +122,29 @@ const Transaction = ({ navigation }) => {
             onPress={() => navigation.replace("Receipt", { item })}
           >
             <Text style={styles.text}>{item.narration}</Text>
-            <Text style={styles.time}>{item.time}</Text>
+            <Text
+              style={[
+                styles.time,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              {item.time}
+            </Text>
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row", alignContent: "center" }}>
           {/* <View style={{ width: 5, height: 5 }}>
             <Naira fill={"white"} />
           </View> */}
-          <Text style={styles.amount}> {item.amount} </Text>
+          <Text
+            style={[
+              styles.amount,
+              { color: theme === "light" ? COLORS.dark : COLORS.white },
+            ]}
+          >
+            {" "}
+            {item.amount}{" "}
+          </Text>
         </View>
       </View>
     );
@@ -142,7 +159,7 @@ const Transaction = ({ navigation }) => {
           paddingHorizontal: SIZES.padding * 4.3,
         }}
         containerStyle={{
-          backgroundColor: "black",
+          backgroundColor: COLORS.greyDark,
           borderColor: COLORS.white,
           borderRadius: SIZES.radius,
           borderWidth: 1,
@@ -153,14 +170,39 @@ const Transaction = ({ navigation }) => {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.listTab}>
+      <View
+        style={[
+          styles.listTab,
+          { borderColor: theme === "light" ? COLORS.dark : COLORS.greyLight },
+        ]}
+      >
         {listTab.map((list) => (
           <TouchableOpacity
             key={list.id}
             style={[styles.btnTab, status === list.status && styles.tabActive]}
             onPress={() => setStatusFilter(list.status)}
           >
-            <Text style={styles.text}> {list.status} </Text>
+            {status === list.status ? (
+              <Text
+                style={[
+                  styles.text,
+                  { color: theme === "light" ? COLORS.white : COLORS.white },
+                ]}
+              >
+                {" "}
+                {list.status}{" "}
+              </Text>
+            ) : (
+              <Text
+                style={[
+                  styles.text,
+                  { color: theme === "light" ? COLORS.dark : COLORS.white },
+                ]}
+              >
+                {" "}
+                {list.status}{" "}
+              </Text>
+            )}
           </TouchableOpacity>
         ))}
       </View>
@@ -178,6 +220,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    paddingHorizontal: SIZES.padding,
   },
 
   listTab: {
@@ -185,8 +228,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginVertical: SIZES.padding * 1.4,
     borderWidth: 1,
-    borderColor: COLORS.greyLight,
-    borderRadius: SIZES.radius,
+    borderRadius: SIZES.padding,
   },
 
   btnTab: {
@@ -197,10 +239,9 @@ const styles = StyleSheet.create({
   },
 
   tabActive: {
-    backgroundColor: "#000000",
+    backgroundColor: COLORS.greyDark,
     borderWidth: 1,
-    borderColor: COLORS.white,
-    borderRadius: SIZES.radius,
+    borderRadius: SIZES.padding,
   },
   itemContainer: {
     flexDirection: "row",
@@ -211,18 +252,15 @@ const styles = StyleSheet.create({
 
   text: {
     ...FONTS.fbody2,
-    color: COLORS.white,
   },
   time: {
     ...FONTS.fbody2,
     fontSize: 10,
     lineHeight: 12.3,
-    color: COLORS.white,
   },
   amount: {
     ...FONTS.fbody2,
     fontSize: 12.8,
-    color: COLORS.white,
   },
   dot: {
     width: 20,

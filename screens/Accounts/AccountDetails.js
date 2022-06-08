@@ -9,8 +9,8 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import * as Clipboard from "expo-clipboard";
-import React, { useState } from "react";
-
+import React, { useState, useContext } from "react";
+import { ThemeContext } from "../../context-store/context";
 import { COLORS, FONTS, SIZES, icons, images } from "../../constants";
 import { Button, CustomModal } from "../../components";
 import { Transaction } from "../../components";
@@ -29,6 +29,7 @@ const AccountDetails = ({ navigation, route }) => {
   const [modalVisibility, setModalVisibility] = useState(false);
   const [pop, setPop] = useState(false);
   const [autosplit, setAutosplit] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   const copyToClipboard = async () => {
     Clipboard.setString("2022131245");
@@ -44,7 +45,7 @@ const AccountDetails = ({ navigation, route }) => {
         >
           <ChevronLeft />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity style={{ paddingRight: SIZES.padding }}>
           <Info />
         </TouchableOpacity>
       </View>
@@ -57,7 +58,7 @@ const AccountDetails = ({ navigation, route }) => {
         <View>
           <Text
             style={{
-              color: COLORS.white,
+              color: theme === "light" ? COLORS.dark : COLORS.white,
               ...FONTS.h4Bold,
               paddingVertical: SIZES.padding,
             }}
@@ -73,10 +74,23 @@ const AccountDetails = ({ navigation, route }) => {
             alignItems: "center",
           }}
         >
-          <Naira fill={item.color} />
+          <Naira
+            fill={
+              theme === "light"
+                ? item.id === 1
+                  ? COLORS.business
+                  : item.color
+                : item.color
+            }
+          />
           <Text
             style={{
-              color: item.color,
+              color:
+                theme === "light"
+                  ? item.id === 1
+                    ? COLORS.business
+                    : item.color
+                  : item.color,
               ...FONTS.fh3,
               marginLeft: SIZES.base / 2,
             }}
@@ -88,7 +102,7 @@ const AccountDetails = ({ navigation, route }) => {
         <View>
           <Text
             style={{
-              color: COLORS.white,
+              color: theme === "light" ? COLORS.dark : COLORS.white,
               ...FONTS.fbody2,
               fontSize: 11,
               lineHeight: 13.5,
@@ -113,7 +127,7 @@ const AccountDetails = ({ navigation, route }) => {
             <Copy />
             <Text
               style={{
-                color: COLORS.white,
+                color: theme === "light" ? COLORS.dark : COLORS.white,
                 ...FONTS.fbody2,
                 fontSize: 12.5,
                 marginLeft: SIZES.base,
@@ -142,7 +156,7 @@ const AccountDetails = ({ navigation, route }) => {
               borderRadius: SIZES.base,
             }}
             labelStyle={{
-              color: COLORS.greyDark,
+              color: theme === "light" ? COLORS.white : COLORS.dark,
               ...FONTS.body2bold,
             }}
           />
@@ -156,10 +170,15 @@ const AccountDetails = ({ navigation, route }) => {
               paddingVertical: SIZES.padding * 1.3,
               borderRadius: SIZES.base,
               borderWidth: 1,
-              borderColor: COLORS.white,
+              borderColor:
+                theme === "light"
+                  ? item.id === 1
+                    ? COLORS.business
+                    : item.color
+                  : COLORS.white,
             }}
             labelStyle={{
-              color: COLORS.white,
+              color: theme === "light" ? COLORS.dark : COLORS.white,
               ...FONTS.body2bold,
             }}
           />
@@ -215,6 +234,7 @@ const AccountDetails = ({ navigation, route }) => {
             borderBottomWidth: 1,
             borderBottomColor: COLORS.greyMedium,
             paddingBottom: SIZES.padding / 2,
+            marginHorizontal: SIZES.padding,
           }}
         >
           Recent Transaction
@@ -378,8 +398,7 @@ const AccountDetails = ({ navigation, route }) => {
   return (
     <SafeAreaView
       style={{
-        paddingTop: StatusBar.currentHeight * 0.2,
-        paddingHorizontal: SIZES.padding,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
       }}
     >
       <StatusBar backgroundColor={COLORS.dark} barStyle={"light-content"} />
@@ -398,10 +417,10 @@ export default AccountDetails;
 
 const styles = StyleSheet.create({
   head: {
-    marginHorizontal: SIZES.padding,
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingBottom: SIZES.padding,
+    alignItems: "center",
+    paddingVertical: SIZES.padding,
   },
   detailStyle: {
     justifyContent: "center",

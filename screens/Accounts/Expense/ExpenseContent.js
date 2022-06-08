@@ -9,7 +9,7 @@ import { ChevronRight } from "../../../assets/icons";
 const ExpenseContent = () => {
   const navigation = useNavigation();
   return (
-    <View>
+    <View style={{ paddingHorizontal: SIZES.padding }}>
       <View>
         <TouchableOpacity
           activeOpacity={0.7}

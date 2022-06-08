@@ -17,6 +17,9 @@ import { DropDown, Eye, EyeClose, Thumb } from "../../../assets/icons";
 const Login = ({ navigation }) => {
   const [inputType, setInputType] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -65,6 +68,8 @@ const Login = ({ navigation }) => {
                 ...FONTS.body3,
                 paddingBottom: 3,
               }}
+              onChangeText={(number) => setPhoneNumber(number)}
+              defaultValue={phoneNumber}
               keyboardType="numeric"
               maxLength={10}
               placeholder="903 401 2507"
@@ -89,6 +94,8 @@ const Login = ({ navigation }) => {
                 ...FONTS.body3,
                 paddingBottom: 3,
               }}
+              onChangeText={(email) => setEmailAddress(email)}
+              defaultValue={emailAddress}
               placeholder="Oluwasholatemitayo@gmail.com"
               placeholderTextColor="lightgrey"
               selectionColor={COLORS.white}
@@ -138,6 +145,8 @@ const Login = ({ navigation }) => {
               ...FONTS.body3,
               paddingBottom: 3,
             }}
+            onChangeText={(number) => setPassword(number)}
+            defaultValue={password}
             placeholder="Enter your password"
             placeholderTextColor="lightgrey"
             selectionColor={COLORS.white}

@@ -7,12 +7,14 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { COLORS, FONTS, SIZES, icons, images } from "../../constants";
 import { ChevronLeft } from "../../assets/icons";
+import { ThemeContext } from "../../context-store/context";
 
 const Receipt = ({ navigation, route }) => {
   const { item } = route.params;
+  const { theme } = useContext(ThemeContext);
 
   function renderHeader() {
     return (
@@ -23,7 +25,14 @@ const Receipt = ({ navigation, route }) => {
         >
           <ChevronLeft />
         </TouchableOpacity>
-        <Text style={styles.title}>Receipt</Text>
+        <Text
+          style={[
+            styles.title,
+            { color: theme === "light" ? COLORS.dark : COLORS.white },
+          ]}
+        >
+          Receipt
+        </Text>
         <TouchableOpacity style={styles.shareBtn}>
           <Text style={styles.btnText}>Share</Text>
         </TouchableOpacity>
@@ -34,71 +43,194 @@ const Receipt = ({ navigation, route }) => {
   function renderDate() {
     return (
       <View style={styles.time}>
-        <Text style={styles.timeText}> {item.time} </Text>
+        <Text
+          style={[
+            styles.timeText,
+            { color: theme === "light" ? COLORS.dark : COLORS.white },
+          ]}
+        >
+          {" "}
+          {item.time}{" "}
+        </Text>
       </View>
     );
   }
   function renderDetail() {
     return (
       <>
-        <View style={styles.divider}>
-          <Text style={styles.amount}> {item.amount} </Text>
-          <Text style={styles.name}>
+        <View
+          style={[
+            styles.divider,
+            {
+              borderBottomColor:
+                theme === "light" ? COLORS.dark : COLORS.greyLight,
+            },
+          ]}
+        >
+          <Text
+            style={[
+              styles.amount,
+              { color: theme === "light" ? COLORS.dark : COLORS.white },
+            ]}
+          >
+            {" "}
+            {item.amount}{" "}
+          </Text>
+          <Text
+            style={[
+              styles.name,
+              { color: theme === "light" ? COLORS.dark : COLORS.white },
+            ]}
+          >
             {" "}
             {item.status === "Credit" ? item.from : item.beneficiary}{" "}
           </Text>
         </View>
 
-        <View style={styles.divider}>
+        <View
+          style={[
+            styles.divider,
+            {
+              borderBottomColor:
+                theme === "light" ? COLORS.dark : COLORS.greyLight,
+            },
+          ]}
+        >
           {item.status === "Credit" ? (
             <View>
               <View>
-                <Text style={[styles.name, { paddingBottom: SIZES.padding2 }]}>
+                <Text
+                  style={[
+                    styles.name,
+                    {
+                      paddingBottom: SIZES.padding2,
+                      color: theme === "light" ? COLORS.dark : COLORS.white,
+                    },
+                  ]}
+                >
                   From
                 </Text>
               </View>
               <View style={{ marginLeft: -8 }}>
-                <Text style={styles.subName}> {item.bank} </Text>
+                <Text
+                  style={[
+                    styles.subName,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  {" "}
+                  {item.bank}{" "}
+                </Text>
               </View>
             </View>
           ) : (
             <View>
               <View>
-                <Text style={[styles.name, { paddingBottom: SIZES.padding2 }]}>
+                <Text
+                  style={[
+                    styles.name,
+                    {
+                      paddingBottom: SIZES.padding2,
+                      color: theme === "light" ? COLORS.dark : COLORS.white,
+                    },
+                  ]}
+                >
                   To
                 </Text>
               </View>
               <View style={{ marginLeft: -8 }}>
-                <Text style={styles.subName}> {item.bank} </Text>
+                <Text
+                  style={[
+                    styles.subName,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  {" "}
+                  {item.bank}{" "}
+                </Text>
               </View>
             </View>
           )}
         </View>
 
-        <View style={styles.divider}>
+        <View
+          style={[
+            styles.divider,
+            {
+              borderBottomColor:
+                theme === "light" ? COLORS.dark : COLORS.greyLight,
+            },
+          ]}
+        >
           <View>
-            <Text style={[styles.name, { paddingBottom: SIZES.padding2 }]}>
+            <Text
+              style={[
+                styles.name,
+                {
+                  paddingBottom: SIZES.padding2,
+                  color: theme === "light" ? COLORS.dark : COLORS.white,
+                },
+              ]}
+            >
               Action
             </Text>
           </View>
           <View>
             {item.status === "Credit" ? (
-              <Text style={styles.subName}>Money Received</Text>
+              <Text
+                style={[
+                  styles.subName,
+                  { color: theme === "light" ? COLORS.dark : COLORS.white },
+                ]}
+              >
+                Money Received
+              </Text>
             ) : (
-              <Text style={styles.subName}>Money Sent</Text>
+              <Text
+                style={[
+                  styles.subName,
+                  { color: theme === "light" ? COLORS.dark : COLORS.white },
+                ]}
+              >
+                Money Sent
+              </Text>
             )}
           </View>
         </View>
 
-        <View style={styles.divider}>
+        <View
+          style={[
+            styles.divider,
+            {
+              borderBottomColor:
+                theme === "light" ? COLORS.dark : COLORS.greyLight,
+            },
+          ]}
+        >
           <View>
-            <Text style={[styles.name, { paddingBottom: SIZES.padding2 }]}>
+            <Text
+              style={[
+                styles.name,
+                {
+                  paddingBottom: SIZES.padding2,
+                  color: theme === "light" ? COLORS.dark : COLORS.white,
+                },
+              ]}
+            >
               {" "}
               Description{" "}
             </Text>
           </View>
           <View>
-            <Text style={styles.subName}> {item.description} </Text>
+            <Text
+              style={[
+                styles.subName,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              {" "}
+              {item.description}{" "}
+            </Text>
           </View>
         </View>
       </>
@@ -143,7 +275,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    color: COLORS.white,
     ...FONTS.h4Bold,
   },
   shareBtn: {
@@ -162,26 +293,21 @@ const styles = StyleSheet.create({
     marginVertical: SIZES.padding2 * 5,
   },
   timeText: {
-    color: COLORS.white,
     ...FONTS.fbody1,
   },
 
   divider: {
     paddingVertical: SIZES.padding * 1.3,
     borderBottomWidth: 0.5,
-    borderBottomColor: COLORS.greyLight,
   },
 
   amount: {
     ...FONTS.fh3,
-    color: COLORS.white,
   },
   name: {
     ...FONTS.h4Bold,
-    color: COLORS.white,
   },
   subName: {
     ...FONTS.fh4,
-    color: COLORS.white,
   },
 });

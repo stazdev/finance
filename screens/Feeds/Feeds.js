@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../context-store/context";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
 import { LongArrowRight } from "../../assets/icons";
 
@@ -24,10 +25,12 @@ const datas = [
 ];
 
 const Feeds = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <SafeAreaView
       style={{
-        paddingTop: StatusBar.currentHeight * 0.2,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
         flex: 1,
       }}
     >
@@ -35,9 +38,17 @@ const Feeds = () => {
         style={{
           borderBottomColor: COLORS.white,
           borderBottomWidth: 0.25,
+          paddingVertical: SIZES.padding,
         }}
       >
-        <Text style={styles.headerText}>FEEDS</Text>
+        <Text
+          style={[
+            styles.headerText,
+            { color: theme === "light" ? COLORS.dark : COLORS.white },
+          ]}
+        >
+          FEEDS
+        </Text>
       </View>
 
       <ScrollView
@@ -50,7 +61,14 @@ const Feeds = () => {
               marginTop: SIZES.padding * 4.3,
             }}
           >
-            <Text style={styles.sectionHead}>Creative Chaos News</Text>
+            <Text
+              style={[
+                styles.sectionHead,
+                { color: theme === "light" ? COLORS.primary : COLORS.white },
+              ]}
+            >
+              Creative Chaos News
+            </Text>
           </View>
           {datas.map((item, index) => (
             <View style={styles.card} key={index}>
@@ -72,7 +90,14 @@ const Feeds = () => {
               marginTop: SIZES.padding * 4.3,
             }}
           >
-            <Text style={styles.sectionHead}>Financial Market News</Text>
+            <Text
+              style={[
+                styles.sectionHead,
+                { color: theme === "light" ? COLORS.primary : COLORS.white },
+              ]}
+            >
+              Financial Market News
+            </Text>
           </View>
           {datas.map((item, index) => (
             <View style={styles.card} key={index}>
@@ -94,7 +119,14 @@ const Feeds = () => {
               marginTop: SIZES.padding * 4.3,
             }}
           >
-            <Text style={styles.sectionHead}>Tech News</Text>
+            <Text
+              style={[
+                styles.sectionHead,
+                { color: theme === "light" ? COLORS.primary : COLORS.white },
+              ]}
+            >
+              Tech News
+            </Text>
           </View>
           {datas.map((item, index) => (
             <View style={styles.card} key={index}>
@@ -128,13 +160,11 @@ export default Feeds;
 const styles = StyleSheet.create({
   headerText: {
     ...FONTS.fbody1,
-    color: COLORS.white,
-    marginLeft: SIZES.padding * 2.1,
-    marginBottom: SIZES.padding,
+    paddingLeft: SIZES.padding * 2.1,
+    paddingVertical: SIZES.padding,
   },
   sectionHead: {
     ...FONTS.h4Bold,
-    color: COLORS.white,
     marginBottom: SIZES.padding * 0.7,
   },
   card: {

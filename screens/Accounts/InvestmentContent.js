@@ -195,7 +195,7 @@ const InvestmentContent = () => {
   );
 
   return (
-    <View>
+    <View style={{ paddingHorizontal: SIZES.padding }}>
       <View style={styles.investmentBanner}>
         <Text style={styles.bannerHead}>Join other Billonaires</Text>
         <Text style={styles.bannerDescription}>

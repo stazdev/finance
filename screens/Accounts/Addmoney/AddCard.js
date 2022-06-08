@@ -10,7 +10,7 @@ import React from "react";
 import { ChevronLeft, DebitCard } from "../../../assets/icons";
 import { COLORS, FONTS, SIZES } from "../../../constants";
 
-const AddCard = () => {
+const AddCard = ({ navigation }) => {
   return (
     <SafeAreaView
       style={{

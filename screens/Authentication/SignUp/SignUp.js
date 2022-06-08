@@ -18,6 +18,10 @@ import { DropDown, Eye, EyeClose } from "../../../assets/icons";
 const SignUp = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -65,6 +69,8 @@ const SignUp = ({ navigation }) => {
               ...FONTS.body3,
               paddingBottom: 3,
             }}
+            onChangeText={(number) => setPhoneNumber(number)}
+            defaultValue={phoneNumber}
             keyboardType="numeric"
             maxLength={10}
             placeholder="903 401 2507"
@@ -88,6 +94,8 @@ const SignUp = ({ navigation }) => {
               ...FONTS.body3,
               paddingBottom: 3,
             }}
+            onChangeText={(email) => setEmailAddress(email)}
+            defaultValue={emailAddress}
             placeholder="Oluwasholatemitayo@gmail.com"
             placeholderTextColor="lightgrey"
             selectionColor={COLORS.white}
@@ -111,6 +119,8 @@ const SignUp = ({ navigation }) => {
               ...FONTS.body3,
               paddingBottom: 3,
             }}
+            onChangeText={(number) => setPassword(number)}
+            defaultValue={password}
             placeholder="Enter your password"
             placeholderTextColor="lightgrey"
             selectionColor={COLORS.white}
@@ -147,6 +157,8 @@ const SignUp = ({ navigation }) => {
               ...FONTS.body3,
               paddingBottom: 3,
             }}
+            onChangeText={(number) => setPassword2(number)}
+            defaultValue={password2}
             placeholder="Re - enter password"
             placeholderTextColor="lightgrey"
             selectionColor={COLORS.white}

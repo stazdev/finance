@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ThemeContext } from "../../context-store/context";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
 import {
   ChevronLeft,
@@ -25,21 +26,38 @@ const Profile = ({ navigation }) => {
   const [toggle, setToggle] = useState(true);
   const [toggle1, setToggle1] = useState(true);
   const [profileModal, setProfileModal] = useState(false);
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  const handleThemeChange = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
   function renderHeader() {
     return (
-      <View style={[styles.header, { marginBottom: SIZES.padding }]}>
+      <View style={styles.header}>
         <TouchableOpacity activeOpacity={0.7}>
           <Notification />
         </TouchableOpacity>
         <View>
-          <Text style={styles.headerText}>Accounts</Text>
+          <Text
+            style={theme == "dark" ? styles.headerText : styles.headerTextDark}
+          >
+            Accounts
+          </Text>
         </View>
         <TouchableOpacity
           activeOpacity={0.7}
           style={{ flexDirection: "row", alignItems: "center" }}
           onPress={() => navigation.replace("SignUp")}
         >
-          <Text style={styles.logoutText}>Log out</Text>
+          <Text
+            style={[
+              styles.logoutText,
+              { color: theme === "light" ? COLORS.dark : COLORS.white },
+            ]}
+          >
+            Log out
+          </Text>
           <LogOut />
         </TouchableOpacity>
       </View>
@@ -53,7 +71,14 @@ const Profile = ({ navigation }) => {
           <Image source={images.user} />
         </View>
         <View style={{ marginLeft: SIZES.padding * 3.4 }}>
-          <Text style={styles.headerText}>Ogechi Desmond</Text>
+          <Text
+            style={[
+              styles.headerText,
+              { color: theme === "light" ? COLORS.dark : COLORS.white },
+            ]}
+          >
+            Ogechi Desmond
+          </Text>
           <Button
             label={"Edit profile"}
             labelStyle={{
@@ -79,9 +104,16 @@ const Profile = ({ navigation }) => {
   function renderAuth() {
     return (
       <View style={{ marginVertical: SIZES.padding2 * 2 }}>
-        <View style={[styles.header, { marginBottom: SIZES.padding * 2 }]}>
+        <View style={[styles.header, { marginBottom: SIZES.padding }]}>
           <View>
-            <Text style={styles.authText}>Enable Pin</Text>
+            <Text
+              style={[
+                styles.authText,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              Enable Pin
+            </Text>
           </View>
           <TouchableOpacity
             activeOpacity={0.7}
@@ -93,7 +125,14 @@ const Profile = ({ navigation }) => {
 
         <View style={styles.header}>
           <View>
-            <Text style={styles.authText}>Enable Fingerprint/Face ID </Text>
+            <Text
+              style={[
+                styles.authText,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              Enable Fingerprint/Face ID{" "}
+            </Text>
           </View>
           <TouchableOpacity
             activeOpacity={0.7}
@@ -135,19 +174,33 @@ const Profile = ({ navigation }) => {
       <View>
         <View>
           <View style={styles.optionHead}>
-            <Text style={styles.optionHeadText}>ACCOUNT</Text>
+            <Text
+              style={[
+                styles.optionHeadText,
+                { color: theme === "light" ? COLORS.primary : COLORS.white },
+              ]}
+            >
+              ACCOUNT
+            </Text>
           </View>
           <View
             style={{
               borderBottomWidth: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor: theme === "light" ? COLORS.dark : COLORS.white,
             }}
           >
             <TouchableOpacity
               style={styles.header}
               onPress={() => navigation.navigate("KycInfo")}
             >
-              <Text style={styles.optionText}>KYC Infomation</Text>
+              <Text
+                style={[
+                  styles.optionText,
+                  { color: theme === "light" ? COLORS.dark : COLORS.greyLight },
+                ]}
+              >
+                KYC Infomation
+              </Text>
               <ChevronRight />
             </TouchableOpacity>
           </View>
@@ -155,11 +208,18 @@ const Profile = ({ navigation }) => {
           <View
             style={{
               borderBottomWidth: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor: theme === "light" ? COLORS.dark : COLORS.white,
             }}
           >
             <TouchableOpacity style={styles.header}>
-              <Text style={styles.optionText}>Card &amp; Bank settings</Text>
+              <Text
+                style={[
+                  styles.optionText,
+                  { color: theme === "light" ? COLORS.dark : COLORS.greyLight },
+                ]}
+              >
+                Card &amp; Bank settings
+              </Text>
               <ChevronRight />
             </TouchableOpacity>
           </View>
@@ -167,11 +227,18 @@ const Profile = ({ navigation }) => {
           <View
             style={{
               borderBottomWidth: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor: theme === "light" ? COLORS.dark : COLORS.white,
             }}
           >
             <TouchableOpacity style={styles.header}>
-              <Text style={styles.optionText}>My 5QM ID</Text>
+              <Text
+                style={[
+                  styles.optionText,
+                  { color: theme === "light" ? COLORS.dark : COLORS.greyLight },
+                ]}
+              >
+                My 5QM ID
+              </Text>
               <ChevronRight />
             </TouchableOpacity>
           </View>
@@ -179,11 +246,18 @@ const Profile = ({ navigation }) => {
           <View
             style={{
               borderBottomWidth: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor: theme === "light" ? COLORS.dark : COLORS.white,
             }}
           >
             <TouchableOpacity style={styles.header}>
-              <Text style={styles.optionText}>Affiliate &amp; Referrals</Text>
+              <Text
+                style={[
+                  styles.optionText,
+                  { color: theme === "light" ? COLORS.dark : COLORS.greyLight },
+                ]}
+              >
+                Affiliate &amp; Referrals
+              </Text>
               <ChevronRight />
             </TouchableOpacity>
           </View>
@@ -191,27 +265,49 @@ const Profile = ({ navigation }) => {
 
         <View>
           <View style={styles.optionHead}>
-            <Text style={styles.optionHeadText}>SECURITY</Text>
+            <Text
+              style={[
+                styles.optionHeadText,
+                { color: theme === "light" ? COLORS.primary : COLORS.white },
+              ]}
+            >
+              SECURITY
+            </Text>
           </View>
           <View
             style={{
               borderBottomWidth: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor: theme === "light" ? COLORS.dark : COLORS.white,
             }}
           >
             <TouchableOpacity style={styles.header}>
-              <Text style={styles.optionText}>Change 5QM password</Text>
+              <Text
+                style={[
+                  styles.optionText,
+                  { color: theme === "light" ? COLORS.dark : COLORS.greyLight },
+                ]}
+              >
+                Change 5QM password
+              </Text>
               <ChevronRight />
             </TouchableOpacity>
           </View>
+
           <View
             style={{
               borderBottomWidth: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor: theme === "light" ? COLORS.dark : COLORS.white,
             }}
           >
             <TouchableOpacity style={styles.header}>
-              <Text style={styles.optionText}>Change Transfer pin</Text>
+              <Text
+                style={[
+                  styles.optionText,
+                  { color: theme === "light" ? COLORS.dark : COLORS.greyLight },
+                ]}
+              >
+                Change Transfer pin
+              </Text>
               <ChevronRight />
             </TouchableOpacity>
           </View>
@@ -219,38 +315,66 @@ const Profile = ({ navigation }) => {
 
         <View>
           <View style={styles.optionHead}>
-            <Text style={styles.optionHeadText}>5QM</Text>
+            <Text
+              style={[
+                styles.optionHeadText,
+                { color: theme === "light" ? COLORS.primary : COLORS.white },
+              ]}
+            >
+              5QM
+            </Text>
           </View>
           <View
             style={{
               borderBottomWidth: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor: theme === "light" ? COLORS.dark : COLORS.white,
             }}
           >
             <TouchableOpacity style={styles.header}>
-              <Text style={styles.optionText}>KYC Infomation</Text>
+              <Text
+                style={[
+                  styles.optionText,
+                  { color: theme === "light" ? COLORS.dark : COLORS.greyLight },
+                ]}
+              >
+                KYC Infomation
+              </Text>
               <ChevronRight />
             </TouchableOpacity>
           </View>
           <View
             style={{
               borderBottomWidth: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor: theme === "light" ? COLORS.dark : COLORS.white,
             }}
           >
             <TouchableOpacity style={styles.header}>
-              <Text style={styles.optionText}>Card &amp; Bank settings</Text>
+              <Text
+                style={[
+                  styles.optionText,
+                  { color: theme === "light" ? COLORS.dark : COLORS.greyLight },
+                ]}
+              >
+                Card &amp; Bank settings
+              </Text>
               <ChevronRight />
             </TouchableOpacity>
           </View>
           <View
             style={{
               borderBottomWidth: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor: theme === "light" ? COLORS.dark : COLORS.white,
             }}
           >
             <TouchableOpacity style={styles.header}>
-              <Text style={styles.optionText}>Affiliate &amp; Referrals</Text>
+              <Text
+                style={[
+                  styles.optionText,
+                  { color: theme === "light" ? COLORS.dark : COLORS.greyLight },
+                ]}
+              >
+                Affiliate &amp; Referrals
+              </Text>
               <ChevronRight />
             </TouchableOpacity>
           </View>
@@ -375,14 +499,18 @@ const Profile = ({ navigation }) => {
   return (
     <SafeAreaView
       style={{
-        paddingTop: StatusBar.currentHeight * 0.2,
-        marginHorizontal: SIZES.padding * 1.5,
-        flex: 1,
+        paddingHorizontal: SIZES.padding,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
       }}
     >
       {renderHeader()}
       <ScrollView showsVerticalScrollIndicator={false}>
         {renderUser()}
+        <Button
+          label={"Change mode"}
+          labelStyle={{ color: "white" }}
+          onPress={handleThemeChange}
+        />
         {renderAuth()}
         {renderBanner()}
         {renderOptions()}
@@ -402,6 +530,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    paddingVertical: SIZES.padding,
   },
 
   headerText: {
@@ -409,8 +538,12 @@ const styles = StyleSheet.create({
     ...FONTS.h4Bold,
   },
 
+  headerTextDark: {
+    color: COLORS.dark,
+    ...FONTS.h4Bold,
+  },
+
   logoutText: {
-    color: COLORS.white,
     ...FONTS.body1bold,
     marginRight: SIZES.padding,
   },
@@ -435,13 +568,11 @@ const styles = StyleSheet.create({
 
   optionHeadText: {
     ...FONTS.h4Bold,
-    color: COLORS.white,
   },
 
   optionText: {
     ...FONTS.fbody2,
-    color: COLORS.greyLight,
-    paddingVertical: SIZES.padding * 1,
+    paddingVertical: SIZES.padding * 0.4,
   },
 
   items: {
