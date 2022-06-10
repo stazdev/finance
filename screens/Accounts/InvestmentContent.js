@@ -7,8 +7,8 @@ import {
   FlatList,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
-
+import React, { useContext } from "react";
+import { ThemeContext } from "../../context-store/context";
 import { COLORS, SIZES, FONTS, images } from "../../constants";
 import { Button } from "../../components";
 import { LongArrowDark, LongArrowRight } from "../../assets/icons";
@@ -64,6 +64,8 @@ const maturedInvestments = [
 const InvestmentContent = () => {
   const navigation = useNavigation();
   const [tab, setTab] = React.useState("Portfolio");
+  const { theme } = useContext(ThemeContext);
+
   const renderMatured = ({ item }) => (
     <View
       style={{
@@ -229,7 +231,15 @@ const InvestmentContent = () => {
             style={[tab === list.tab]}
             onPress={() => setTab(list.tab)}
           >
-            <Text style={styles.text}> {list.tab} </Text>
+            <Text
+              style={[
+                styles.text,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              {" "}
+              {list.tab}{" "}
+            </Text>
             {tab === list.tab && <View style={styles.tabActive} />}
           </TouchableOpacity>
         ))}
@@ -237,7 +247,14 @@ const InvestmentContent = () => {
       <View>
         {tab == "Portfolio" ? (
           <View>
-            <Text style={styles.title}>My Portfolio</Text>
+            <Text
+              style={[
+                styles.title,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              My Portfolio
+            </Text>
             <View
               style={{
                 flexDirection: "row",
@@ -246,16 +263,49 @@ const InvestmentContent = () => {
                 marginVertical: SIZES.padding * 2,
               }}
             >
-              <View style={styles.investmentCardContainer}>
-                <Text style={styles.investmentHead}>Net Worth</Text>
+              <View
+                style={[
+                  styles.investmentCardContainer,
+                  {
+                    borderColor: theme === "light" ? COLORS.dark : COLORS.white,
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.investmentHead,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  Net Worth
+                </Text>
                 <Text style={{ color: COLORS.investment, ...FONTS.fh4 }}>
                   100,000
                 </Text>
               </View>
               <View style={{ width: SIZES.padding2 }} />
-              <View style={styles.investmentCardContainer}>
-                <Text style={styles.investmentHead}>Active Investments</Text>
-                <Text style={{ color: COLORS.white, ...FONTS.fh4 }}>
+              <View
+                style={[
+                  styles.investmentCardContainer,
+                  {
+                    borderColor: theme === "light" ? COLORS.dark : COLORS.white,
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.investmentHead,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  Active Investments
+                </Text>
+                <Text
+                  style={{
+                    color: theme === "light" ? COLORS.dark : COLORS.white,
+                    ...FONTS.fh4,
+                  }}
+                >
                   {investments.length}
                 </Text>
               </View>

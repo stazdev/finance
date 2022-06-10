@@ -8,8 +8,8 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
-
+import React, { useContext } from "react";
+import { ThemeContext } from "../../context-store/context";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
 import { Button } from "../../components";
 import { ChevronLeft, SearchIcon } from "../../assets/icons";
@@ -114,6 +114,8 @@ const explore = [
 ];
 
 const ExploreInvestment = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
+
   function renderHeader() {
     return (
       <View style={styles.header}>
@@ -130,7 +132,15 @@ const ExploreInvestment = ({ navigation }) => {
 
   function renderSearch() {
     return (
-      <View style={styles.search}>
+      <View
+        style={[
+          styles.search,
+          {
+            borderBottomColor:
+              theme === "light" ? COLORS.dark : COLORS.greyLight,
+          },
+        ]}
+      >
         <SearchIcon />
         <TextInput
           style={{
@@ -166,7 +176,7 @@ const ExploreInvestment = ({ navigation }) => {
               source={item.image}
               key={item.id}
               style={{
-                width: 160,
+                width: 167,
                 height: 92,
                 borderTopLeftRadius: SIZES.padding,
                 borderTopRightRadius: SIZES.padding,
@@ -178,7 +188,7 @@ const ExploreInvestment = ({ navigation }) => {
                 borderBottomLeftRadius: SIZES.padding,
                 borderBottomRightRadius: SIZES.padding,
                 padding: SIZES.padding,
-                width: 160,
+                width: 167,
               }}
             >
               <View>
@@ -231,7 +241,11 @@ const ExploreInvestment = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={{
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
+      }}
+    >
       {renderHeader()}
       {renderSearch()}
       {renderExplore()}
@@ -245,6 +259,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
+    paddingVertical: SIZES.padding,
   },
   headerText: {
     color: COLORS.white,
@@ -255,10 +270,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    borderWidth: 0.5,
+    borderBottomWidth: 0.5,
     borderBottomColor: COLORS.greyLight,
     padding: SIZES.base,
     marginHorizontal: SIZES.padding,
+    marginBottom: 5,
   },
   text: {
     ...FONTS.fbody1,

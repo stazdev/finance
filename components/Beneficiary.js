@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../context-store/context";
 
 import { COLORS, SIZES, FONTS, icons } from "../constants";
 import { Delete } from "../assets/icons";
@@ -38,6 +39,7 @@ const beneficiaries = [
 
 const Beneficiary = () => {
   const [list, setList] = React.useState(beneficiaries);
+  const { theme } = useContext(ThemeContext);
 
   function handleRemove(id) {
     console.log(id);
@@ -47,8 +49,20 @@ const Beneficiary = () => {
     return beneficiaries.map((beneficiary) => (
       <View key={beneficiary.id} style={styles.benefitCard}>
         <View>
-          <Text style={styles.beneficiaryName}>{beneficiary.name} </Text>
-          <Text style={styles.accountDetail}>
+          <Text
+            style={[
+              styles.beneficiaryName,
+              { color: theme === "light" ? COLORS.dark : COLORS.greyLight },
+            ]}
+          >
+            {beneficiary.name}{" "}
+          </Text>
+          <Text
+            style={[
+              styles.accountDetail,
+              { color: theme === "light" ? COLORS.dark : COLORS.greyMedium },
+            ]}
+          >
             {beneficiary.bank} - {beneficiary.account_number}
           </Text>
         </View>
@@ -77,7 +91,6 @@ const styles = StyleSheet.create({
     marginVertical: SIZES.padding / 2,
   },
   beneficiaryName: {
-    color: COLORS.greyLight,
     ...FONTS.h4Bold,
   },
   accountDetail: {

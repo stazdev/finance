@@ -8,7 +8,8 @@ import {
   ScrollView,
   TextInput,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../../context-store/context";
 import { COLORS, FONTS, SIZES, images } from "../../constants";
 import {
   ChevronDown,
@@ -35,6 +36,7 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
   const [sourceModal, setSourceModal] = useState(false);
   const [toggle, setToggle] = useState(true);
   const [selected, setSelected] = useState(1);
+  const { theme } = useContext(ThemeContext);
 
   function renderHeader() {
     return (
@@ -45,7 +47,14 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
         >
           <ChevronLeft />
         </TouchableOpacity>
-        <Text style={styles.headerText}>{item.title}</Text>
+        <Text
+          style={[
+            styles.headerText,
+            { color: theme === "light" ? COLORS.dark : COLORS.white },
+          ]}
+        >
+          {item.title}
+        </Text>
       </View>
     );
   }
@@ -87,7 +96,12 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
             <Text
               style={[
                 styles.text,
-                { ...FONTS.h4Bold, fontSize: 14.5, fontWeight: "700" },
+                {
+                  ...FONTS.h4Bold,
+                  fontSize: 14.5,
+                  fontWeight: "700",
+                  color: theme === "light" ? COLORS.dark : COLORS.white,
+                },
               ]}
             >
               Cost/unit
@@ -112,6 +126,7 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
                 fontSize: 14.5,
                 fontWeight: "700",
                 paddingVertical: SIZES.padding2,
+                color: theme === "light" ? COLORS.dark : COLORS.white,
               },
             ]}
           >
@@ -125,6 +140,7 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
                 fontSize: 14.5,
                 fontWeight: "400",
                 lineHeight: 16.2,
+                color: theme === "light" ? COLORS.dark : COLORS.white,
               },
             ]}
           >
@@ -144,7 +160,12 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
               <Text
                 style={[
                   styles.text,
-                  { ...FONTS.h4Bold, fontSize: 14.5, fontWeight: "700" },
+                  {
+                    ...FONTS.h4Bold,
+                    fontSize: 14.5,
+                    fontWeight: "700",
+                    color: theme === "light" ? COLORS.dark : COLORS.white,
+                  },
                 ]}
               >
                 Investment Duration
@@ -163,7 +184,12 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
               <Text
                 style={[
                   styles.text,
-                  { ...FONTS.h4Bold, fontSize: 14.5, fontWeight: "700" },
+                  {
+                    ...FONTS.h4Bold,
+                    fontSize: 14.5,
+                    fontWeight: "700",
+                    color: theme === "light" ? COLORS.dark : COLORS.white,
+                  },
                 ]}
               >
                 Investment type
@@ -182,7 +208,12 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
               <Text
                 style={[
                   styles.text,
-                  { ...FONTS.h4Bold, fontSize: 14.5, fontWeight: "700" },
+                  {
+                    ...FONTS.h4Bold,
+                    fontSize: 14.5,
+                    fontWeight: "700",
+                    color: theme === "light" ? COLORS.dark : COLORS.white,
+                  },
                 ]}
               >
                 Offer starts
@@ -201,7 +232,12 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
               <Text
                 style={[
                   styles.text,
-                  { ...FONTS.h4Bold, fontSize: 14.5, fontWeight: "700" },
+                  {
+                    ...FONTS.h4Bold,
+                    fontSize: 14.5,
+                    fontWeight: "700",
+                    color: theme === "light" ? COLORS.dark : COLORS.white,
+                  },
                 ]}
               >
                 Insurance partner
@@ -223,7 +259,12 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
               <Text
                 style={[
                   styles.text,
-                  { ...FONTS.h4Bold, fontSize: 14.5, fontWeight: "700" },
+                  {
+                    ...FONTS.h4Bold,
+                    fontSize: 14.5,
+                    fontWeight: "700",
+                    color: theme === "light" ? COLORS.dark : COLORS.white,
+                  },
                 ]}
               >
                 Interst to earn
@@ -242,7 +283,12 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
               <Text
                 style={[
                   styles.text,
-                  { ...FONTS.h4Bold, fontSize: 14.5, fontWeight: "700" },
+                  {
+                    ...FONTS.h4Bold,
+                    fontSize: 14.5,
+                    fontWeight: "700",
+                    color: theme === "light" ? COLORS.dark : COLORS.white,
+                  },
                 ]}
               >
                 Payout type
@@ -261,7 +307,12 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
               <Text
                 style={[
                   styles.text,
-                  { ...FONTS.h4Bold, fontSize: 14.5, fontWeight: "700" },
+                  {
+                    ...FONTS.h4Bold,
+                    fontSize: 14.5,
+                    fontWeight: "700",
+                    color: theme === "light" ? COLORS.dark : COLORS.white,
+                  },
                 ]}
               >
                 Offer ends
@@ -574,7 +625,12 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
     );
   }
   return (
-    <SafeAreaView style={{ paddingHorizontal: SIZES.padding2 }}>
+    <SafeAreaView
+      style={{
+        paddingHorizontal: SIZES.padding,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
+      }}
+    >
       {renderHeader()}
       <ScrollView showsVerticalScrollIndicator={false}>
         {renderImage()}
@@ -593,6 +649,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
+    paddingVertical: SIZES.padding,
   },
   headerText: {
     color: COLORS.white,
