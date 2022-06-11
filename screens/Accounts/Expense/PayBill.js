@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import React from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../../../context-store/context";
 import { Cable, ChevronLeft, Electricity, Wifi } from "../../../assets/icons";
 import { COLORS, FONTS, SIZES } from "../../../constants";
 
@@ -29,6 +30,8 @@ const items = [
 ];
 
 const PayBill = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
+
   function renderHeader() {
     return (
       <View>
@@ -41,7 +44,7 @@ const PayBill = ({ navigation }) => {
 
         <Text
           style={{
-            color: COLORS.white,
+            color: theme === "light" ? COLORS.dark : COLORS.white,
             ...FONTS.h4Bold,
             fontWeight: "300",
             marginVertical: SIZES.padding2 * 2,
@@ -75,7 +78,13 @@ const PayBill = ({ navigation }) => {
     );
   }
   return (
-    <SafeAreaView style={{ paddingHorizontal: SIZES.padding }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        paddingHorizontal: SIZES.padding,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
+      }}
+    >
       {renderHeader()}
       {renderBills()}
     </SafeAreaView>

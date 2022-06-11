@@ -8,7 +8,8 @@ import {
   TextInput,
   ScrollView,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../../../context-store/context";
 import { COLORS, FONTS, SIZES, accounts } from "../../../constants";
 import { ChevronDown, ChevronLeft, Naira } from "../../../assets/icons";
 import { Button, CustomModal } from "../../../components";
@@ -19,6 +20,7 @@ const InternalTransfer = ({ navigation, route }) => {
   const [accountType1, setAccountType1] = useState("Choose wallet");
   const [accountTypeModal, setAccountTypeModal] = useState(false);
   const [accountTypeModal1, setAccountTypeModal1] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   function renderAccountModal() {
     return (
@@ -227,22 +229,26 @@ const InternalTransfer = ({ navigation, route }) => {
   return (
     <SafeAreaView
       style={{
-        paddingTop: StatusBar.currentHeight * 0.2,
-        marginHorizontal: SIZES.padding,
-        justifyContent: "center",
+        paddingHorizontal: SIZES.padding,
+        flex: 1,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
       }}
     >
       <StatusBar backgroundColor={COLORS.dark} barStyle={"light-content"} />
       <TouchableOpacity
         onPress={() => navigation.goBack()}
         activeOpacity={0.7}
-        style={{ flexDirection: "row", alignItems: "center" }}
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          paddingVertical: SIZES.padding,
+        }}
       >
         <ChevronLeft />
         <Text
           style={{
-            color: COLORS.white,
-            ...FONTS.h3Bold,
+            color: theme === "light" ? COLORS.dark : COLORS.white,
+            ...FONTS.h4Bold,
             marginLeft: SIZES.padding * 5,
           }}
         >
@@ -252,7 +258,12 @@ const InternalTransfer = ({ navigation, route }) => {
       <ScrollView>
         <View>
           <View>
-            <Text style={[styles.type, { marginBottom: 0 }]}>
+            <Text
+              style={[
+                styles.type,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
               Account to debit
             </Text>
             <TouchableOpacity
@@ -269,7 +280,14 @@ const InternalTransfer = ({ navigation, route }) => {
           </View>
 
           <View>
-            <Text style={styles.type}>To Wallet</Text>
+            <Text
+              style={[
+                styles.type,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              To Wallet
+            </Text>
             <TouchableOpacity
               onPress={() => setAccountTypeModal1(true)}
               activeOpacity={0.7}
@@ -284,7 +302,14 @@ const InternalTransfer = ({ navigation, route }) => {
           </View>
 
           <View>
-            <Text style={styles.type}>Amount</Text>
+            <Text
+              style={[
+                styles.type,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              Amount
+            </Text>
             <View style={styles.card}>
               <TextInput
                 placeholder="Amount"

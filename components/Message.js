@@ -6,7 +6,8 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../context-store/context";
 import { COLORS, FONTS, SIZES } from "../constants";
 import { Button } from "../components";
 import { ChevronLeft, NotImg } from "../assets/icons";
@@ -45,6 +46,8 @@ const messages = [
 ];
 
 const Message = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
+
   function renderheader() {
     return (
       <TouchableOpacity
@@ -55,13 +58,13 @@ const Message = ({ navigation }) => {
           alignItems: "center",
           borderBottomColor: COLORS.white,
           borderBottomWidth: 0.25,
-          paddingBottom: SIZES.base / 2,
+          paddingVertical: SIZES.padding,
         }}
       >
         <ChevronLeft />
         <Text
           style={{
-            color: COLORS.white,
+            color: theme === "light" ? COLORS.dark : COLORS.white,
             ...FONTS.h3Bold,
             marginLeft: SIZES.padding * 5,
           }}
@@ -101,6 +104,7 @@ const Message = ({ navigation }) => {
     <SafeAreaView
       style={{
         justifyContent: "center",
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
       }}
     >
       {renderheader()}

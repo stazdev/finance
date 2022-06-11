@@ -6,15 +6,20 @@ import {
   TouchableOpacity,
   StatusBar,
 } from "react-native";
-import React from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../../../context-store/context";
 import { ChevronLeft, DebitCard } from "../../../assets/icons";
 import { COLORS, FONTS, SIZES } from "../../../constants";
 
 const AddCard = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <SafeAreaView
       style={{
-        justifyContent: "center",
+        flex: 1,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
+        paddingHorizontal: SIZES.padding,
       }}
     >
       <StatusBar backgroundColor={COLORS.dark} barStyle={"light-content"} />
@@ -22,7 +27,7 @@ const AddCard = ({ navigation }) => {
         style={{
           flexDirection: "row",
           alignItems: "center",
-          marginHorizontal: SIZES.base,
+          paddingVertical: SIZES.padding,
         }}
       >
         <TouchableOpacity
@@ -34,7 +39,7 @@ const AddCard = ({ navigation }) => {
 
         <Text
           style={{
-            color: COLORS.white,
+            color: theme === "light" ? COLORS.dark : COLORS.white,
             ...FONTS.h4Bold,
             marginLeft: SIZES.padding * 7,
           }}
@@ -47,7 +52,7 @@ const AddCard = ({ navigation }) => {
         style={{
           alignItems: "center",
           borderBottomWidth: 0.25,
-          borderBottomColor: COLORS.white,
+          borderBottomColor: theme === "light" ? COLORS.dark : COLORS.white,
           padding: SIZES.padding,
         }}
       >
@@ -55,7 +60,7 @@ const AddCard = ({ navigation }) => {
         <Text
           style={{
             ...FONTS.fbody2,
-            color: COLORS.white,
+            color: theme === "light" ? COLORS.dark : COLORS.white,
             fontSize: 13,
             lineHeight: 15.99,
           }}
@@ -77,7 +82,13 @@ const AddCard = ({ navigation }) => {
             +Add New Card
           </Text>
         </TouchableOpacity>
-        <Text style={{ color: COLORS.white, ...FONTS.body2bold, fontSize: 18 }}>
+        <Text
+          style={{
+            color: theme === "light" ? COLORS.dark : COLORS.white,
+            ...FONTS.body2bold,
+            fontSize: 18,
+          }}
+        >
           SAVED CARDS
         </Text>
       </View>

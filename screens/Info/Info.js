@@ -8,11 +8,14 @@ import {
   StatusBar,
   TextInput,
 } from "react-native";
-import React from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../../context-store/context";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
 import { ChevronLeft } from "../../assets/icons";
 
 const Info = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
+
   function renderHeader() {
     return (
       <View style={styles.header}>
@@ -32,7 +35,7 @@ const Info = ({ navigation }) => {
         <View>
           <Text
             style={{
-              color: COLORS.white,
+              color: theme === "light" ? COLORS.dark : COLORS.white,
               ...FONTS.h4Bold,
               marginTop: SIZES.padding * 4.3,
               marginBottom: SIZES.padding,
@@ -43,7 +46,7 @@ const Info = ({ navigation }) => {
         </View>
         <View
           style={{
-            backgroundColor: "#c4c4c4",
+            backgroundColor: theme === "light" ? COLORS.dark : COLORS.greyLight,
           }}
         >
           <TextInput multiline={true} numberOfLines={6} />
@@ -56,8 +59,9 @@ const Info = ({ navigation }) => {
     <SafeAreaView
       style={{
         paddingTop: StatusBar.currentHeight * 0.2,
-        marginHorizontal: SIZES.padding,
+        paddingHorizontal: SIZES.padding,
         flex: 1,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
       }}
     >
       {renderHeader()}
@@ -70,7 +74,7 @@ const Info = ({ navigation }) => {
       >
         <Text
           style={{
-            color: COLORS.white,
+            color: theme === "light" ? COLORS.dark : COLORS.white,
             ...FONTS.h4Bold,
           }}
         >

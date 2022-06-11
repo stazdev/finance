@@ -125,7 +125,14 @@ const ExploreInvestment = ({ navigation }) => {
         >
           <ChevronLeft />
         </TouchableOpacity>
-        <Text style={styles.headerText}>Explore Investments</Text>
+        <Text
+          style={[
+            styles.headerText,
+            { color: theme === "light" ? COLORS.dark : COLORS.white },
+          ]}
+        >
+          Explore Investments
+        </Text>
       </View>
     );
   }
@@ -229,7 +236,7 @@ const ExploreInvestment = ({ navigation }) => {
       );
     };
     return (
-      <View>
+      <View style={{ height: "100%" }}>
         <FlatList
           data={explore}
           keyExtractor={explore.id}

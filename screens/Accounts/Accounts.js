@@ -110,7 +110,7 @@ const Accounts = ({ navigation }) => {
   function renderImages() {
     return (
       <View style={styles.Images}>
-        <View style={{ flexDirection: "row", marginTop: SIZES.padding }}>
+        <View style={{ flexDirection: "row" }}>
           <Amico />
           <Rafiki />
           <Pana />

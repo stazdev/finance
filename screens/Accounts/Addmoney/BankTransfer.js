@@ -6,16 +6,20 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../../../context-store/context";
 import { COLORS, FONTS, SIZES } from "../../../constants";
 import { ChevronLeft, Copy } from "../../../assets/icons";
 
 const BankTransfer = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <SafeAreaView
       style={{
-        marginHorizontal: SIZES.padding,
-        justifyContent: "center",
+        flex: 1,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
+        paddingHorizontal: SIZES.padding,
       }}
     >
       <StatusBar backgroundColor={COLORS.dark} barStyle={"light-content"} />
@@ -23,6 +27,7 @@ const BankTransfer = ({ navigation }) => {
         style={{
           flexDirection: "row",
           alignItems: "center",
+          paddingVertical: SIZES.padding,
         }}
       >
         <TouchableOpacity
@@ -34,7 +39,7 @@ const BankTransfer = ({ navigation }) => {
 
         <Text
           style={{
-            color: COLORS.white,
+            color: theme === "light" ? COLORS.dark : COLORS.white,
             ...FONTS.h4Bold,
             marginLeft: SIZES.padding * 8,
           }}
@@ -44,7 +49,12 @@ const BankTransfer = ({ navigation }) => {
       </View>
 
       <View style={{ marginTop: SIZES.base * 4 }}>
-        <Text style={styles.text}>
+        <Text
+          style={[
+            styles.text,
+            { color: theme === "light" ? COLORS.dark : COLORS.white },
+          ]}
+        >
           Simply fund your 5QM account by transferring from any bank using the
           details below
         </Text>

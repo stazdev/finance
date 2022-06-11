@@ -6,17 +6,20 @@ import {
   TouchableOpacity,
   StatusBar,
 } from "react-native";
-import React from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../../../context-store/context";
 import { ChevronLeft, ChevronRight } from "../../../assets/icons";
 import { COLORS, FONTS, SIZES } from "../../../constants";
 
 const AddMoney = ({ navigation, route }) => {
+  const { theme } = useContext(ThemeContext);
   const { item } = route.params;
   return (
     <SafeAreaView
       style={{
-        marginHorizontal: SIZES.padding,
-        justifyContent: "center",
+        flex: 1,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
+        paddingHorizontal: SIZES.padding,
       }}
     >
       <StatusBar backgroundColor={COLORS.dark} barStyle={"light-content"} />
@@ -24,6 +27,7 @@ const AddMoney = ({ navigation, route }) => {
         style={{
           flexDirection: "row",
           alignItems: "center",
+          paddingVertical: SIZES.padding,
         }}
       >
         <TouchableOpacity
@@ -35,7 +39,7 @@ const AddMoney = ({ navigation, route }) => {
 
         <Text
           style={{
-            color: COLORS.white,
+            color: theme === "light" ? COLORS.dark : COLORS.white,
             ...FONTS.h4Bold,
             marginLeft: SIZES.padding * 8,
           }}

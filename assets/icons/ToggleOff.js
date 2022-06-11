@@ -17,7 +17,7 @@ const ToggleOff = (props) => (
       rx={4.64}
       fill="#C4C4C4"
     />
-    <Circle cx={5.8} cy={5.8} r={5.8} fill="#EFF2F5" />
+    <Circle cx={5.8} cy={5.8} r={5.8} fill="#9DACC3" />
   </Svg>
 );
 

@@ -8,7 +8,8 @@ import {
   TextInput,
   ScrollView,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../../../context-store/context";
 import { COLORS, FONTS, SIZES, accounts } from "../../../constants";
 import {
   ChevronDown,
@@ -19,6 +20,8 @@ import {
 import { Button, CustomModal } from "../../../components";
 
 const LocalTransfer = ({ navigation, route }) => {
+  const { theme } = useContext(ThemeContext);
+
   const { item } = route.params;
   const [accountType, setAccountType] = useState("Select account");
   const [accountTypeModal, setAccountTypeModal] = useState(false);
@@ -128,31 +131,38 @@ const LocalTransfer = ({ navigation, route }) => {
   return (
     <SafeAreaView
       style={{
-        paddingTop: StatusBar.currentHeight * 0.2,
-        marginHorizontal: SIZES.padding,
-        justifyContent: "center",
+        flex: 1,
+        paddingHorizontal: SIZES.padding,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
       }}
     >
       <StatusBar backgroundColor={COLORS.dark} barStyle={"light-content"} />
       <TouchableOpacity
         onPress={() => navigation.goBack()}
         activeOpacity={0.7}
-        style={{ flexDirection: "row", alignItems: "center" }}
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          paddingVertical: SIZES.padding,
+        }}
       >
         <ChevronLeft />
         <Text
           style={{
-            color: COLORS.white,
-            ...FONTS.h3Bold,
+            color: theme === "light" ? COLORS.dark : COLORS.white,
+            ...FONTS.h4Bold,
             marginLeft: SIZES.padding * 5,
           }}
         >
           Local Transfer
         </Text>
       </TouchableOpacity>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Button
           label={"SAVED BENEFICIARY"}
+          labelStyle={{
+            color: theme === "light" ? COLORS.dark : COLORS.white,
+          }}
           containerStyle={{
             paddingVertical: SIZES.padding2,
             width: SIZES.width * 0.9,
@@ -164,7 +174,15 @@ const LocalTransfer = ({ navigation, route }) => {
         />
         <View>
           <View>
-            <Text style={[styles.type, { marginBottom: 0 }]}>
+            <Text
+              style={[
+                styles.type,
+                {
+                  marginBottom: 0,
+                  color: theme === "light" ? COLORS.dark : COLORS.white,
+                },
+              ]}
+            >
               Account to debit
             </Text>
 
@@ -182,7 +200,14 @@ const LocalTransfer = ({ navigation, route }) => {
           </View>
 
           <View>
-            <Text style={styles.type}>Select Destination Bank</Text>
+            <Text
+              style={[
+                styles.type,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              Select Destination Bank
+            </Text>
             <View
               style={[
                 styles.card,
@@ -203,7 +228,14 @@ const LocalTransfer = ({ navigation, route }) => {
           </View>
 
           <View>
-            <Text style={styles.type}>Account Number</Text>
+            <Text
+              style={[
+                styles.type,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              Account Number
+            </Text>
             <View style={styles.card}>
               <TextInput
                 placeholder="Enter account number"
@@ -219,7 +251,14 @@ const LocalTransfer = ({ navigation, route }) => {
           </View>
 
           <View>
-            <Text style={styles.type}>Account Name</Text>
+            <Text
+              style={[
+                styles.type,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              Account Name
+            </Text>
             <View style={[styles.card, { paddingVertical: 20 }]}>
               <Text
                 style={{
@@ -234,7 +273,14 @@ const LocalTransfer = ({ navigation, route }) => {
           </View>
 
           <View>
-            <Text style={styles.type}>Amount</Text>
+            <Text
+              style={[
+                styles.type,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              Amount
+            </Text>
             <View style={styles.card}>
               <TextInput
                 placeholder="Amount"
@@ -250,7 +296,14 @@ const LocalTransfer = ({ navigation, route }) => {
           </View>
 
           <View>
-            <Text style={styles.type}>Remarks</Text>
+            <Text
+              style={[
+                styles.type,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              Remarks
+            </Text>
             <View
               style={{
                 borderWidth: 0.5,
@@ -281,7 +334,14 @@ const LocalTransfer = ({ navigation, route }) => {
               marginVertical: SIZES.padding * 4,
             }}
           >
-            <Text style={[styles.type]}>Save beneficiary</Text>
+            <Text
+              style={[
+                styles.type,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              Save beneficiary
+            </Text>
             <View style={{ flexDirection: "row" }}>
               <Button label={"Yes"} />
               <Button label={"No"} />
@@ -295,7 +355,7 @@ const LocalTransfer = ({ navigation, route }) => {
               paddingVertical: SIZES.padding2,
               width: SIZES.width * 0.9,
               borderRadius: SIZES.padding / 2,
-              marginVertical: SIZES.padding * 4,
+              marginVertical: SIZES.padding * 2,
             }}
           />
         </View>

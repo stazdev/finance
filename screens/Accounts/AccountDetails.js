@@ -287,7 +287,8 @@ const AccountDetails = ({ navigation, route }) => {
                 height: SIZES.height * 0.4,
                 width: SIZES.width,
                 padding: SIZES.base * 3,
-                backgroundColor: COLORS.modal,
+                backgroundColor:
+                  theme === "light" ? COLORS.white : COLORS.modal,
                 borderRadius: SIZES.radius,
               }}
             >
@@ -309,7 +310,12 @@ const AccountDetails = ({ navigation, route }) => {
                 </Text>
               </View>
               <View>
-                <Text style={styles.modalText}>
+                <Text
+                  style={[
+                    styles.modalText,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
                   You can turn ON/OFF the autosplit to your 5QM wallets
                 </Text>
               </View>
@@ -332,6 +338,7 @@ const AccountDetails = ({ navigation, route }) => {
                     styles.modalText,
                     {
                       marginLeft: SIZES.padding2 + 3,
+                      color: theme === "light" ? COLORS.dark : COLORS.white,
                     },
                   ]}
                 >

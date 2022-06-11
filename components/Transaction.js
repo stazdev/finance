@@ -121,7 +121,14 @@ const Transaction = ({ navigation }) => {
             activeOpacity={0.7}
             onPress={() => navigation.replace("Receipt", { item })}
           >
-            <Text style={styles.text}>{item.narration}</Text>
+            <Text
+              style={[
+                styles.text,
+                { color: theme === "light" ? COLORS.dark : COLORS.white },
+              ]}
+            >
+              {item.narration}
+            </Text>
             <Text
               style={[
                 styles.time,

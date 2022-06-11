@@ -21,6 +21,7 @@ import {
   ToggleOn,
 } from "../../assets/icons";
 import { Button, CustomModal } from "../../components";
+import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 const Profile = ({ navigation }) => {
   const [toggle, setToggle] = useState(true);
@@ -412,8 +413,7 @@ const Profile = ({ navigation }) => {
               height: SIZES.height,
               width: SIZES.width,
               padding: SIZES.base * 3,
-              backgroundColor: COLORS.dark,
-              borderRadius: SIZES.radius,
+              backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
             }}
           >
             <TouchableOpacity
@@ -427,7 +427,7 @@ const Profile = ({ navigation }) => {
               <ChevronLeft />
               <Text
                 style={{
-                  color: COLORS.white,
+                  color: theme === "light" ? COLORS.dark : COLORS.white,
                   ...FONTS.h3Bold,
                   marginLeft: SIZES.padding * 8,
                 }}
@@ -445,7 +445,7 @@ const Profile = ({ navigation }) => {
               <Image source={images.user} />
               <Text
                 style={{
-                  color: COLORS.white,
+                  color: theme === "light" ? COLORS.dark : COLORS.white,
                   ...FONTS.h4Bold,
                   fontSize: 20,
                   marginTop: SIZES.padding2,
@@ -456,34 +456,149 @@ const Profile = ({ navigation }) => {
             </View>
 
             <View style={{ marginTop: SIZES.base * 5 }}>
-              <View style={styles.items}>
-                <Text style={styles.left}>First Name</Text>
-                <Text style={styles.right}>Ogechi</Text>
+              <View
+                style={[
+                  styles.items,
+                  {
+                    borderBottomColor:
+                      theme === "light" ? COLORS.dark : COLORS.white,
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.left,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  First Name
+                </Text>
+                <Text
+                  style={[
+                    styles.right,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  Ogechi
+                </Text>
               </View>
-              <View style={styles.items}>
-                <Text style={styles.left}>Last Name</Text>
-                <Text style={styles.right}>Desmond</Text>
+              <View
+                style={[
+                  styles.items,
+                  {
+                    borderBottomColor:
+                      theme === "light" ? COLORS.dark : COLORS.white,
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.left,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  Last Name
+                </Text>
+                <Text
+                  style={[
+                    styles.right,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  Desmond
+                </Text>
               </View>
-              <View style={styles.items}>
-                <Text style={styles.left}>Date of Birth</Text>
-                <Text style={styles.right}>13th July 1989</Text>
+              <View
+                style={[
+                  styles.items,
+                  {
+                    borderBottomColor:
+                      theme === "light" ? COLORS.dark : COLORS.white,
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.left,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  Date of Birth
+                </Text>
+                <Text
+                  style={[
+                    styles.right,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  13th July 1989
+                </Text>
               </View>
             </View>
 
             <View style={{ marginTop: 35 }}>
-              <Text style={{ ...FONTS.h4Bold, color: COLORS.greyMedium }}>
+              <Text
+                style={{
+                  ...FONTS.h4Bold,
+                  color: theme === "light" ? COLORS.dark : COLORS.greyMedium,
+                }}
+              >
                 Contact Information
               </Text>
             </View>
 
             <View style={{ marginTop: SIZES.base }}>
-              <View style={styles.items}>
-                <Text style={styles.left}>Phone Number</Text>
-                <Text style={styles.right}>+2349035467237</Text>
+              <View
+                style={[
+                  styles.items,
+                  {
+                    borderBottomColor:
+                      theme === "light" ? COLORS.dark : COLORS.white,
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.left,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  Phone Number
+                </Text>
+                <Text
+                  style={[
+                    styles.right,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  +2349035467237
+                </Text>
               </View>
-              <View style={styles.items}>
-                <Text style={styles.left}>Email Address</Text>
-                <Text style={styles.right}>ccltd@business.com</Text>
+              <View
+                style={[
+                  styles.items,
+                  {
+                    borderBottomColor:
+                      theme === "light" ? COLORS.dark : COLORS.white,
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.left,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  Email Address
+                </Text>
+                <Text
+                  style={[
+                    styles.right,
+                    { color: theme === "light" ? COLORS.dark : COLORS.white },
+                  ]}
+                >
+                  ccltd@business.com
+                </Text>
               </View>
             </View>
 

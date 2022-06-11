@@ -7,7 +7,8 @@ import {
   ScrollView,
   TextInput,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../context-store/context";
 import { Camera, ChevronDown, ChevronLeft } from "../assets/icons";
 import { COLORS, FONTS, SIZES } from "../constants";
 import { Button } from "../components";
@@ -16,15 +17,18 @@ const KycInfo = ({ navigation }) => {
   const [residence, setResidence] = useState("Select state");
   const [origin, setOrigin] = useState("Select state");
   const [addressText, setAddressText] = useState("");
+  const { theme } = useContext(ThemeContext);
+
   function renderHeader() {
     return (
       <TouchableOpacity
         onPress={() => navigation.goBack()}
         activeOpacity={0.7}
         style={{
+          paddingVertical: SIZES.padding,
           flexDirection: "row",
           alignItems: "center",
-          borderBottomColor: COLORS.white,
+          borderBottomColor: theme === "light" ? COLORS.dark : COLORS.white,
           borderBottomWidth: 0.25,
           paddingBottom: SIZES.base / 2,
         }}
@@ -58,7 +62,14 @@ const KycInfo = ({ navigation }) => {
     return (
       <View>
         <View style={styles.addressCard}>
-          <Text style={styles.addressText}>State of residence</Text>
+          <Text
+            style={[
+              styles.addressText,
+              { color: theme === "light" ? COLORS.dark : COLORS.white },
+            ]}
+          >
+            State of residence
+          </Text>
           <View style={styles.addressInput}>
             <TextInput
               placeholder={residence}
@@ -70,7 +81,14 @@ const KycInfo = ({ navigation }) => {
         </View>
 
         <View style={styles.addressCard}>
-          <Text style={styles.addressText}>Residential address</Text>
+          <Text
+            style={[
+              styles.addressText,
+              { color: theme === "light" ? COLORS.dark : COLORS.white },
+            ]}
+          >
+            Residential address
+          </Text>
           <View style={[styles.addressInput]}>
             <TextInput
               placeholder="Enter Address"
@@ -88,7 +106,14 @@ const KycInfo = ({ navigation }) => {
         </View>
 
         <View style={styles.addressCard}>
-          <Text style={styles.addressText}>State of origin</Text>
+          <Text
+            style={[
+              styles.addressText,
+              { color: theme === "light" ? COLORS.dark : COLORS.white },
+            ]}
+          >
+            State of origin
+          </Text>
           <View style={styles.addressInput}>
             <TextInput
               placeholder={origin}
@@ -104,6 +129,7 @@ const KycInfo = ({ navigation }) => {
   return (
     <SafeAreaView
       style={{
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
         flex: 1,
       }}
     >

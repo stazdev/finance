@@ -6,18 +6,22 @@ import {
   TouchableOpacity,
   StatusBar,
 } from "react-native";
-import React from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../../../context-store/context";
 import { ChevronLeft, ChevronRight } from "../../../assets/icons";
 import { COLORS, FONTS, SIZES } from "../../../constants";
 
 const Transfer = ({ navigation, route }) => {
+  const { theme } = useContext(ThemeContext);
+
   const { item } = route.params;
   return (
     <SafeAreaView
       style={{
+        flex: 1,
         paddingTop: StatusBar.currentHeight * 0.2,
-        marginHorizontal: SIZES.padding,
-        justifyContent: "center",
+        paddingHorizontal: SIZES.padding,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
       }}
     >
       <StatusBar backgroundColor={COLORS.dark} barStyle={"light-content"} />
