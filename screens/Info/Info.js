@@ -94,7 +94,7 @@ const Info = ({ navigation }) => {
           style={{
             alignSelf: "center",
           }}
-          source={images.logoSmall}
+          source={theme === "light" ? images.logoSmallDark : images.logoSmall}
           resizeMode="contain"
         />
       </View>

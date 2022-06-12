@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
+import * as Animatable from "react-native-animatable";
 import React, { useContext } from "react";
 import { ThemeContext } from "../../context-store/context";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
@@ -109,7 +110,7 @@ const Accounts = ({ navigation }) => {
 
   function renderImages() {
     return (
-      <View style={styles.Images}>
+      <View animation="fadeIn" style={styles.Images}>
         <View style={{ flexDirection: "row" }}>
           <Amico />
           <Rafiki />

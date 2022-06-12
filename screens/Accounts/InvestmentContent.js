@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext } from "react";
+import * as Animatable from "react-native-animatable";
 import { ThemeContext } from "../../context-store/context";
 import { COLORS, SIZES, FONTS, images } from "../../constants";
 import { Button } from "../../components";
@@ -249,7 +250,7 @@ const InvestmentContent = () => {
       </View>
       <View>
         {tab == "Portfolio" ? (
-          <View>
+          <Animatable.View animation="fadeIn" easing="ease-out">
             <Text
               style={[
                 styles.title,
@@ -320,9 +321,9 @@ const InvestmentContent = () => {
               renderItem={renderItem}
               keyExtractor={(item) => item.id}
             />
-          </View>
+          </Animatable.View>
         ) : (
-          <View>
+          <Animatable.View animation="fadeInRight" easing="ease">
             <Text style={{ color: COLORS.white, ...FONTS.fh4 }}>
               {maturedInvestments.length}
             </Text>
@@ -333,7 +334,7 @@ const InvestmentContent = () => {
               renderItem={renderMatured}
               keyExtractor={(item) => item.id}
             />
-          </View>
+          </Animatable.View>
         )}
       </View>
     </View>

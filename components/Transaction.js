@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   StyleSheet,
 } from "react-native";
+import * as Animatable from "react-native-animatable";
 import React, { useState, useContext } from "react";
 import { ThemeContext } from "../context-store/context";
 import { COLORS, SIZES, FONTS } from "../constants";
@@ -100,7 +101,11 @@ const Transaction = ({ navigation }) => {
 
   const renderItem = ({ item, index }) => {
     return (
-      <View key={item.id} style={styles.itemContainer}>
+      <Animatable.View
+        easing="ease-in"
+        key={item.id}
+        style={styles.itemContainer}
+      >
         <View
           style={{
             flexDirection: "row",
@@ -153,7 +158,7 @@ const Transaction = ({ navigation }) => {
             {item.amount}{" "}
           </Text>
         </View>
-      </View>
+      </Animatable.View>
     );
   };
 
@@ -246,7 +251,7 @@ const styles = StyleSheet.create({
   },
 
   tabActive: {
-    backgroundColor: COLORS.greyDark,
+    backgroundColor: "#000000",
     borderWidth: 1,
     borderRadius: SIZES.padding,
   },

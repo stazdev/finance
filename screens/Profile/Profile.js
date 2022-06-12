@@ -412,7 +412,7 @@ const Profile = ({ navigation }) => {
             style={{
               height: SIZES.height,
               width: SIZES.width,
-              padding: SIZES.base * 3,
+              padding: SIZES.padding,
               backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
             }}
           >
@@ -603,7 +603,11 @@ const Profile = ({ navigation }) => {
             </View>
 
             <View style={{ alignItems: "center", marginTop: SIZES.base * 8 }}>
-              <Image source={images.logoSmall} />
+              <Image
+                source={
+                  theme === "light" ? images.logoSmallDark : images.logoSmall
+                }
+              />
             </View>
           </View>
         </View>
@@ -623,7 +627,7 @@ const Profile = ({ navigation }) => {
         {renderUser()}
         <Button
           label={"Change mode"}
-          labelStyle={{ color: "white" }}
+          labelStyle={{ color: COLORS.primary }}
           onPress={handleThemeChange}
         />
         {renderAuth()}

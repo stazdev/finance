@@ -36,7 +36,7 @@ const Feeds = () => {
     >
       <View
         style={{
-          borderBottomColor: COLORS.white,
+          borderBottomColor: theme === "light" ? COLORS.dark : COLORS.white,
           borderBottomWidth: 0.25,
           paddingVertical: SIZES.padding,
         }}
