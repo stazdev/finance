@@ -42,6 +42,7 @@ import Copy from "./Copy";
 import NotImg from "./NotImg";
 import Camera from "./Camera";
 import DebitCard from "./DebitCard";
+import LogoSmallDark from "./LogoSmallDark";
 
 export {
   Delete,
@@ -88,4 +89,5 @@ export {
   NotImg,
   Camera,
   DebitCard,
+  LogoSmallDark,
 };

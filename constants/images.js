@@ -8,6 +8,7 @@ const circlePlus = require("../assets/images/circle-plus.png");
 const house = require("../assets/images/house.jpg");
 const investment = require("../assets/images/investment.svg");
 const logoSmall = require("../assets/images/logo-small.png");
+const logoSmallDark = require("../assets/images/logo-small-dark.png");
 const money = require("../assets/images/money.svg");
 const money2 = require("../assets/images/money.png");
 const onboarding = require("../assets/images/onboarding.png");
@@ -30,6 +31,7 @@ export default {
   investment,
   logoSmallest,
   logoSmall,
+  logoSmallDark,
   money,
   money2,
   onboarding,

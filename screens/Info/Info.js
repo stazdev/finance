@@ -8,7 +8,7 @@ import {
   StatusBar,
   TextInput,
 } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ThemeContext } from "../../context-store/context";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
 import { ChevronLeft } from "../../assets/icons";

@@ -10,12 +10,14 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../../../context-store/context";
 import { images, COLORS, SIZES, FONTS, icons } from "../../../constants";
 import { Button } from "../../../components";
 import { DropDown, Eye, EyeClose } from "../../../assets/icons";
 
 const SignUp = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -23,17 +25,40 @@ const SignUp = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   return (
-    <SafeAreaView style={styles.container}>
+    <KeyboardAvoidingView
+      style={[
+        styles.container,
+        {
+          backgroundColor: theme === "light" ? COLORS.white : COLORS.secondary,
+        },
+      ]}
+    >
       <StatusBar
         backgroundColor={COLORS.secondary}
         barStyle={"light-content"}
       />
       <View>
-        <Image source={images.logoSmall} />
+        <Image
+          source={theme === "light" ? images.logoSmallDark : images.logoSmall}
+        />
       </View>
       <View>
-        <Text style={styles.bigText}>Welcome</Text>
-        <Text style={styles.smallText}>Complete your setup</Text>
+        <Text
+          style={[
+            styles.bigText,
+            { color: theme === "light" ? COLORS.secondary : COLORS.white },
+          ]}
+        >
+          Welcome
+        </Text>
+        <Text
+          style={[
+            styles.smallText,
+            { color: theme === "light" ? COLORS.secondary : COLORS.greyLight },
+          ]}
+        >
+          Complete your setup
+        </Text>
       </View>
       <View style={{ marginHorizontal: 10 }}>
         <View
@@ -46,27 +71,37 @@ const SignUp = ({ navigation }) => {
             style={{
               width: SIZES.padding2 * 4,
               height: SIZES.padding * 2.5,
-              borderBottomColor: COLORS.white,
+              borderBottomColor:
+                theme === "light" ? COLORS.secondary : COLORS.white,
               marginRight: 10,
               borderBottomWidth: 1,
               flexDirection: "row",
-              ...FONTS.fbody2,
+              ...FONTS.fbody1,
               justifyContent: "flex-start",
               alignItems: "center",
             }}
             activeOpacity={0.7}
           >
-            <Text style={{ color: COLORS.white, marginRight: 5 }}>+234</Text>
+            <Text
+              style={{
+                color: theme === "light" ? COLORS.secondary : COLORS.white,
+                marginRight: 5,
+                ...FONTS.fbody1,
+              }}
+            >
+              +234
+            </Text>
             <DropDown />
           </TouchableOpacity>
           <TextInput
             style={{
               flex: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor:
+                theme === "light" ? COLORS.secondary : COLORS.white,
               borderBottomWidth: 1,
               height: SIZES.padding * 2.5,
-              color: COLORS.white,
-              ...FONTS.body3,
+              color: theme === "light" ? COLORS.secondary : COLORS.white,
+              ...FONTS.fbody1,
               paddingBottom: 3,
             }}
             onChangeText={(number) => setPhoneNumber(number)}
@@ -74,8 +109,8 @@ const SignUp = ({ navigation }) => {
             keyboardType="numeric"
             maxLength={10}
             placeholder="903 401 2507"
-            placeholderTextColor="lightgrey"
-            selectionColor={COLORS.white}
+            placeholderTextColor={COLORS.greyMedium}
+            selectionColor={theme === "light" ? COLORS.secondary : COLORS.white}
           />
         </View>
         <View
@@ -87,18 +122,19 @@ const SignUp = ({ navigation }) => {
           <TextInput
             style={{
               flex: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor:
+                theme === "light" ? COLORS.secondary : COLORS.white,
               borderBottomWidth: 1,
               height: SIZES.padding * 2.5,
-              color: COLORS.white,
-              ...FONTS.body3,
+              color: theme === "light" ? COLORS.secondary : COLORS.white,
+              ...FONTS.fbody1,
               paddingBottom: 3,
             }}
             onChangeText={(email) => setEmailAddress(email)}
             defaultValue={emailAddress}
-            placeholder="Oluwasholatemitayo@gmail.com"
-            placeholderTextColor="lightgrey"
-            selectionColor={COLORS.white}
+            placeholder="Example@gmail.com"
+            placeholderTextColor={COLORS.greyMedium}
+            selectionColor={theme === "light" ? COLORS.secondary : COLORS.white}
           />
         </View>
 
@@ -112,18 +148,19 @@ const SignUp = ({ navigation }) => {
           <TextInput
             style={{
               flex: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor:
+                theme === "light" ? COLORS.secondary : COLORS.white,
               borderBottomWidth: 1,
               height: SIZES.padding * 2.5,
-              color: COLORS.white,
-              ...FONTS.body3,
+              color: theme === "light" ? COLORS.secondary : COLORS.white,
+              ...FONTS.fbody1,
               paddingBottom: 3,
             }}
             onChangeText={(number) => setPassword(number)}
             defaultValue={password}
             placeholder="Enter your password"
-            placeholderTextColor="lightgrey"
-            selectionColor={COLORS.white}
+            placeholderTextColor={COLORS.greyMedium}
+            selectionColor={theme === "light" ? COLORS.secondary : COLORS.white}
             secureTextEntry={!showPassword}
           />
           <TouchableOpacity
@@ -150,18 +187,19 @@ const SignUp = ({ navigation }) => {
           <TextInput
             style={{
               flex: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor:
+                theme === "light" ? COLORS.secondary : COLORS.white,
               borderBottomWidth: 1,
               height: SIZES.padding * 2.5,
-              color: COLORS.white,
-              ...FONTS.body3,
+              color: theme === "light" ? COLORS.secondary : COLORS.white,
+              ...FONTS.fbody1,
               paddingBottom: 3,
             }}
             onChangeText={(number) => setPassword2(number)}
             defaultValue={password2}
             placeholder="Re - enter password"
-            placeholderTextColor="lightgrey"
-            selectionColor={COLORS.white}
+            placeholderTextColor={COLORS.greyMedium}
+            selectionColor={theme === "light" ? COLORS.secondary : COLORS.white}
             secureTextEntry={!showPassword2}
           />
           <TouchableOpacity
@@ -202,8 +240,8 @@ const SignUp = ({ navigation }) => {
         <View style={{ alignItems: "center", marginTop: SIZES.base * 5 }}>
           <Text
             style={{
-              ...FONTS.fbody2,
-              color: COLORS.white,
+              ...FONTS.fbody1,
+              color: theme === "light" ? COLORS.secondary : COLORS.white,
             }}
           >
             I already have an account
@@ -217,26 +255,22 @@ const SignUp = ({ navigation }) => {
           />
         </View>
       </View>
-    </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: COLORS.secondary,
     paddingHorizontal: SIZES.padding,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight * 2 : 0,
   },
 
   bigText: {
-    color: COLORS.white,
     ...FONTS.h2Bold,
     marginLeft: SIZES.padding,
     marginTop: SIZES.padding2 * 1.5,
   },
   smallText: {
-    color: COLORS.greyLight,
     ...FONTS.fbody1,
     marginLeft: SIZES.padding,
     marginTop: SIZES.padding2 * 1.5,

@@ -148,7 +148,9 @@ const Feeds = () => {
             marginVertical: SIZES.padding * 4,
           }}
         >
-          <Image source={images.logoSmall} />
+          <Image
+            source={theme === "light" ? images.logoSmallDark : images.logoSmall}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

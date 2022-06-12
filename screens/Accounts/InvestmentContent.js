@@ -234,7 +234,10 @@ const InvestmentContent = () => {
             <Text
               style={[
                 styles.text,
-                { color: theme === "light" ? COLORS.dark : COLORS.white },
+                {
+                  color: theme === "light" ? COLORS.dark : COLORS.white,
+                  ...FONTS.fbody2,
+                },
               ]}
             >
               {" "}
@@ -366,7 +369,7 @@ const styles = StyleSheet.create({
   listTab: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginHorizontal: SIZES.padding * 4,
+    paddingHorizontal: SIZES.padding * 4,
   },
 
   text: {

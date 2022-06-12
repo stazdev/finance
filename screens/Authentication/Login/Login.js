@@ -8,30 +8,56 @@ import {
   Platform,
   TouchableOpacity,
   TextInput,
+  ScrollView,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../../../context-store/context";
 import { images, COLORS, SIZES, FONTS } from "../../../constants";
 import { Button } from "../../../components";
 import { DropDown, Eye, EyeClose, Thumb } from "../../../assets/icons";
 
 const Login = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
   const [inputType, setInputType] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView
+      style={[
+        styles.container,
+        {
+          backgroundColor: theme === "light" ? COLORS.white : COLORS.secondary,
+        },
+      ]}
+    >
       <StatusBar
         backgroundColor={COLORS.secondary}
         barStyle={"light-content"}
       />
       <View>
-        <Image source={images.logoSmall} />
+        <Image
+          source={theme === "light" ? images.logoSmallDark : images.logoSmall}
+        />
       </View>
       <View>
-        <Text style={styles.bigText}>Welcome Back</Text>
-        <Text style={styles.smallText}>Sign in to continue</Text>
+        <Text
+          style={[
+            styles.bigText,
+            { color: theme === "light" ? COLORS.dark : COLORS.white },
+          ]}
+        >
+          Welcome Back
+        </Text>
+        <Text
+          style={[
+            styles.smallText,
+            { color: theme === "light" ? COLORS.dark : COLORS.greyLight },
+          ]}
+        >
+          Sign in to continue
+        </Text>
       </View>
       <View style={{ marginHorizontal: 10 }}>
         {!inputType ? (
@@ -45,27 +71,36 @@ const Login = ({ navigation }) => {
               style={{
                 width: SIZES.padding2 * 4,
                 height: SIZES.padding * 2.5,
-                borderBottomColor: COLORS.white,
+                borderBottomColor:
+                  theme === "light" ? COLORS.dark : COLORS.white,
                 marginRight: 10,
                 borderBottomWidth: 1,
                 flexDirection: "row",
-                ...FONTS.fbody2,
                 justifyContent: "flex-start",
                 alignItems: "center",
               }}
               activeOpacity={0.7}
             >
-              <Text style={{ color: COLORS.white, marginRight: 5 }}>+234</Text>
+              <Text
+                style={{
+                  color: theme === "light" ? COLORS.dark : COLORS.white,
+                  marginRight: 3,
+                  ...FONTS.fbody1,
+                }}
+              >
+                +234
+              </Text>
               <DropDown />
             </TouchableOpacity>
             <TextInput
               style={{
                 flex: 1,
-                borderBottomColor: COLORS.white,
+                borderBottomColor:
+                  theme === "light" ? COLORS.dark : COLORS.white,
                 borderBottomWidth: 1,
                 height: SIZES.padding * 2.5,
-                color: COLORS.white,
-                ...FONTS.body3,
+                color: theme === "light" ? COLORS.dark : COLORS.white,
+                ...FONTS.fbody1,
                 paddingBottom: 3,
               }}
               onChangeText={(number) => setPhoneNumber(number)}
@@ -73,8 +108,8 @@ const Login = ({ navigation }) => {
               keyboardType="numeric"
               maxLength={10}
               placeholder="903 401 2507"
-              placeholderTextColor="lightgrey"
-              selectionColor={COLORS.white}
+              placeholderTextColor={COLORS.greyMedium}
+              selectionColor={theme === "light" ? COLORS.dark : COLORS.white}
             />
           </View>
         ) : (
@@ -87,18 +122,19 @@ const Login = ({ navigation }) => {
             <TextInput
               style={{
                 flex: 1,
-                borderBottomColor: COLORS.white,
+                borderBottomColor:
+                  theme === "light" ? COLORS.dark : COLORS.white,
                 borderBottomWidth: 1,
                 height: SIZES.padding * 2.5,
-                color: COLORS.white,
-                ...FONTS.body3,
+                color: theme === "light" ? COLORS.dark : COLORS.white,
+                ...FONTS.fbody1,
                 paddingBottom: 3,
               }}
               onChangeText={(email) => setEmailAddress(email)}
               defaultValue={emailAddress}
               placeholder="Oluwasholatemitayo@gmail.com"
-              placeholderTextColor="lightgrey"
-              selectionColor={COLORS.white}
+              placeholderTextColor={COLORS.greyMedium}
+              selectionColor={theme === "light" ? COLORS.dark : COLORS.white}
             />
           </View>
         )}
@@ -138,18 +174,18 @@ const Login = ({ navigation }) => {
           <TextInput
             style={{
               flex: 1,
-              borderBottomColor: COLORS.white,
+              borderBottomColor: theme === "light" ? COLORS.dark : COLORS.white,
               borderBottomWidth: 1,
               height: SIZES.padding * 2.5,
-              color: COLORS.white,
-              ...FONTS.body3,
+              color: theme === "light" ? COLORS.dark : COLORS.white,
+              ...FONTS.fbody1,
               paddingBottom: 3,
             }}
             onChangeText={(number) => setPassword(number)}
             defaultValue={password}
             placeholder="Enter your password"
-            placeholderTextColor="lightgrey"
-            selectionColor={COLORS.white}
+            placeholderTextColor={COLORS.greyMedium}
+            selectionColor={theme === "light" ? COLORS.dark : COLORS.white}
             secureTextEntry={!showPassword}
           />
           <TouchableOpacity
@@ -209,7 +245,7 @@ const Login = ({ navigation }) => {
             <Text
               style={{
                 ...FONTS.fbody2,
-                color: COLORS.white,
+                color: theme === "light" ? COLORS.dark : COLORS.white,
                 marginTop: SIZES.padding,
               }}
             >
@@ -222,7 +258,7 @@ const Login = ({ navigation }) => {
           <Text
             style={{
               ...FONTS.fbody2,
-              color: COLORS.white,
+              color: theme === "light" ? COLORS.dark : COLORS.white,
             }}
           >
             Don’t have an account yet?
@@ -230,7 +266,7 @@ const Login = ({ navigation }) => {
           <Text
             style={{
               ...FONTS.fbody2,
-              color: COLORS.white,
+              color: theme === "light" ? COLORS.dark : COLORS.white,
             }}
           >
             Let’s get you{" "}
@@ -245,26 +281,23 @@ const Login = ({ navigation }) => {
           </Text>
         </View>
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: COLORS.secondary,
     paddingHorizontal: SIZES.padding,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight * 0.2 : 0,
   },
 
   bigText: {
-    color: COLORS.white,
     ...FONTS.h2Bold,
     marginLeft: SIZES.padding,
     marginTop: SIZES.padding2 * 1.5,
   },
   smallText: {
-    color: COLORS.greyLight,
     ...FONTS.fbody1,
     marginLeft: SIZES.padding,
     marginTop: SIZES.padding2 * 1.5,

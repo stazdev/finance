@@ -190,7 +190,9 @@ const Accounts = ({ navigation }) => {
           marginVertical: SIZES.padding * 7,
         }}
       >
-        <Image source={images.logoSmall} />
+        <Image
+          source={theme === "light" ? images.logoSmallDark : images.logoSmall}
+        />
       </View>
     );
   }
