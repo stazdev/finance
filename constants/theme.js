@@ -21,10 +21,11 @@ export const COLORS = {
 
   main: "#0A2551",
   business: "#6796EA",
-  savings: "#CE23EF",
+  savings: "#b320d0",
   expense: "#934D54",
   investment: "#42C968",
-  emergency: "#DD1F57",
+  investment2: "#1d13ba",
+  emergency: "#992d4d",
 
   linear: `linear-gradient(to bottom right, ${"#cd3c67"} ,  ${"#223351"})`,
   linear2: `radial-gradient(circle, rgba(34,22,172,1) 0%, rgba(19,13,82,1) 100%)`,

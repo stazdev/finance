@@ -14,6 +14,7 @@ import Expense from "./Expense";
 import Investment from "./Investment";
 import Emergency from "./Emergency";
 import Naira from "./Naira";
+import NairaSmall from "./NairaSmall";
 import ArrowCircleFilled from "./ArrowCircleFilled";
 import ChevronLeft from "./ChevronLeft";
 import ChevronRight from "./ChevronRight";
@@ -61,6 +62,7 @@ export {
   Investment,
   Emergency,
   Naira,
+  NairaSmall,
   ArrowCircleFilled,
   ChevronLeft,
   ChevronRight,

@@ -43,7 +43,7 @@ const accounts = [
     icon: <Investment />,
     description: "Investment Wallet",
     balance: 10000,
-    back: COLORS.investment,
+    back: COLORS.investment2,
   },
   {
     id: 6,

@@ -111,7 +111,7 @@ const Home = ({ navigation }) => {
             backgroundColor: item.back,
             marginHorizontal: SIZES.base,
             borderRadius: SIZES.radius,
-            width: SIZES.width * 0.8 - 20,
+            width: SIZES.width * 0.75 - 25,
             height: SIZES.width / 2,
             justifyContent: "center",
             alignItems: "center",
@@ -171,7 +171,7 @@ const Home = ({ navigation }) => {
         decelerationRate="fast"
         bounces={false}
         snapToOffsets={[...Array(accounts.length)].map(
-          (x, i) => i * (SIZES.width * 0.8 - 10) + (i - 1) * 10
+          (x, i) => i * (SIZES.width * 0.75 - 16) + (i - 1) * 12
         )}
         keyExtractor={(item) => `${item.id}`}
         renderItem={renderItem}

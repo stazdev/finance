@@ -12,7 +12,7 @@ import { ThemeContext } from "../context-store/context";
 import { COLORS, SIZES, FONTS } from "../constants";
 
 import { Button } from "../components";
-import { Naira } from "../assets/icons";
+import { NairaSmall } from "../assets/icons";
 
 const listTab = [
   {
@@ -145,9 +145,7 @@ const Transaction = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row", alignContent: "center" }}>
-          {/* <View style={{ width: 5, height: 5 }}>
-            <Naira fill={"white"} />
-          </View> */}
+          <NairaSmall fill={theme === "light" ? COLORS.dark : COLORS.white} />
           <Text
             style={[
               styles.amount,
