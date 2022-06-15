@@ -44,6 +44,7 @@ import NotImg from "./NotImg";
 import Camera from "./Camera";
 import DebitCard from "./DebitCard";
 import LogoSmallDark from "./LogoSmallDark";
+import Check from "./Check";
 
 export {
   Delete,
@@ -92,4 +93,5 @@ export {
   Camera,
   DebitCard,
   LogoSmallDark,
+  Check,
 };

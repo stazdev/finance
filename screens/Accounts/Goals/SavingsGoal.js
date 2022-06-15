@@ -5,13 +5,15 @@ import {
   Image,
   FlatList,
   SafeAreaView,
+  TouchableOpacity,
 } from "react-native";
 import React, { useContext } from "react";
-import { ThemeContext } from "../../context-store/context";
+import { ThemeContext } from "../../../context-store/context";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { images, COLORS, SIZES, FONTS, icons } from "../../constants";
-import { LongArrowWhite } from "../../assets/icons";
+import { images, COLORS, SIZES, FONTS, icons } from "../../../constants";
+import { LongArrowWhite } from "../../../assets/icons";
+import { useNavigation } from "@react-navigation/native";
 
 const goals = [
   {
@@ -33,7 +35,7 @@ const goals = [
 
 const SavingsGoal = () => {
   const { theme } = useContext(ThemeContext);
-
+  const navigation = useNavigation();
   const renderItem = ({ item }) => (
     <View style={{ marginLeft: SIZES.padding }}>
       <Image
@@ -65,7 +67,9 @@ const SavingsGoal = () => {
           marginVertical: SIZES.padding * 4,
         }}
       >
-        <Image source={images.logoSmall} />
+        <Image
+          source={theme === "light" ? images.logoSmallDark : images.logoSmall}
+        />
       </View>
     );
   }
@@ -83,21 +87,26 @@ const SavingsGoal = () => {
         </Text>
         <View style={styles.activeCards}>
           <View>
-            <LinearGradient
-              colors={[COLORS.primary, COLORS.secondary_light]}
-              style={{
-                width: 150,
-                height: 171,
-                borderRadius: SIZES.radius,
-                alignItems: "center",
-              }}
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => navigation.navigate("CreateGoal")}
             >
-              <Image
-                source={images.circlePlus}
-                resizeMode={"contain"}
-                style={{ marginTop: SIZES.padding2 }}
-              />
-            </LinearGradient>
+              <LinearGradient
+                colors={[COLORS.primary, COLORS.secondary_light]}
+                style={{
+                  width: 150,
+                  height: 171,
+                  borderRadius: SIZES.radius,
+                  alignItems: "center",
+                }}
+              >
+                <Image
+                  source={images.circlePlus}
+                  resizeMode={"contain"}
+                  style={{ marginTop: SIZES.padding2 }}
+                />
+              </LinearGradient>
+            </TouchableOpacity>
             <View style={styles.cardNote}>
               <Text style={styles.cardText}>
                 Create a Custom{"\n"}Plan{"  "}

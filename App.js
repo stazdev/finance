@@ -27,6 +27,8 @@ import {
   AddMoney,
   BankTransfer,
   AddCard,
+  CreateGoal,
+  GoalCreator,
 } from "./screens";
 
 import MyTabs from "./navigation/tabs";
@@ -92,6 +94,8 @@ export default function App() {
           <Stack.Screen name="AddMoney" component={AddMoney} />
           <Stack.Screen name="BankTransfer" component={BankTransfer} />
           <Stack.Screen name="AddCard" component={AddCard} />
+          <Stack.Screen name="CreateGoal" component={CreateGoal} />
+          <Stack.Screen name="GoalCreator" component={GoalCreator} />
           <Stack.Screen
             name="ExploreInvestmentDetail"
             component={ExploreInvestmentDetail}

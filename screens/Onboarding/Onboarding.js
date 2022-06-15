@@ -111,7 +111,7 @@ const Onboarding = ({ navigation }) => {
                   animated: true,
                 });
               } else {
-                navigation.replace("SignUp");
+                navigation.navigate("SignUp");
               }
             }}
             label={"Next"}

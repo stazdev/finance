@@ -1,4 +1,6 @@
-import SavingsGoal from "./SavingsGoal";
+import SavingsGoal from "./Goals/SavingsGoal";
+import CreateGoal from "./Goals/CreateGoal";
+import GoalCreator from "./Goals/GoalCreator";
 import ExpenseContent from "./Expense/ExpenseContent";
 import PayBill from "./Expense/PayBill";
 import BuyAirtime from "./Expense/BuyAirtime";
@@ -12,6 +14,8 @@ import AddCard from "./Addmoney/AddCard";
 
 export {
   SavingsGoal,
+  CreateGoal,
+  GoalCreator,
   ExpenseContent,
   InvestmentContent,
   PayBill,

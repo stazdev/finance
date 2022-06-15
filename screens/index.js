@@ -7,6 +7,8 @@ import Feeds from "./Feeds/Feeds";
 import Profile from "./Profile/Profile";
 import Onboarding from "./Onboarding/Onboarding";
 import Login from "../screens/Authentication/Login/Login";
+import CreateGoal from "../screens/Accounts/Goals/CreateGoal";
+import GoalCreator from "../screens/Accounts/Goals/GoalCreator";
 import SignUp from "../screens/Authentication/SignUp/SignUp";
 import Verify from "../screens/Authentication/Verify/Verify";
 import Transaction from "../components/Transaction";
@@ -50,4 +52,6 @@ export {
   AddMoney,
   BankTransfer,
   AddCard,
+  CreateGoal,
+  GoalCreator,
 };
