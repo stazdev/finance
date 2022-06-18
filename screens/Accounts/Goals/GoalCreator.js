@@ -6,12 +6,20 @@ import {
   TouchableOpacity,
   Image,
   Animated,
+  ScrollView,
   FlatList,
   TextInput,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
-import React, { useState } from "react";
-import { Check, ChevronDown, ChevronLeft } from "../../../assets/icons";
+import React, { useState, useContext } from "react";
+import { ThemeContext } from "../../../context-store/context";
+import {
+  Check,
+  ChevronDown,
+  ChevronLeft,
+  ToggleOff,
+  ToggleOn,
+} from "../../../assets/icons";
 import { COLORS, FONTS, images, SIZES } from "../../../constants";
 import { Button } from "../../../components";
 
@@ -133,11 +141,13 @@ const dates = [
 ];
 
 const GoalCreator = ({ navigation }) => {
-  const [progressWidth, setProgressWidth] = useState("0%");
   const [current, setCurrent] = useState(1);
   const [tab, setTab] = useState("Daily");
   const [manual, setManual] = useState(true);
   const [selectedDate, setSelectedDate] = useState(1);
+  const [toggle, setToggle] = useState(true);
+  const [toggle1, setToggle1] = useState(true);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   function renderHeader() {
     function renderDateTab() {
@@ -174,7 +184,9 @@ const GoalCreator = ({ navigation }) => {
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <TouchableOpacity
             activeOpacity={0.7}
-            onPress={() => navigation.pop()}
+            onPress={() =>
+              current !== 1 ? setCurrent(current - 1) : navigation.pop()
+            }
           >
             <ChevronLeft />
           </TouchableOpacity>
@@ -218,16 +230,27 @@ const GoalCreator = ({ navigation }) => {
           )}
           {current === 3 && <View>{renderDateTab()}</View>}
           {current === 4 && (
-            <Text
-              style={{
-                color: COLORS.primary,
-                ...FONTS.h3Bold,
-                marginTop: SIZES.radius,
-                fontSize: 22,
-              }}
-            >
-              Before you continue
-            </Text>
+            <View>
+              <Text
+                style={{
+                  color: COLORS.primary,
+                  ...FONTS.h3Bold,
+                  marginTop: SIZES.radius,
+                  fontSize: 22,
+                }}
+              >
+                Before you continue
+              </Text>
+              <Text
+                style={{
+                  color: COLORS.greyMedium,
+                  ...FONTS.fbody1,
+                  fontSize: 16,
+                }}
+              >
+                Here are a few things to note.
+              </Text>
+            </View>
           )}
         </View>
       </View>
@@ -267,7 +290,7 @@ const GoalCreator = ({ navigation }) => {
             { position: "absolute", top: -10, left: "92%" },
           ]}
         >
-          {current == 4 ? (
+          {current == 4 && toggle == true && toggle1 == true ? (
             <Check />
           ) : (
             <Text style={styles.progressText}>4</Text>
@@ -298,7 +321,7 @@ const GoalCreator = ({ navigation }) => {
     return (
       <View>
         <Button
-          label={"NEXT"}
+          label={current == 4 ? "CONTINUE" : "NEXT"}
           containerStyle={{
             paddingHorizontal: SIZES.padding * 11,
             paddingVertical: SIZES.padding,
@@ -312,7 +335,6 @@ const GoalCreator = ({ navigation }) => {
             } else {
               setCurrent(current / 4);
             }
-            console.log(tab);
           }}
         />
       </View>
@@ -824,12 +846,114 @@ const GoalCreator = ({ navigation }) => {
                   style={{ alignSelf: "center" }}
                 />
               </Animatable.View>
+
+              <Animatable.View
+                style={{ marginVertical: SIZES.radius }}
+                animation={"fadeIn"}
+                duration={2000}
+              >
+                <Text
+                  style={{
+                    color: COLORS.white,
+                    ...FONTS.fbody2,
+                    marginBottom: SIZES.padding / 2,
+                  }}
+                >
+                  Select a time of day
+                </Text>
+                <View
+                  style={{
+                    width: "100%",
+                    borderWidth: 1,
+                    borderColor: COLORS.greyLight,
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <TextInput
+                    style={{
+                      width: "80%",
+                      color: COLORS.white,
+                      padding: SIZES.padding,
+                      ...FONTS.h4Bold,
+                      fontSize: 19.8,
+                    }}
+                    placeholder={"Choose a time"}
+                    placeholderTextColor={COLORS.greyMedium}
+                  />
+                  <View style={{ paddingRight: SIZES.padding }}>
+                    <ChevronDown />
+                  </View>
+                </View>
+              </Animatable.View>
+              {renderFrequencyAutomation()}
             </View>
           )}
         </View>
       );
     }
 
+    function renderCondition() {
+      return (
+        <Animatable.View animation={"fadeIn"} duration={2000}>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginBottom: SIZES.padding2 * 3,
+            }}
+          >
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => setToggle(!toggle)}
+            >
+              {!toggle ? <ToggleOff /> : <ToggleOn />}
+            </TouchableOpacity>
+            <Text
+              style={{
+                color: COLORS.white,
+                ...FONTS.body2bold,
+                fontSize: 14,
+                lineHeight: 15.5,
+                paddingHorizontal: SIZES.padding2 * 2,
+              }}
+            >
+              Pls ensure you are saving your money for a convenient duration. If
+              you decide to withdraw these funds before the stipulated time, a
+              2% charge would apply
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginBottom: SIZES.padding2 * 5,
+            }}
+          >
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => setToggle1(!toggle1)}
+            >
+              {!toggle1 ? <ToggleOff /> : <ToggleOn />}
+            </TouchableOpacity>
+            <Text
+              style={{
+                color: COLORS.white,
+                ...FONTS.body2bold,
+                fontSize: 14,
+                lineHeight: 15.5,
+                paddingHorizontal: SIZES.padding2 * 2,
+              }}
+            >
+              I agree to the 5QM terms & Conditions governing creation of
+              savings plans
+            </Text>
+          </View>
+        </Animatable.View>
+      );
+    }
     return (
       <View>
         {current == 1 ? (
@@ -839,23 +963,28 @@ const GoalCreator = ({ navigation }) => {
         ) : current == 3 ? (
           <View>{renderFrequency()}</View>
         ) : (
-          <View
-            style={{
-              width: SIZES.width,
-              height: 35,
-              backgroundColor: COLORS.primary,
-            }}
-          />
+          <View>{renderCondition()}</View>
         )}
       </View>
     );
   }
   return (
-    <SafeAreaView style={{ paddingHorizontal: SIZES.padding }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        paddingHorizontal: SIZES.padding,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
+      }}
+    >
       {renderHeader()}
       {renderProgress()}
-      {renderContent()}
-      {renderButton()}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 300 }}
+      >
+        {renderContent()}
+        {renderButton()}
+      </ScrollView>
     </SafeAreaView>
   );
 };
