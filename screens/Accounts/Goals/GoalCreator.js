@@ -21,7 +21,7 @@ import {
   ToggleOn,
 } from "../../../assets/icons";
 import { COLORS, FONTS, images, SIZES } from "../../../constants";
-import { Button } from "../../../components";
+import { Button, CustomModal } from "../../../components";
 
 const numbers = [
   {
@@ -140,6 +140,87 @@ const dates = [
   },
 ];
 
+const maturity = [
+  {
+    id: 1,
+    value: "End in 30 days - (10 - Jul - 2022)",
+  },
+  {
+    id: 2,
+    value: "End in 60 days - (10 - Aug - 2022)",
+  },
+  {
+    id: 3,
+    value: "End in 90 days - (10 - Sept - 2022)",
+  },
+  {
+    id: 4,
+    value: "Choose on calendar",
+  },
+];
+const days = [
+  {
+    id: 1,
+    value: "Monday",
+  },
+  {
+    id: 2,
+    value: "Tuesday",
+  },
+  {
+    id: 3,
+    value: "Wednesday",
+  },
+  {
+    id: 4,
+    value: "Thursday",
+  },
+  {
+    id: 5,
+    value: "Friday",
+  },
+  {
+    id: 6,
+    value: "Saturday",
+  },
+  {
+    id: 7,
+    value: "Sunday",
+  },
+];
+const times = [
+  {
+    id: 1,
+    value: "07:00 am",
+  },
+  {
+    id: 2,
+    value: "10:00 am",
+  },
+  {
+    id: 3,
+    value: "12:00 pm",
+  },
+  {
+    id: 4,
+    value: "03: 00 pm",
+  },
+  {
+    id: 5,
+    value: "08: 00 pm",
+  },
+];
+const sources = [
+  {
+    id: 1,
+    value: "Use Savings wallet",
+  },
+  {
+    id: 2,
+    value: "Use bank card   **** 1505 ",
+  },
+];
+
 const GoalCreator = ({ navigation }) => {
   const [current, setCurrent] = useState(1);
   const [tab, setTab] = useState("Daily");
@@ -147,7 +228,16 @@ const GoalCreator = ({ navigation }) => {
   const [selectedDate, setSelectedDate] = useState(1);
   const [toggle, setToggle] = useState(true);
   const [toggle1, setToggle1] = useState(true);
+  const [selected, setSelected] = useState(1);
+  const [selectedDay, setSelectedDay] = useState(1);
+  const [selectedTime, setSelectedTime] = useState(1);
+  const [selectedMaturity, setSelectedMaturity] = useState(1);
   const { theme, setTheme } = useContext(ThemeContext);
+  const [sourceModal, setSourceModal] = useState(false);
+  const [maturityModal, setMaturityModal] = useState(false);
+  const [timeModal, setTimeModal] = useState(false);
+  const [dayModal, setDayModal] = useState(false);
+  const [confirmationModal, setConfirmationModal] = useState(false);
 
   function renderHeader() {
     function renderDateTab() {
@@ -339,7 +429,7 @@ const GoalCreator = ({ navigation }) => {
             if (current !== numbers.length) {
               setCurrent(current + 1);
             } else {
-              setCurrent(current / 4);
+              setConfirmationModal(true);
             }
           }}
         />
@@ -460,9 +550,13 @@ const GoalCreator = ({ navigation }) => {
                 placeholder={"Select a maturity date"}
                 placeholderTextColor={COLORS.greyMedium}
               />
-              <View style={{ paddingRight: SIZES.padding }}>
+              <TouchableOpacity
+                onPress={() => setMaturityModal(true)}
+                activeOpacity={0.7}
+                style={{ paddingRight: SIZES.padding }}
+              >
                 <ChevronDown />
-              </View>
+              </TouchableOpacity>
             </View>
           </Animatable.View>
 
@@ -502,9 +596,13 @@ const GoalCreator = ({ navigation }) => {
                 placeholder={"Select a funding source"}
                 placeholderTextColor={COLORS.greyMedium}
               />
-              <View style={{ paddingRight: SIZES.padding }}>
+              <TouchableOpacity
+                onPress={() => setSourceModal(true)}
+                activeOpacity={0.7}
+                style={{ paddingRight: SIZES.padding }}
+              >
                 <ChevronDown />
-              </View>
+              </TouchableOpacity>
             </View>
           </Animatable.View>
         </View>
@@ -552,26 +650,19 @@ const GoalCreator = ({ navigation }) => {
                 }}
               >
                 <View
-                  style={{
-                    width: 23,
-                    height: 23,
-                    borderRadius: SIZES.radius,
-                    borderWidth: 0.25,
-                    borderColor: COLORS.primary,
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
+                  style={[
+                    styles.radioOut,
+                    {
+                      borderColor:
+                        manual === true
+                          ? COLORS.primary
+                          : theme === "light"
+                          ? COLORS.dark
+                          : COLORS.white,
+                    },
+                  ]}
                 >
-                  {manual && (
-                    <View
-                      style={{
-                        width: 17,
-                        height: 17,
-                        borderRadius: SIZES.radius,
-                        backgroundColor: COLORS.primary,
-                      }}
-                    />
-                  )}
+                  {manual && <View style={styles.radioIn} />}
                 </View>
               </TouchableOpacity>
               <Text
@@ -608,6 +699,11 @@ const GoalCreator = ({ navigation }) => {
           </TouchableOpacity>
         );
       };
+
+      {
+        /* Inner tabs of the frequency screen  */
+      }
+
       return (
         <View>
           {tab === "Daily" && (
@@ -686,9 +782,13 @@ const GoalCreator = ({ navigation }) => {
                     placeholder={"Choose a time"}
                     placeholderTextColor={COLORS.greyMedium}
                   />
-                  <View style={{ paddingRight: SIZES.padding }}>
+                  <TouchableOpacity
+                    onPress={() => setTimeModal(true)}
+                    activeOpacity={0.7}
+                    style={{ paddingRight: SIZES.padding }}
+                  >
                     <ChevronDown />
-                  </View>
+                  </TouchableOpacity>
                 </View>
               </Animatable.View>
               {renderFrequencyAutomation()}
@@ -769,9 +869,13 @@ const GoalCreator = ({ navigation }) => {
                     placeholder={"Choose a day of week"}
                     placeholderTextColor={COLORS.greyMedium}
                   />
-                  <View style={{ paddingRight: SIZES.padding }}>
+                  <TouchableOpacity
+                    onPress={() => setDayModal(true)}
+                    activeOpacity={0.7}
+                    style={{ paddingRight: SIZES.padding }}
+                  >
                     <ChevronDown />
-                  </View>
+                  </TouchableOpacity>
                 </View>
               </Animatable.View>
 
@@ -813,9 +917,13 @@ const GoalCreator = ({ navigation }) => {
                     placeholder={"Choose a time"}
                     placeholderTextColor={COLORS.greyMedium}
                   />
-                  <View style={{ paddingRight: SIZES.padding }}>
+                  <TouchableOpacity
+                    onPress={() => setTimeModal(true)}
+                    activeOpacity={0.7}
+                    style={{ paddingRight: SIZES.padding }}
+                  >
                     <ChevronDown />
-                  </View>
+                  </TouchableOpacity>
                 </View>
               </Animatable.View>
               {renderFrequencyAutomation()}
@@ -923,9 +1031,13 @@ const GoalCreator = ({ navigation }) => {
                     placeholder={"Choose a time"}
                     placeholderTextColor={COLORS.greyMedium}
                   />
-                  <View style={{ paddingRight: SIZES.padding }}>
+                  <TouchableOpacity
+                    onPress={() => setTimeModal(true)}
+                    activeOpacity={0.7}
+                    style={{ paddingRight: SIZES.padding }}
+                  >
                     <ChevronDown />
-                  </View>
+                  </TouchableOpacity>
                 </View>
               </Animatable.View>
               {renderFrequencyAutomation()}
@@ -935,6 +1047,7 @@ const GoalCreator = ({ navigation }) => {
       );
     }
 
+    // render a tab content based on the current progress tab index
     function renderCondition() {
       return (
         <Animatable.View animation={"fadeIn"} duration={2000}>
@@ -1009,6 +1122,417 @@ const GoalCreator = ({ navigation }) => {
       </View>
     );
   }
+
+  // methods for handling modals
+  function renderFundingSourceModal() {
+    return (
+      <CustomModal animationIn="slideInUp" isVisible={sourceModal}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              width: SIZES.width,
+              padding: SIZES.base * 3,
+              backgroundColor: COLORS.modal,
+              borderRadius: SIZES.radius,
+            }}
+          >
+            {/* modal header */}
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => setSourceModal(false)}
+              >
+                <ChevronLeft />
+              </TouchableOpacity>
+
+              <View>
+                <Text
+                  style={{
+                    color: COLORS.white,
+                    ...FONTS.h4Bold,
+                    marginLeft: SIZES.padding2 * 2,
+                  }}
+                >
+                  Funding source
+                </Text>
+              </View>
+            </View>
+
+            {/* radio buttons */}
+            <View>
+              {sources.map((source) => (
+                <TouchableOpacity
+                  onPress={() => setSelected(source.id)}
+                  activeOpacity={0.7}
+                  style={styles.modalItem}
+                >
+                  <View style={styles.radioOut}>
+                    {selected === source.id && <View style={styles.radioIn} />}
+                  </View>
+                  <Text
+                    style={{
+                      color: COLORS.white,
+                      ...FONTS.h4Bold,
+                      fontSize: 16,
+                      fontWeight: "600",
+                    }}
+                  >
+                    {source.value}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            {/* render button */}
+            <Button
+              label={"DONE"}
+              labelStyle={{
+                ...FONTS.h4Bold,
+                color: COLORS.white,
+              }}
+              containerStyle={{
+                backgroundColor: COLORS.investment,
+                paddingVertical: 18,
+                width: SIZES.width * 0.9,
+                borderRadius: SIZES.radius,
+                marginVertical: SIZES.base * 5,
+              }}
+              onPress={() => setSourceModal(false)}
+            />
+          </View>
+        </View>
+      </CustomModal>
+    );
+  }
+
+  function renderMaturityModal() {
+    return (
+      <CustomModal animationIn="slideInUp" isVisible={maturityModal}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              width: SIZES.width,
+              padding: SIZES.base * 3,
+              backgroundColor: COLORS.modal,
+              borderRadius: SIZES.radius,
+            }}
+          >
+            {/* modal header */}
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => setMaturityModal(false)}
+              >
+                <ChevronLeft />
+              </TouchableOpacity>
+
+              <View>
+                <Text
+                  style={{
+                    color: COLORS.white,
+                    ...FONTS.h4Bold,
+                    marginLeft: SIZES.padding2 * 2,
+                  }}
+                >
+                  Maturity Date
+                </Text>
+              </View>
+            </View>
+
+            {/* radio buttons */}
+            <View>
+              {maturity.map((mature) => (
+                <TouchableOpacity
+                  onPress={() => setSelectedMaturity(mature.id)}
+                  activeOpacity={0.7}
+                  style={styles.modalItem}
+                >
+                  <View style={styles.radioOut}>
+                    {selectedMaturity === mature.id && (
+                      <View style={styles.radioIn} />
+                    )}
+                  </View>
+                  <Text
+                    style={{
+                      color: COLORS.white,
+                      ...FONTS.h4Bold,
+                      fontSize: 16,
+                      fontWeight: "600",
+                    }}
+                  >
+                    {mature.value}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            {/* render button */}
+            <Button
+              label={"DONE"}
+              labelStyle={{
+                ...FONTS.h4Bold,
+                color: COLORS.white,
+              }}
+              containerStyle={{
+                backgroundColor: COLORS.investment,
+                paddingVertical: 18,
+                width: SIZES.width * 0.9,
+                borderRadius: SIZES.radius,
+                marginVertical: SIZES.base * 5,
+              }}
+              onPress={() => setMaturityModal(false)}
+            />
+          </View>
+        </View>
+      </CustomModal>
+    );
+  }
+  function renderDayModal() {
+    return (
+      <CustomModal animationIn="slideInUp" isVisible={dayModal}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              width: SIZES.width,
+              padding: SIZES.base * 3,
+              backgroundColor: COLORS.modal,
+              borderRadius: SIZES.radius,
+            }}
+          >
+            {/* modal header */}
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => setDayModal(false)}
+              >
+                <ChevronLeft />
+              </TouchableOpacity>
+
+              <View>
+                <Text
+                  style={{
+                    color: COLORS.white,
+                    ...FONTS.h4Bold,
+                    marginLeft: SIZES.padding2 * 2,
+                  }}
+                >
+                  Choose Frequency
+                </Text>
+              </View>
+            </View>
+
+            {/* radio buttons */}
+            <View>
+              {days.map((day) => (
+                <TouchableOpacity
+                  onPress={() => setSelectedDay(day.id)}
+                  activeOpacity={0.7}
+                  style={styles.modalItem}
+                >
+                  <View
+                    style={[
+                      styles.radioOut,
+                      {
+                        borderColor:
+                          selectedDay === day.id
+                            ? COLORS.primary
+                            : COLORS.white,
+                      },
+                    ]}
+                  >
+                    {selectedDay === day.id && <View style={styles.radioIn} />}
+                  </View>
+                  <Text
+                    style={{
+                      color: COLORS.white,
+                      ...FONTS.h4Bold,
+                      fontSize: 16,
+                      fontWeight: "600",
+                    }}
+                  >
+                    {day.value}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            {/* render button */}
+            <Button
+              label={"DONE"}
+              labelStyle={{
+                ...FONTS.h4Bold,
+                color: COLORS.white,
+              }}
+              containerStyle={{
+                backgroundColor: COLORS.investment,
+                paddingVertical: 18,
+                width: SIZES.width * 0.9,
+                borderRadius: SIZES.radius,
+                marginVertical: SIZES.base * 5,
+              }}
+              onPress={() => setDayModal(false)}
+            />
+          </View>
+        </View>
+      </CustomModal>
+    );
+  }
+  function renderTimeModal() {
+    return (
+      <CustomModal animationIn="slideInUp" isVisible={timeModal}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              width: SIZES.width,
+              padding: SIZES.base * 3,
+              backgroundColor: COLORS.modal,
+              borderRadius: SIZES.radius,
+            }}
+          >
+            {/* modal header */}
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => setTimeModal(false)}
+              >
+                <ChevronLeft />
+              </TouchableOpacity>
+
+              <View>
+                <Text
+                  style={{
+                    color: COLORS.white,
+                    ...FONTS.h4Bold,
+                    marginLeft: SIZES.padding2 * 2,
+                  }}
+                >
+                  Select Time
+                </Text>
+              </View>
+            </View>
+
+            {/* radio buttons */}
+            <View>
+              {times.map((time) => (
+                <TouchableOpacity
+                  onPress={() => setSelectedTime(time.id)}
+                  activeOpacity={0.7}
+                  style={styles.modalItem}
+                >
+                  <View
+                    style={[
+                      styles.radioOut,
+                      {
+                        borderColor:
+                          selectedTime === time.id
+                            ? COLORS.primary
+                            : COLORS.white,
+                      },
+                    ]}
+                  >
+                    {selectedTime === time.id && (
+                      <View style={styles.radioIn} />
+                    )}
+                  </View>
+                  <Text
+                    style={{
+                      color: COLORS.white,
+                      ...FONTS.h4Bold,
+                      fontSize: 16,
+                      fontWeight: "600",
+                    }}
+                  >
+                    {time.value}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            {/* render button */}
+            <Button
+              label={"DONE"}
+              labelStyle={{
+                ...FONTS.h4Bold,
+                color: COLORS.white,
+              }}
+              containerStyle={{
+                backgroundColor: COLORS.investment,
+                paddingVertical: 18,
+                width: SIZES.width * 0.9,
+                borderRadius: SIZES.radius,
+                marginVertical: SIZES.base * 5,
+              }}
+              onPress={() => setTimeModal(false)}
+            />
+          </View>
+        </View>
+      </CustomModal>
+    );
+  }
+  function renderConfirmationModal() {
+    return (
+      <CustomModal animationIn="slideInUp" isVisible={confirmationModal}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              width: SIZES.width * 0.9,
+              padding: SIZES.base * 3,
+              backgroundColor: COLORS.white,
+              borderRadius: SIZES.radius,
+            }}
+          >
+            <Text
+              style={{
+                ...FONTS.h3Bold,
+                color: COLORS.greyMedium,
+                fontSize: 25,
+                marginBottom: SIZES.padding * 4,
+              }}
+            >
+              Plan created successfully
+            </Text>
+
+            <Button
+              label={"Great!"}
+              labelStyle={{ color: COLORS.primary }}
+              containerStyle={{ alignSelf: "flex-end" }}
+              onPress={() => navigation.goBack()}
+            />
+          </View>
+        </View>
+      </CustomModal>
+    );
+  }
   return (
     <SafeAreaView
       style={{
@@ -1036,6 +1560,11 @@ const GoalCreator = ({ navigation }) => {
           </View>
         )}
       </ScrollView>
+      {renderFundingSourceModal()}
+      {renderMaturityModal()}
+      {renderTimeModal()}
+      {renderDayModal()}
+      {renderConfirmationModal()}
     </SafeAreaView>
   );
 };
@@ -1085,5 +1614,28 @@ const styles = StyleSheet.create({
     marginTop: SIZES.padding,
     borderTopLeftRadius: SIZES.padding,
     borderTopRightRadius: SIZES.padding,
+  },
+  modalItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 15,
+    borderBottomColor: COLORS.white,
+    borderBottomWidth: 0.5,
+  },
+  radioOut: {
+    borderWidth: 0.5,
+    borderColor: COLORS.white,
+    borderRadius: SIZES.padding,
+    height: 23,
+    width: 23,
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: SIZES.padding2 * 2,
+  },
+  radioIn: {
+    width: 17,
+    height: 17,
+    backgroundColor: COLORS.primary,
+    borderRadius: SIZES.padding,
   },
 });

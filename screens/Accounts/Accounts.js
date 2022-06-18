@@ -18,6 +18,7 @@ import {
   Building,
   ChevronLeft,
   Info,
+  NairaSmall,
   Pana,
   Rafiki,
 } from "../../assets/icons";
@@ -151,14 +152,21 @@ const Accounts = ({ navigation }) => {
         <View>
           <Text style={styles.cardDescription}> {item.description} </Text>
         </View>
-        <View>
+
+        <View
+          style={{
+            flexDirection: "row",
+            marginTop: SIZES.padding * 2,
+            alignItems: "center",
+          }}
+        >
+          <NairaSmall fill={theme === "light" ? COLORS.white : item.color} />
           <Text
             style={{
               color: theme === "light" ? COLORS.white : item.color,
               ...FONTS.fh4,
               fontSize: 15,
               lineHeight: 18,
-              marginTop: SIZES.padding * 2,
             }}
           >
             {" "}
