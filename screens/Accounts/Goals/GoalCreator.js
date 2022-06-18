@@ -164,7 +164,7 @@ const GoalCreator = ({ navigation }) => {
                 style={[
                   styles.text,
                   {
-                    color: COLORS.white,
+                    color: theme === "light" ? "#000000" : COLORS.white,
                     ...FONTS.fbody2,
                   },
                 ]}
@@ -181,7 +181,13 @@ const GoalCreator = ({ navigation }) => {
 
     return (
       <View>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            paddingVertical: SIZES.padding,
+          }}
+        >
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={() =>
@@ -347,7 +353,7 @@ const GoalCreator = ({ navigation }) => {
         <View style={{ marginBottom: SIZES.base * 8 }}>
           <Text
             style={{
-              color: COLORS.white,
+              color: theme === "light" ? COLORS.secondary_dark : COLORS.white,
               ...FONTS.fbody2,
               marginBottom: SIZES.padding / 2,
             }}
@@ -358,7 +364,8 @@ const GoalCreator = ({ navigation }) => {
             style={{
               width: "100%",
               borderWidth: 1,
-              borderColor: COLORS.greyLight,
+              borderColor:
+                theme === "light" ? COLORS.secondary : COLORS.greyLight,
             }}
           >
             <TextInput
@@ -389,7 +396,7 @@ const GoalCreator = ({ navigation }) => {
           <View style={{ paddingVertical: SIZES.radius }}>
             <Text
               style={{
-                color: COLORS.white,
+                color: theme === "light" ? COLORS.secondary_dark : COLORS.white,
                 ...FONTS.fbody2,
                 marginBottom: SIZES.padding / 2,
               }}
@@ -400,7 +407,8 @@ const GoalCreator = ({ navigation }) => {
               style={{
                 width: "100%",
                 borderWidth: 1,
-                borderColor: COLORS.greyLight,
+                borderColor:
+                  theme === "light" ? COLORS.secondary : COLORS.greyLight,
               }}
             >
               <TextInput
@@ -423,7 +431,7 @@ const GoalCreator = ({ navigation }) => {
           >
             <Text
               style={{
-                color: COLORS.white,
+                color: theme === "light" ? COLORS.secondary_dark : COLORS.white,
                 ...FONTS.fbody2,
                 marginBottom: SIZES.padding / 2,
               }}
@@ -434,7 +442,8 @@ const GoalCreator = ({ navigation }) => {
               style={{
                 width: "100%",
                 borderWidth: 1,
-                borderColor: COLORS.greyLight,
+                borderColor:
+                  theme === "light" ? COLORS.secondary : COLORS.greyLight,
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
@@ -464,7 +473,7 @@ const GoalCreator = ({ navigation }) => {
           >
             <Text
               style={{
-                color: COLORS.white,
+                color: theme === "light" ? COLORS.secondary_dark : COLORS.white,
                 ...FONTS.fbody2,
                 marginBottom: SIZES.padding / 2,
               }}
@@ -475,7 +484,8 @@ const GoalCreator = ({ navigation }) => {
               style={{
                 width: "100%",
                 borderWidth: 1,
-                borderColor: COLORS.greyLight,
+                borderColor:
+                  theme === "light" ? COLORS.secondary : COLORS.greyLight,
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
@@ -516,7 +526,12 @@ const GoalCreator = ({ navigation }) => {
               animation={"fadeIn"}
               duration={2000}
             >
-              <Text style={{ color: COLORS.greyMedium, ...FONTS.body2bold }}>
+              <Text
+                style={{
+                  color: theme === "light" ? "#000000" : COLORS.greyMedium,
+                  ...FONTS.body2bold,
+                }}
+              >
                 OR
               </Text>
             </Animatable.View>
@@ -562,7 +577,7 @@ const GoalCreator = ({ navigation }) => {
               <Text
                 style={{
                   ...FONTS.body1bold,
-                  color: COLORS.white,
+                  color: theme === "light" ? COLORS.greyDark : COLORS.white,
                   marginLeft: SIZES.base * 3,
                 }}
               >
@@ -582,7 +597,12 @@ const GoalCreator = ({ navigation }) => {
             }}
             onPress={() => setSelectedDate(item.id)}
           >
-            <Text style={{ color: COLORS.white, ...FONTS.fbody2 }}>
+            <Text
+              style={{
+                color: theme === "light" ? COLORS.secondary : COLORS.white,
+                ...FONTS.fbody2,
+              }}
+            >
               {item.id}
             </Text>
           </TouchableOpacity>
@@ -599,7 +619,8 @@ const GoalCreator = ({ navigation }) => {
               >
                 <Text
                   style={{
-                    color: COLORS.white,
+                    color:
+                      theme === "light" ? COLORS.secondary_dark : COLORS.white,
                     ...FONTS.fbody2,
                     marginBottom: SIZES.padding / 2,
                   }}
@@ -610,12 +631,16 @@ const GoalCreator = ({ navigation }) => {
                   style={{
                     width: "100%",
                     borderWidth: 1,
-                    borderColor: COLORS.greyLight,
+                    borderColor:
+                      theme === "light" ? COLORS.secondary : COLORS.greyLight,
                   }}
                 >
                   <TextInput
                     style={{
-                      color: COLORS.white,
+                      borderColor:
+                        theme === "light"
+                          ? COLORS.secondary_dark
+                          : COLORS.white,
                       padding: SIZES.padding,
                       ...FONTS.h4Bold,
                       fontSize: 19.8,
@@ -631,7 +656,8 @@ const GoalCreator = ({ navigation }) => {
               >
                 <Text
                   style={{
-                    color: COLORS.white,
+                    color:
+                      theme === "light" ? COLORS.secondary_dark : COLORS.white,
                     ...FONTS.fbody2,
                     marginBottom: SIZES.padding / 2,
                   }}
@@ -642,7 +668,8 @@ const GoalCreator = ({ navigation }) => {
                   style={{
                     width: "100%",
                     borderWidth: 1,
-                    borderColor: COLORS.greyLight,
+                    borderColor:
+                      theme === "light" ? COLORS.secondary : COLORS.greyLight,
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "space-between",
@@ -677,7 +704,8 @@ const GoalCreator = ({ navigation }) => {
               >
                 <Text
                   style={{
-                    color: COLORS.white,
+                    color:
+                      theme === "light" ? COLORS.secondary_dark : COLORS.white,
                     ...FONTS.fbody2,
                     marginBottom: SIZES.padding / 2,
                   }}
@@ -688,12 +716,13 @@ const GoalCreator = ({ navigation }) => {
                   style={{
                     width: "100%",
                     borderWidth: 1,
-                    borderColor: COLORS.greyLight,
+                    borderColor:
+                      theme === "light" ? COLORS.secondary : COLORS.greyLight,
                   }}
                 >
                   <TextInput
                     style={{
-                      color: COLORS.white,
+                      color: theme === "light" ? COLORS.dark : COLORS.white,
                       padding: SIZES.padding,
                       ...FONTS.h4Bold,
                       fontSize: 19.8,
@@ -709,7 +738,8 @@ const GoalCreator = ({ navigation }) => {
               >
                 <Text
                   style={{
-                    color: COLORS.white,
+                    borderColor:
+                      theme === "light" ? COLORS.secondary_dark : COLORS.white,
                     ...FONTS.fbody2,
                     marginBottom: SIZES.padding / 2,
                   }}
@@ -720,7 +750,8 @@ const GoalCreator = ({ navigation }) => {
                   style={{
                     width: "100%",
                     borderWidth: 1,
-                    borderColor: COLORS.greyLight,
+                    borderColor:
+                      theme === "light" ? COLORS.secondary : COLORS.greyLight,
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "space-between",
@@ -729,7 +760,8 @@ const GoalCreator = ({ navigation }) => {
                   <TextInput
                     style={{
                       width: "80%",
-                      color: COLORS.white,
+                      borderColor:
+                        theme === "light" ? COLORS.dark : COLORS.white,
                       padding: SIZES.padding,
                       ...FONTS.h4Bold,
                       fontSize: 19.8,
@@ -750,7 +782,8 @@ const GoalCreator = ({ navigation }) => {
               >
                 <Text
                   style={{
-                    color: COLORS.white,
+                    borderColor:
+                      theme === "light" ? COLORS.secondary_dark : COLORS.white,
                     ...FONTS.fbody2,
                     marginBottom: SIZES.padding / 2,
                   }}
@@ -761,7 +794,8 @@ const GoalCreator = ({ navigation }) => {
                   style={{
                     width: "100%",
                     borderWidth: 1,
-                    borderColor: COLORS.greyLight,
+                    borderColor:
+                      theme === "light" ? COLORS.secondary : COLORS.greyLight,
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "space-between",
@@ -770,7 +804,8 @@ const GoalCreator = ({ navigation }) => {
                   <TextInput
                     style={{
                       width: "80%",
-                      color: COLORS.white,
+                      borderColor:
+                        theme === "light" ? COLORS.dark : COLORS.white,
                       padding: SIZES.padding,
                       ...FONTS.h4Bold,
                       fontSize: 19.8,
@@ -796,7 +831,8 @@ const GoalCreator = ({ navigation }) => {
               >
                 <Text
                   style={{
-                    color: COLORS.white,
+                    borderColor:
+                      theme === "light" ? COLORS.secondary_dark : COLORS.white,
                     ...FONTS.fbody2,
                     marginBottom: SIZES.padding / 2,
                   }}
@@ -807,12 +843,14 @@ const GoalCreator = ({ navigation }) => {
                   style={{
                     width: "100%",
                     borderWidth: 1,
-                    borderColor: COLORS.greyLight,
+                    borderColor:
+                      theme === "light" ? COLORS.secondary : COLORS.greyLight,
                   }}
                 >
                   <TextInput
                     style={{
-                      color: COLORS.white,
+                      borderColor:
+                        theme === "light" ? COLORS.dark : COLORS.white,
                       padding: SIZES.padding,
                       ...FONTS.h4Bold,
                       fontSize: 19.8,
@@ -854,7 +892,8 @@ const GoalCreator = ({ navigation }) => {
               >
                 <Text
                   style={{
-                    color: COLORS.white,
+                    borderColor:
+                      theme === "light" ? COLORS.secondary_dark : COLORS.white,
                     ...FONTS.fbody2,
                     marginBottom: SIZES.padding / 2,
                   }}
@@ -865,7 +904,8 @@ const GoalCreator = ({ navigation }) => {
                   style={{
                     width: "100%",
                     borderWidth: 1,
-                    borderColor: COLORS.greyLight,
+                    borderColor:
+                      theme === "light" ? COLORS.secondary : COLORS.greyLight,
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "space-between",
@@ -874,7 +914,8 @@ const GoalCreator = ({ navigation }) => {
                   <TextInput
                     style={{
                       width: "80%",
-                      color: COLORS.white,
+                      borderColor:
+                        theme === "light" ? COLORS.dark : COLORS.white,
                       padding: SIZES.padding,
                       ...FONTS.h4Bold,
                       fontSize: 19.8,
@@ -912,7 +953,7 @@ const GoalCreator = ({ navigation }) => {
             </TouchableOpacity>
             <Text
               style={{
-                color: COLORS.white,
+                color: theme === "light" ? COLORS.secondary_dark : COLORS.white,
                 ...FONTS.body2bold,
                 fontSize: 14,
                 lineHeight: 15.5,
@@ -940,7 +981,7 @@ const GoalCreator = ({ navigation }) => {
             </TouchableOpacity>
             <Text
               style={{
-                color: COLORS.white,
+                color: theme === "light" ? COLORS.secondary_dark : COLORS.white,
                 ...FONTS.body2bold,
                 fontSize: 14,
                 lineHeight: 15.5,
@@ -980,10 +1021,20 @@ const GoalCreator = ({ navigation }) => {
       {renderProgress()}
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 300 }}
+        contentContainerStyle={{ paddingBottom: 80 }}
       >
         {renderContent()}
         {renderButton()}
+
+        {current == 4 && (
+          <View style={{ alignItems: "center", marginTop: SIZES.height * 0.2 }}>
+            <Image
+              source={
+                theme === "light" ? images.logoSmallDark : images.logoSmall
+              }
+            />
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );

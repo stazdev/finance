@@ -6,15 +6,22 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import React from "react";
+import React, { useState, useContext } from "react";
+import { ThemeContext } from "../../../context-store/context";
 import { ChevronLeft } from "../../../assets/icons";
 import { COLORS, FONTS, images, SIZES } from "../../../constants";
 import { Button } from "../../../components";
 
 const CreateGoal = ({ navigation }) => {
+  const { theme, setTheme } = useContext(ThemeContext);
+
   function renderHeader() {
     return (
-      <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.pop()}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={() => navigation.pop()}
+        style={{ paddingVertical: SIZES.padding }}
+      >
         <ChevronLeft />
       </TouchableOpacity>
     );
@@ -39,11 +46,13 @@ const CreateGoal = ({ navigation }) => {
             Here are a few things to note.
           </Text>
         </View>
+
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
             marginVertical: 39,
+            marginHorizontal: SIZES.padding,
           }}
         >
           <View
@@ -51,16 +60,17 @@ const CreateGoal = ({ navigation }) => {
               width: 4,
               height: 4,
               borderRadius: SIZES.radius,
-              backgroundColor: COLORS.greyLight,
+              backgroundColor:
+                theme === "light" ? COLORS.dark : COLORS.greyLight,
               marginRight: SIZES.padding,
               marginTop: -25,
             }}
           />
           <Text
             style={{
-              color: COLORS.white,
+              color: theme === "light" ? COLORS.dark : COLORS.white,
               ...FONTS.body2bold,
-              paddingHorizontal: SIZES.padding,
+              paddingHorizontal: SIZES.base,
             }}
           >
             Pls ensure you are saving your money for a convenient duration. If
@@ -92,13 +102,22 @@ const CreateGoal = ({ navigation }) => {
 
   function renderLogo() {
     return (
-      <View style={{ marginTop: SIZES.height * 0.5 }}>
-        <Image source={images.logoSmall} style={{ alignSelf: "center" }} />
+      <View style={{ marginTop: SIZES.height * 0.4 }}>
+        <Image
+          source={theme === "light" ? images.logoSmallDark : images.logoSmall}
+          style={{ alignSelf: "center" }}
+        />
       </View>
     );
   }
   return (
-    <SafeAreaView style={{ paddingHorizontal: SIZES.padding }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        paddingHorizontal: SIZES.padding,
+        backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
+      }}
+    >
       {renderHeader()}
       {renderContent()}
       {renderButton()}
