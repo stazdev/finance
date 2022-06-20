@@ -301,42 +301,19 @@ const GoalCreator = ({ navigation }) => {
 
         <View>
           {current === 1 && (
-            <Text
-              style={{
-                color: COLORS.primary,
-                ...FONTS.h3Bold,
-                marginTop: SIZES.radius,
-                fontSize: 22,
-              }}
-            >
+            <Text style={styles.primaryText}>
               What Should we call this Plan?
             </Text>
           )}
           {current === 2 && (
-            <Text
-              style={{
-                color: COLORS.primary,
-                ...FONTS.h3Bold,
-                marginTop: SIZES.radius,
-                fontSize: 22,
-              }}
-            >
+            <Text style={styles.primaryText}>
               Complete Your Plan Informaation
             </Text>
           )}
           {current === 3 && <View>{renderDateTab()}</View>}
           {current === 4 && (
             <View>
-              <Text
-                style={{
-                  color: COLORS.primary,
-                  ...FONTS.h3Bold,
-                  marginTop: SIZES.radius,
-                  fontSize: 22,
-                }}
-              >
-                Before you continue
-              </Text>
+              <Text style={styles.primaryText}>Before you continue</Text>
               <Text
                 style={{
                   color: COLORS.greyMedium,
@@ -418,13 +395,7 @@ const GoalCreator = ({ navigation }) => {
       <View>
         <Button
           label={current == 4 ? "CONTINUE" : "NEXT"}
-          containerStyle={{
-            paddingHorizontal: SIZES.padding * 11,
-            paddingVertical: SIZES.padding,
-            backgroundColor: COLORS.primary,
-            borderRadius: SIZES.padding / 2,
-            marginTop: 13,
-          }}
+          containerStyle={styles.progressButton}
           onPress={() => {
             if (current !== numbers.length) {
               setCurrent(current + 1);
@@ -458,14 +429,7 @@ const GoalCreator = ({ navigation }) => {
                 theme === "light" ? COLORS.secondary : COLORS.greyLight,
             }}
           >
-            <TextInput
-              style={{
-                color: COLORS.white,
-                padding: SIZES.padding,
-                ...FONTS.h4Bold,
-                fontSize: 19.8,
-              }}
-            />
+            <TextInput style={styles.InputStyle} />
           </View>
           <Text
             style={{
@@ -502,12 +466,7 @@ const GoalCreator = ({ navigation }) => {
               }}
             >
               <TextInput
-                style={{
-                  color: COLORS.white,
-                  padding: SIZES.padding,
-                  ...FONTS.h4Bold,
-                  fontSize: 19.8,
-                }}
+                style={styles.InputStyle}
                 placeholder={"50000"}
                 placeholderTextColor={COLORS.greyMedium}
               />
@@ -529,24 +488,16 @@ const GoalCreator = ({ navigation }) => {
               Set Maturity Date
             </Text>
             <View
-              style={{
-                width: "100%",
-                borderWidth: 1,
-                borderColor:
-                  theme === "light" ? COLORS.secondary : COLORS.greyLight,
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
+              style={[
+                styles.InputBorder,
+                {
+                  borderColor:
+                    theme === "light" ? COLORS.secondary : COLORS.greyLight,
+                },
+              ]}
             >
               <TextInput
-                style={{
-                  width: "80%",
-                  color: COLORS.white,
-                  padding: SIZES.padding,
-                  ...FONTS.h4Bold,
-                  fontSize: 19.8,
-                }}
+                style={[styles.InputStyle, { width: "80%" }]}
                 placeholder={"Select a maturity date"}
                 placeholderTextColor={COLORS.greyMedium}
               />
@@ -575,24 +526,16 @@ const GoalCreator = ({ navigation }) => {
               Funding Source
             </Text>
             <View
-              style={{
-                width: "100%",
-                borderWidth: 1,
-                borderColor:
-                  theme === "light" ? COLORS.secondary : COLORS.greyLight,
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
+              style={[
+                styles.InputBorder,
+                {
+                  borderColor:
+                    theme === "light" ? COLORS.secondary : COLORS.greyLight,
+                },
+              ]}
             >
               <TextInput
-                style={{
-                  width: "80%",
-                  color: COLORS.white,
-                  padding: SIZES.padding,
-                  ...FONTS.h4Bold,
-                  fontSize: 19.8,
-                }}
+                style={[styles.InputStyle, { width: "80%" }]}
                 placeholder={"Select a funding source"}
                 placeholderTextColor={COLORS.greyMedium}
               />
@@ -761,24 +704,16 @@ const GoalCreator = ({ navigation }) => {
                   Select a Time of day
                 </Text>
                 <View
-                  style={{
-                    width: "100%",
-                    borderWidth: 1,
-                    borderColor:
-                      theme === "light" ? COLORS.secondary : COLORS.greyLight,
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
+                  style={[
+                    styles.InputBorder,
+                    {
+                      borderColor:
+                        theme === "light" ? COLORS.secondary : COLORS.greyLight,
+                    },
+                  ]}
                 >
                   <TextInput
-                    style={{
-                      width: "80%",
-                      color: COLORS.white,
-                      padding: SIZES.padding,
-                      ...FONTS.h4Bold,
-                      fontSize: 19.8,
-                    }}
+                    style={[styles.InputStyle, { width: "80%" }]}
                     placeholder={"Choose a time"}
                     placeholderTextColor={COLORS.greyMedium}
                   />
@@ -847,25 +782,23 @@ const GoalCreator = ({ navigation }) => {
                   Select a day of the week
                 </Text>
                 <View
-                  style={{
-                    width: "100%",
-                    borderWidth: 1,
-                    borderColor:
-                      theme === "light" ? COLORS.secondary : COLORS.greyLight,
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
+                  style={[
+                    styles.InputBorder,
+                    {
+                      borderColor:
+                        theme === "light" ? COLORS.secondary : COLORS.greyLight,
+                    },
+                  ]}
                 >
                   <TextInput
-                    style={{
-                      width: "80%",
-                      borderColor:
-                        theme === "light" ? COLORS.dark : COLORS.white,
-                      padding: SIZES.padding,
-                      ...FONTS.h4Bold,
-                      fontSize: 19.8,
-                    }}
+                    style={[
+                      styles.InputStyle,
+                      {
+                        width: "80%",
+                        borderColor:
+                          theme === "light" ? COLORS.dark : COLORS.white,
+                      },
+                    ]}
                     placeholder={"Choose a day of week"}
                     placeholderTextColor={COLORS.greyMedium}
                   />
@@ -895,25 +828,23 @@ const GoalCreator = ({ navigation }) => {
                   Select a time of day
                 </Text>
                 <View
-                  style={{
-                    width: "100%",
-                    borderWidth: 1,
-                    borderColor:
-                      theme === "light" ? COLORS.secondary : COLORS.greyLight,
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
+                  style={[
+                    styles.InputBorder,
+                    {
+                      borderColor:
+                        theme === "light" ? COLORS.secondary : COLORS.greyLight,
+                    },
+                  ]}
                 >
                   <TextInput
-                    style={{
-                      width: "80%",
-                      borderColor:
-                        theme === "light" ? COLORS.dark : COLORS.white,
-                      padding: SIZES.padding,
-                      ...FONTS.h4Bold,
-                      fontSize: 19.8,
-                    }}
+                    style={[
+                      styles.InputStyle,
+                      {
+                        width: "80%",
+                        borderColor:
+                          theme === "light" ? COLORS.dark : COLORS.white,
+                      },
+                    ]}
                     placeholder={"Choose a time"}
                     placeholderTextColor={COLORS.greyMedium}
                   />
@@ -956,13 +887,13 @@ const GoalCreator = ({ navigation }) => {
                   }}
                 >
                   <TextInput
-                    style={{
-                      borderColor:
-                        theme === "light" ? COLORS.dark : COLORS.white,
-                      padding: SIZES.padding,
-                      ...FONTS.h4Bold,
-                      fontSize: 19.8,
-                    }}
+                    style={[
+                      styles.InputStyle,
+                      {
+                        borderColor:
+                          theme === "light" ? COLORS.dark : COLORS.white,
+                      },
+                    ]}
                   />
                 </View>
               </Animatable.View>
@@ -1009,25 +940,23 @@ const GoalCreator = ({ navigation }) => {
                   Select a time of day
                 </Text>
                 <View
-                  style={{
-                    width: "100%",
-                    borderWidth: 1,
-                    borderColor:
-                      theme === "light" ? COLORS.secondary : COLORS.greyLight,
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
+                  style={[
+                    styles.InputBorder,
+                    {
+                      borderColor:
+                        theme === "light" ? COLORS.secondary : COLORS.greyLight,
+                    },
+                  ]}
                 >
                   <TextInput
-                    style={{
-                      width: "80%",
-                      borderColor:
-                        theme === "light" ? COLORS.dark : COLORS.white,
-                      padding: SIZES.padding,
-                      ...FONTS.h4Bold,
-                      fontSize: 19.8,
-                    }}
+                    style={[
+                      styles.InputStyle,
+                      {
+                        width: "80%",
+                        borderColor:
+                          theme === "light" ? COLORS.dark : COLORS.white,
+                      },
+                    ]}
                     placeholder={"Choose a time"}
                     placeholderTextColor={COLORS.greyMedium}
                   />
@@ -1065,13 +994,13 @@ const GoalCreator = ({ navigation }) => {
               {!toggle ? <ToggleOff /> : <ToggleOn />}
             </TouchableOpacity>
             <Text
-              style={{
-                color: theme === "light" ? COLORS.secondary_dark : COLORS.white,
-                ...FONTS.body2bold,
-                fontSize: 14,
-                lineHeight: 15.5,
-                paddingHorizontal: SIZES.padding2 * 2,
-              }}
+              style={[
+                styles.conditionText,
+                {
+                  color:
+                    theme === "light" ? COLORS.secondary_dark : COLORS.white,
+                },
+              ]}
             >
               Pls ensure you are saving your money for a convenient duration. If
               you decide to withdraw these funds before the stipulated time, a
@@ -1093,13 +1022,13 @@ const GoalCreator = ({ navigation }) => {
               {!toggle1 ? <ToggleOff /> : <ToggleOn />}
             </TouchableOpacity>
             <Text
-              style={{
-                color: theme === "light" ? COLORS.secondary_dark : COLORS.white,
-                ...FONTS.body2bold,
-                fontSize: 14,
-                lineHeight: 15.5,
-                paddingHorizontal: SIZES.padding2 * 2,
-              }}
+              style={[
+                styles.conditionText,
+                {
+                  color:
+                    theme === "light" ? COLORS.secondary_dark : COLORS.white,
+                },
+              ]}
             >
               I agree to the 5QM terms & Conditions governing creation of
               savings plans
@@ -1134,14 +1063,7 @@ const GoalCreator = ({ navigation }) => {
             alignItems: "center",
           }}
         >
-          <View
-            style={{
-              width: SIZES.width,
-              padding: SIZES.base * 3,
-              backgroundColor: COLORS.modal,
-              borderRadius: SIZES.radius,
-            }}
-          >
+          <View style={styles.modalCard}>
             {/* modal header */}
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <TouchableOpacity
@@ -1152,15 +1074,7 @@ const GoalCreator = ({ navigation }) => {
               </TouchableOpacity>
 
               <View>
-                <Text
-                  style={{
-                    color: COLORS.white,
-                    ...FONTS.h4Bold,
-                    marginLeft: SIZES.padding2 * 2,
-                  }}
-                >
-                  Funding source
-                </Text>
+                <Text style={styles.inputLabel}>Funding source</Text>
               </View>
             </View>
 
@@ -1196,13 +1110,7 @@ const GoalCreator = ({ navigation }) => {
                 ...FONTS.h4Bold,
                 color: COLORS.white,
               }}
-              containerStyle={{
-                backgroundColor: COLORS.investment,
-                paddingVertical: 18,
-                width: SIZES.width * 0.9,
-                borderRadius: SIZES.radius,
-                marginVertical: SIZES.base * 5,
-              }}
+              containerStyle={styles.modalButton}
               onPress={() => setSourceModal(false)}
             />
           </View>
@@ -1221,14 +1129,7 @@ const GoalCreator = ({ navigation }) => {
             alignItems: "center",
           }}
         >
-          <View
-            style={{
-              width: SIZES.width,
-              padding: SIZES.base * 3,
-              backgroundColor: COLORS.modal,
-              borderRadius: SIZES.radius,
-            }}
-          >
+          <View style={styles.modalCard}>
             {/* modal header */}
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <TouchableOpacity
@@ -1239,15 +1140,7 @@ const GoalCreator = ({ navigation }) => {
               </TouchableOpacity>
 
               <View>
-                <Text
-                  style={{
-                    color: COLORS.white,
-                    ...FONTS.h4Bold,
-                    marginLeft: SIZES.padding2 * 2,
-                  }}
-                >
-                  Maturity Date
-                </Text>
+                <Text style={styles.inputLabel}>Maturity Date</Text>
               </View>
             </View>
 
@@ -1285,13 +1178,7 @@ const GoalCreator = ({ navigation }) => {
                 ...FONTS.h4Bold,
                 color: COLORS.white,
               }}
-              containerStyle={{
-                backgroundColor: COLORS.investment,
-                paddingVertical: 18,
-                width: SIZES.width * 0.9,
-                borderRadius: SIZES.radius,
-                marginVertical: SIZES.base * 5,
-              }}
+              containerStyle={styles.modalButton}
               onPress={() => setMaturityModal(false)}
             />
           </View>
@@ -1309,14 +1196,7 @@ const GoalCreator = ({ navigation }) => {
             alignItems: "center",
           }}
         >
-          <View
-            style={{
-              width: SIZES.width,
-              padding: SIZES.base * 3,
-              backgroundColor: COLORS.modal,
-              borderRadius: SIZES.radius,
-            }}
-          >
+          <View style={styles.modalCard}>
             {/* modal header */}
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <TouchableOpacity
@@ -1327,15 +1207,7 @@ const GoalCreator = ({ navigation }) => {
               </TouchableOpacity>
 
               <View>
-                <Text
-                  style={{
-                    color: COLORS.white,
-                    ...FONTS.h4Bold,
-                    marginLeft: SIZES.padding2 * 2,
-                  }}
-                >
-                  Choose Frequency
-                </Text>
+                <Text style={styles.inputLabel}>Choose Frequency</Text>
               </View>
             </View>
 
@@ -1381,13 +1253,7 @@ const GoalCreator = ({ navigation }) => {
                 ...FONTS.h4Bold,
                 color: COLORS.white,
               }}
-              containerStyle={{
-                backgroundColor: COLORS.investment,
-                paddingVertical: 18,
-                width: SIZES.width * 0.9,
-                borderRadius: SIZES.radius,
-                marginVertical: SIZES.base * 5,
-              }}
+              containerStyle={styles.modalButton}
               onPress={() => setDayModal(false)}
             />
           </View>
@@ -1405,14 +1271,7 @@ const GoalCreator = ({ navigation }) => {
             alignItems: "center",
           }}
         >
-          <View
-            style={{
-              width: SIZES.width,
-              padding: SIZES.base * 3,
-              backgroundColor: COLORS.modal,
-              borderRadius: SIZES.radius,
-            }}
-          >
+          <View style={styles.modalCard}>
             {/* modal header */}
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <TouchableOpacity
@@ -1423,15 +1282,7 @@ const GoalCreator = ({ navigation }) => {
               </TouchableOpacity>
 
               <View>
-                <Text
-                  style={{
-                    color: COLORS.white,
-                    ...FONTS.h4Bold,
-                    marginLeft: SIZES.padding2 * 2,
-                  }}
-                >
-                  Select Time
-                </Text>
+                <Text style={styles.inputLabel}>Select Time</Text>
               </View>
             </View>
 
@@ -1479,13 +1330,7 @@ const GoalCreator = ({ navigation }) => {
                 ...FONTS.h4Bold,
                 color: COLORS.white,
               }}
-              containerStyle={{
-                backgroundColor: COLORS.investment,
-                paddingVertical: 18,
-                width: SIZES.width * 0.9,
-                borderRadius: SIZES.radius,
-                marginVertical: SIZES.base * 5,
-              }}
+              containerStyle={styles.modalButton}
               onPress={() => setTimeModal(false)}
             />
           </View>
@@ -1637,5 +1482,56 @@ const styles = StyleSheet.create({
     height: 17,
     backgroundColor: COLORS.primary,
     borderRadius: SIZES.padding,
+  },
+  InputBorder: {
+    width: "100%",
+    borderWidth: 1,
+
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  primaryText: {
+    color: COLORS.primary,
+    ...FONTS.h3Bold,
+    marginTop: SIZES.radius,
+    fontSize: 22,
+  },
+  progressButton: {
+    paddingHorizontal: SIZES.padding * 11,
+    paddingVertical: SIZES.padding,
+    backgroundColor: COLORS.primary,
+    borderRadius: SIZES.padding / 2,
+    marginTop: 13,
+  },
+  InputStyle: {
+    color: COLORS.white,
+    padding: SIZES.padding,
+    ...FONTS.h4Bold,
+    fontSize: 19.8,
+  },
+  conditionText: {
+    ...FONTS.body2bold,
+    fontSize: 14,
+    lineHeight: 15.5,
+    paddingHorizontal: SIZES.padding2 * 2,
+  },
+  modalButton: {
+    backgroundColor: COLORS.investment,
+    paddingVertical: 18,
+    width: SIZES.width * 0.9,
+    borderRadius: SIZES.radius,
+    marginVertical: SIZES.base * 5,
+  },
+  inputLabel: {
+    color: COLORS.white,
+    ...FONTS.h4Bold,
+    marginLeft: SIZES.padding2 * 2,
+  },
+  modalCard: {
+    width: SIZES.width,
+    padding: SIZES.base * 3,
+    backgroundColor: COLORS.modal,
+    borderRadius: SIZES.radius,
   },
 });
