@@ -12,7 +12,7 @@ import React, { useContext } from "react";
 import { ThemeContext } from "../../context-store/context";
 import { COLORS, SIZES, FONTS, images, icons } from "../../constants";
 import { Button } from "../../components";
-import { ChevronLeft, SearchIcon } from "../../assets/icons";
+import { ChevronLeft, NairaSmall, SearchIcon } from "../../assets/icons";
 
 const explore = [
   {
@@ -111,6 +111,70 @@ const explore = [
     description:
       "Real estate investing refers to the purchase of property as an investment to generate income rather than using it as a primary residence. In simple terms, it can be understood as any land, building, infrastructure and other tangible property which is usually immovable but transferable.",
   },
+  {
+    id: 7,
+    image: images.adron,
+    title: "CC Homes",
+    roi: "10%",
+    duration: 18,
+    investors: 2000,
+    unit: 10000,
+    type: "Fixed Income",
+    payout: "Capital+Profit",
+    startDate: "17th aug 2022",
+    endDate: "17th aug 2022",
+    partner: "leadsea assurance",
+    description:
+      "Real estate investing refers to the purchase of property as an investment to generate income rather than using it as a primary residence. In simple terms, it can be understood as any land, building, infrastructure and other tangible property which is usually immovable but transferable.",
+  },
+  {
+    id: 8,
+    image: images.adron,
+    title: "CC Homes",
+    roi: "10%",
+    duration: 18,
+    investors: 2000,
+    unit: 10000,
+    type: "Fixed Income",
+    payout: "Capital+Profit",
+    startDate: "17th aug 2022",
+    endDate: "17th aug 2022",
+    partner: "leadsea assurance",
+    description:
+      "Real estate investing refers to the purchase of property as an investment to generate income rather than using it as a primary residence. In simple terms, it can be understood as any land, building, infrastructure and other tangible property which is usually immovable but transferable.",
+  },
+  {
+    id: 9,
+    image: images.adron,
+    title: "CC Homes",
+    roi: "10%",
+    duration: 18,
+    investors: 2000,
+    unit: 10000,
+    type: "Fixed Income",
+    payout: "Capital+Profit",
+    startDate: "17th aug 2022",
+    endDate: "17th aug 2022",
+    partner: "leadsea assurance",
+    description:
+      "Real estate investing refers to the purchase of property as an investment to generate income rather than using it as a primary residence. In simple terms, it can be understood as any land, building, infrastructure and other tangible property which is usually immovable but transferable.",
+  },
+  {
+    id: 10,
+    image: images.adron,
+    title: "CC Homes",
+    roi: "10%",
+    duration: 18,
+    investors: 2000,
+    unit: 10000,
+    type: "Fixed Income",
+    payout: "Capital+Profit",
+    startDate: "17th aug 2022",
+    endDate: "17th aug 2022",
+    partner: "leadsea assurance",
+    description:
+      "Real estate investing refers to the purchase of property as an investment to generate income rather than using it as a primary residence. In simple terms, it can be understood as any land, building, infrastructure and other tangible property which is usually immovable but transferable.",
+  },
 ];
 
 const ExploreInvestment = ({ navigation }) => {
@@ -154,7 +218,6 @@ const ExploreInvestment = ({ navigation }) => {
             width: "90%",
             color: COLORS.white,
             ...FONTS.fbody2,
-            fontSize: 13,
           }}
           placeholder="Search"
           placeholderTextColor={COLORS.greyMedium}
@@ -167,7 +230,7 @@ const ExploreInvestment = ({ navigation }) => {
     const renderItem = ({ item, i }) => {
       return (
         <TouchableOpacity
-          activeOpacity={0.7}
+          activeOpacity={0.8}
           onPress={() =>
             navigation.navigate("ExploreInvestmentDetail", { item })
           }
@@ -177,13 +240,14 @@ const ExploreInvestment = ({ navigation }) => {
               borderRadius: SIZES.padding,
               marginVertical: SIZES.padding2 / 2,
               marginHorizontal: SIZES.padding2 / 2,
+              width: (SIZES.width * 0.92) / 2,
             }}
           >
             <Image
               source={item.image}
               key={item.id}
               style={{
-                width: 167,
+                width: "100%",
                 height: 92,
                 borderTopLeftRadius: SIZES.padding,
                 borderTopRightRadius: SIZES.padding,
@@ -195,7 +259,6 @@ const ExploreInvestment = ({ navigation }) => {
                 borderBottomLeftRadius: SIZES.padding,
                 borderBottomRightRadius: SIZES.padding,
                 padding: SIZES.padding,
-                width: 167,
               }}
             >
               <View>
@@ -223,6 +286,7 @@ const ExploreInvestment = ({ navigation }) => {
                 </View>
                 <View>
                   <Text style={[styles.text, { ...FONTS.fbody1 }]}>
+                    <NairaSmall fill={COLORS.white} />
                     {item.unit}
                   </Text>
                   <Text style={[styles.text, { ...FONTS.fbody1, fontSize: 8 }]}>
@@ -238,8 +302,9 @@ const ExploreInvestment = ({ navigation }) => {
     return (
       <View style={{ height: "100%" }}>
         <FlatList
+          scrollEnabled={true}
           data={explore}
-          keyExtractor={explore.id}
+          keyExtractor={(item) => item.id}
           renderItem={renderItem}
           numColumns={2}
         />

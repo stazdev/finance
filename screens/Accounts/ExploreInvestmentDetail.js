@@ -14,6 +14,7 @@ import { COLORS, FONTS, SIZES, images } from "../../constants";
 import {
   ChevronDown,
   ChevronLeft,
+  NairaSmall,
   ToggleOff,
   ToggleOn,
 } from "../../assets/icons";
@@ -64,7 +65,7 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
       <Image
         source={item.image}
         resizeMode="contain"
-        style={{ width: 334, height: 144, marginTop: SIZES.base * 5 }}
+        style={{ width: SIZES.width, height: 144, marginTop: SIZES.base * 5 }}
       />
     );
   }
@@ -160,97 +161,57 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
               <Text
                 style={[
                   styles.text,
+                  styles.listText,
                   {
-                    ...FONTS.h4Bold,
-                    fontSize: 14.5,
-                    fontWeight: "700",
                     color: theme === "light" ? COLORS.dark : COLORS.white,
                   },
                 ]}
               >
                 Investment Duration
               </Text>
-              <Text
-                style={{
-                  color: COLORS.investment,
-                  ...FONTS.h4Bold,
-                  fontSize: 14.5,
-                }}
-              >
-                {item.duration} months
-              </Text>
+              <Text style={styles.listItemDetail}>{item.duration} months</Text>
             </View>
             <View>
               <Text
                 style={[
                   styles.text,
+                  styles.listText,
                   {
-                    ...FONTS.h4Bold,
-                    fontSize: 14.5,
-                    fontWeight: "700",
                     color: theme === "light" ? COLORS.dark : COLORS.white,
                   },
                 ]}
               >
                 Investment type
               </Text>
-              <Text
-                style={{
-                  color: COLORS.investment,
-                  ...FONTS.h4Bold,
-                  fontSize: 14.5,
-                }}
-              >
-                {item.type}
-              </Text>
+              <Text style={styles.listItemDetail}>{item.type}</Text>
             </View>
             <View>
               <Text
                 style={[
                   styles.text,
+                  styles.listText,
                   {
-                    ...FONTS.h4Bold,
-                    fontSize: 14.5,
-                    fontWeight: "700",
                     color: theme === "light" ? COLORS.dark : COLORS.white,
                   },
                 ]}
               >
                 Offer starts
               </Text>
-              <Text
-                style={{
-                  color: COLORS.investment,
-                  ...FONTS.h4Bold,
-                  fontSize: 14.5,
-                }}
-              >
-                {item.startDate}
-              </Text>
+              <Text style={styles.listItemDetail}>{item.startDate}</Text>
             </View>
             <View>
               <Text
                 style={[
                   styles.text,
+                  styles.listText,
                   {
-                    ...FONTS.h4Bold,
-                    fontSize: 14.5,
-                    fontWeight: "700",
                     color: theme === "light" ? COLORS.dark : COLORS.white,
                   },
                 ]}
               >
                 Insurance partner
               </Text>
-              <Text
-                style={{
-                  color: COLORS.investment,
-                  ...FONTS.h4Bold,
-                  fontSize: 14.5,
-                }}
-              >
-                {item.partner}
-              </Text>
+              <Text style={styles.listItemDetail}>{item.partner}</Text>
             </View>
           </View>
 
@@ -259,73 +220,43 @@ const ExploreInvestmentDetail = ({ navigation, route }) => {
               <Text
                 style={[
                   styles.text,
+                  styles.listText,
                   {
-                    ...FONTS.h4Bold,
-                    fontSize: 14.5,
-                    fontWeight: "700",
                     color: theme === "light" ? COLORS.dark : COLORS.white,
                   },
                 ]}
               >
                 Interst to earn
               </Text>
-              <Text
-                style={{
-                  color: COLORS.investment,
-                  ...FONTS.h4Bold,
-                  fontSize: 14.5,
-                }}
-              >
-                {item.roi}
-              </Text>
+              <Text style={styles.listItemDetail}>{item.roi}</Text>
             </View>
             <View>
               <Text
                 style={[
                   styles.text,
+                  styles.listText,
                   {
-                    ...FONTS.h4Bold,
-                    fontSize: 14.5,
-                    fontWeight: "700",
                     color: theme === "light" ? COLORS.dark : COLORS.white,
                   },
                 ]}
               >
                 Payout type
               </Text>
-              <Text
-                style={{
-                  color: COLORS.investment,
-                  ...FONTS.h4Bold,
-                  fontSize: 14.5,
-                }}
-              >
-                {item.payout}
-              </Text>
+              <Text style={styles.listItemDetail}>{item.payout}</Text>
             </View>
             <View>
               <Text
                 style={[
                   styles.text,
+                  styles.listText,
                   {
-                    ...FONTS.h4Bold,
-                    fontSize: 14.5,
-                    fontWeight: "700",
                     color: theme === "light" ? COLORS.dark : COLORS.white,
                   },
                 ]}
               >
                 Offer ends
               </Text>
-              <Text
-                style={{
-                  color: COLORS.investment,
-                  ...FONTS.h4Bold,
-                  fontSize: 14.5,
-                }}
-              >
-                {item.endDate}
-              </Text>
+              <Text style={styles.listItemDetail}>{item.endDate}</Text>
             </View>
           </View>
         </View>
@@ -658,5 +589,15 @@ const styles = StyleSheet.create({
   },
   text: {
     color: COLORS.white,
+  },
+  listText: {
+    ...FONTS.h4Bold,
+    fontSize: 14.5,
+    fontWeight: "700",
+  },
+  listItemDetail: {
+    color: COLORS.investment,
+    ...FONTS.h4Bold,
+    fontSize: 14.5,
   },
 });

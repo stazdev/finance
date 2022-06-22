@@ -113,8 +113,9 @@ const Onboarding = ({ navigation }) => {
               } else {
                 navigation.navigate("SignUp");
               }
+              console.log(index);
             }}
-            label={"Next"}
+            label={"NEXT"}
           />
         </View>
       </View>
