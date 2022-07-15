@@ -78,6 +78,7 @@ const accounts = [
 ];
 const Accounts = ({ navigation }) => {
   const { theme } = useContext(ThemeContext);
+
   function renderHeader() {
     return (
       <View style={styles.header}>
@@ -182,9 +183,12 @@ const Accounts = ({ navigation }) => {
       <View>
         <FlatList
           data={accounts}
+          showsVerticalScrollIndicator={false}
+          ListHeaderComponent={<View>{renderImages()}</View>}
           keyExtractor={(account, i) => i.toString()}
           renderItem={renderItem}
           numColumns={2}
+          ListFooterComponent={<View>{renderLogo()}</View>}
         />
       </View>
     );
@@ -196,7 +200,8 @@ const Accounts = ({ navigation }) => {
         style={{
           justifyContent: "center",
           alignItems: "center",
-          marginVertical: SIZES.padding * 7,
+          marginTop: SIZES.padding * 5,
+          marginBottom: SIZES.padding * 10,
         }}
       >
         <Image
@@ -210,16 +215,11 @@ const Accounts = ({ navigation }) => {
       style={{
         backgroundColor: theme === "light" ? COLORS.white : COLORS.dark,
         paddingHorizontal: SIZES.padding,
-        justifyContent: "center",
       }}
     >
       <StatusBar backgroundColor={COLORS.dark} barStyle={"light-content"} />
       {renderHeader()}
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {renderImages()}
-        {renderAccounts()}
-        {renderLogo()}
-      </ScrollView>
+      {renderAccounts()}
     </SafeAreaView>
   );
 };
